@@ -6,13 +6,38 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
-const { cardLists } = require('./models');
+const { cardList } = require('./models');
 
 const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+//GET request to /cardlists => return all lists
 
+app.get('/cardlists', (req, res) => {
+    cardList
+        .find()
+        .then(cardlists => {
+            res.json({
+                cardlists: cardlists.map((cardlists) => cardlists.serialize())
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error'});
+        });
+})
+
+//GET request to return card lists by ID
+app.get('/cardlists/:id', (req, res) => {
+    cardList
+        .findById(req.params.id)
+        .then(cardlists => res.json(cardlists.serialize()))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        });
+});
 
 
 app.use('*', function (req, res) {
