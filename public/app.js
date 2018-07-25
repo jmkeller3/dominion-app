@@ -15,12 +15,10 @@
     function displayCards(cards) {
         // const card = cards[0];
         const hmtlcards = cards.map(card =>`
-                        <div class="col-3">
-                            <div class="card">
-                                <img src="${card.picture}" alt="${card.rules}">
-                            </div>
-                        </div>`);
-        $('.window').html(hmtlcards);
+            <div class="card">
+                <img class="card-img" src="${card.picture}" alt="${card.rules}">
+            </div>`);
+        $('.content').html(hmtlcards);
     }
 
     displayCards(carddata);
