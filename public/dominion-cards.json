@@ -921,7 +921,7 @@
             "number": "3",
             "name": "Watchtower",
             "expansion": "Prosperity",
-            "type": "Reaction",
+            "type": "Action - Reaction",
             "cost": "$3",
             "rules": "Draw until you have 6 cards in hand.When you gain a card, you may reveal this from your hand. If you do, either trash that card, or put it on top of your deck.",
             "picture": "./scans/prosperity/watchtower.jpg",

@@ -21,25 +21,45 @@
         $('.content').html(hmtlcards);
     }
 
-    displayCards(carddata);
+    let attackCards = carddata.filter(function(card) {
+        return card.type == "Action - Attack"
+    });
+
+    let treasureCards = carddata.filter(function(card) {
+        return card.type == "Treasure"
+    });
+
+    let reactionCards = carddata.filter(function(card) {
+        return card.type == "Action - Reaction"
+    });
+
+    console.log(attackCards);
+
+    console.log(treasureCards);
+
+    console.log(reactionCards);
+
+    displayCards(reactionCards);
     
+
     
     // filter functions
 
-    function actionAttack(type) {
-        return type === "Action - Attack"
+    function filterAttack(type) {
+        
+        type == "Action - Attack"
     }
 
-    function treasure(type) {
-        return type === "Treasure"
+    function filterTreasure(type) {
+        return type == "Treasure"
     }
 
-    function reaction(type) {
-        return type === "Reaction"
+    function filterReaction(type) {
+        return type == "Reaction"
     }
 
     //sort by rank
-    function rank(cardrankingss) {
+    function sortRank(cardrankingss) {
         cardrankingss.sort(function(a, b){return a - b});
     }
 

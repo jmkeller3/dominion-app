@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }  
 
+body {
+  background-color: #DAD3C3; 
+  color: black;
+}
+
+/* .test {
+  green: #51AA50; 
+  white: #DAD3C3;
+  blue: #3867C9;
+  brown: #765937;
+  red: #CB3834;
+} */
+
 /* grid */
 
 .content {
@@ -14,12 +27,17 @@
 
 .filter {
   grid-area: header; 
+  background-color: #3867C9;
+  color: white;
+  font-weight: 600;
 }
 
 .sidebar {
   grid-area: sidebar;
   position: fixed;
   margin-top: 30px;
+  background-color: #CB3834;
+  color: white;
 }
 
 ul {
