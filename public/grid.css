@@ -34,7 +34,6 @@ body {
 
 .sidebar {
   grid-area: sidebar;
-  position: fixed;
   margin-top: 30px;
   background-color: #CB3834;
   color: white;
@@ -42,14 +41,15 @@ body {
 
 ul {
   list-style: none;
+  position: fixed;
 }
 
 .wrapper {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: minmax(20%, 200px) 1fr 1fr;
-  grid-template-areas: "....... header  header"
-  "sidebar content content";
+  grid-template-columns: minmax(200px, 15%) 1fr;
+  grid-template-areas: ".... header"
+  "sidebar content";
   background-color: #999;
 }
 

@@ -22,19 +22,22 @@
     }
 
     let attackCards = carddata.filter(function(card) {
-        return card.type == "Action - Attack"
+        return card.type.includes("Attack")
     });
 
     let treasureCards = carddata.filter(function(card) {
-        return card.type == "Treasure"
+        return card.type.includes("Treasure")
     });
 
     let reactionCards = carddata.filter(function(card) {
-        return card.type == "Action - Reaction"
+        return card.type.includes("Reaction")
     });
 
     let rankCards = carddata.slice().sort((a, b) => {
-        return a.rank-b.rank
+        let expansions = Object.keys(setdata);
+        let aIndex = expansions.indexOf(a.expansion);
+        let bIndex = expansions.indexOf(b.expansion);
+        return a.expansion == b.expansion ?       a.rank-b.rank : aIndex - bIndex
     });
 
     console.log(attackCards);
@@ -45,7 +48,7 @@
 
     console.log(rankCards);
 
-    displayCards(carddata);
+    displayCards(rankCards);
     
 
     

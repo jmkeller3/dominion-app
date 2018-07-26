@@ -38,7 +38,7 @@
             "cost": "$3",
             "rules": "+2 Coins, You may immediately put your deck into your discard pile.",
             "picture": "./scans/base/chancellor.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "5",
@@ -58,7 +58,7 @@
             "cost": "$3",
             "rules": "+1 Buy, +2 Coins.",
             "picture": "./scans/base/woodcutter.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "7",
@@ -88,7 +88,7 @@
             "cost": "$4",
             "rules": "Trash this card. Gain a card costing up to 5 Coins.",
             "picture": "./scans/base/feast.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "10",
@@ -148,7 +148,7 @@
             "cost": "$4",
             "rules": "+1 Card+1 ActionEach player (including you) reveals the top card of his deck and either discards it or puts it back, your choice.",
             "picture": "./scans/base/spy.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "16",
@@ -158,7 +158,7 @@
             "cost": "$4",
             "rules": "Each other player reveals the top 2 cards of his deck. If they revealed any Treasure cards, they trash one of them that you choose. You may gain any or all of these trashed cards. They discard the other revealed cards.",
             "picture": "./scans/base/thief.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "17",
@@ -248,7 +248,7 @@
             "cost": "$6",
             "rules": "Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards into your hand and discard the other revealed cards.",
             "picture": "./scans/base/adventurer.jpg",
-            "rank": "-"
+            "rank": "99"
         }
     ],
     "Intrigue": [
@@ -280,7 +280,7 @@
             "cost": "$2",
             "rules": "Discard any number of cards. +1 Coin per card discarded. - When another player plays an Attack card, you may reveal this from your hand. If you do, +2 cards, then put 2 cards from your hand on top of your deck.",
             "picture": "./scans/intrigue/secretchamber.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "4",
@@ -290,7 +290,7 @@
             "cost": "$3",
             "rules": "1 Victory, +1 Card, +1 Action.",
             "picture": "./scans/intrigue/greathall.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "5",
@@ -380,7 +380,7 @@
             "cost": "$4",
             "rules": "Copper produces an extra 1 Coin this turn.",
             "picture": "./scans/intrigue/coppersmith.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "14",
@@ -410,7 +410,7 @@
             "cost": "$4",
             "rules": "+1 Action. Reveal the top 4 cards of your deck. Put the revealed Victory cards into your hand. Put the other cards on top of your deck in any order.",
             "picture": "./scans/intrigue/scout.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "17",
@@ -440,7 +440,7 @@
             "cost": "$5",
             "rules": "Each other player reveals cards from the top of his deck until revealing one costing 3 Coins or more. He trashes that card and may gain a card costing at most 2 Coins less than it. He discards the other revealed cards.",
             "picture": "./scans/intrigue/saboteur.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "20",
@@ -470,7 +470,7 @@
             "cost": "$5",
             "rules": "The player to your left reveals then discards the top 2 cards of his deck. For each differently named card revealed, if it is an... Action Card, +2 Actions; Treasure Card, +2 Coins; Victory Card, +2 Cards.",
             "picture": "./scans/intrigue/tribute.jpg",
-            "rank": "-"
+            "rank": "99"
         },
         {
             "number": "23",
