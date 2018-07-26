@@ -33,13 +33,19 @@
         return card.type == "Action - Reaction"
     });
 
+    let rankCards = carddata.slice().sort((a, b) => {
+        return a.rank-b.rank
+    });
+
     console.log(attackCards);
 
     console.log(treasureCards);
 
     console.log(reactionCards);
 
-    displayCards(reactionCards);
+    console.log(rankCards);
+
+    displayCards(carddata);
     
 
     
