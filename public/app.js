@@ -21,18 +21,14 @@
         $('.content').html(hmtlcards);
     }
 
-    let attackCards = carddata.filter(function(card) {
-        return card.type.includes("Attack")
-    });
+    //filter by attacks
+    let attackCards = carddata.filter(filterAttack);
 
-    let treasureCards = carddata.filter(function(card) {
-        return card.type.includes("Treasure")
-    });
+    let treasureCards = carddata.filter(filterTreasure);
 
-    let reactionCards = carddata.filter(function(card) {
-        return card.type.includes("Reaction")
-    });
+    let reactionCards = carddata.filter(filterReaction);
 
+    //sort by rank    
     let rankCards = carddata.slice().sort((a, b) => {
         let expansions = Object.keys(setdata);
         let aIndex = expansions.indexOf(a.expansion);
@@ -48,31 +44,57 @@
 
     console.log(rankCards);
 
-    displayCards(rankCards);
+    displayCards(carddata);
     
-
+    $('.attack-btn').click(() => {
+        event.preventDefault();
+        displayCards(attackCards);
+        console.log(`Button worked!`);
+    });
+    $('.treasure-btn').click(() => {
+        event.preventDefault();
+        displayCards(treasureCards);
+        console.log(`Button worked!`);
+    });
+    $('.reaction-btn').click(() => {
+        event.preventDefault();
+        displayCards(reactionCards);
+        console.log(`Button worked!`);
+    });
+    $('.rank-btn').click(() => {
+        event.preventDefault();
+        displayCards(rankCards);
+        console.log(`Button worked!`);
+    });
+    $('.all-btn').click(() => {
+        event.preventDefault();
+        displayCards(carddata);
+        console.log(`Button worked!`)
+    })
+   
     
     // filter functions
 
-    function filterAttack(type) {
-        
-        type == "Action - Attack"
+    function filterAttack(card) {
+        return card.type.includes("Attack")
     }
 
-    function filterTreasure(type) {
-        return type == "Treasure"
+    function filterTreasure(card) {
+        return card.type.includes("Treasure")
     }
 
-    function filterReaction(type) {
-        return type == "Reaction"
+    function filterReaction(card) {
+        return card.type.includes("Reaction")
     }
 
-    //sort by rank
-    function sortRank(cardrankingss) {
-        cardrankingss.sort(function(a, b){return a - b});
-    }
+   
+    // function sortRank(cardrankingss) {
+    //     cardrankingss.sort(function(a, b){return a - b});
+    // }
 
 })()
+
+
 
 
 
