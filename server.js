@@ -85,6 +85,50 @@ app.post("/cardlists", jsonParser, (req, res) => {
     });
 });
 
+app.put("/cardlists:id", jsonParser, (req, res) => {
+  if (!(req.params.id === req.body.id)) {
+    const message =
+      `Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`;
+
+    console.error(message);
+    return res.status(400).json({ message: message });
+  }
+
+  console.log(`Updating cardlist item \`${req.params.id}\``);
+  const toUpdate = {};
+  const updateableFields = [
+    "card1",
+    "card2",
+    "card3",
+    "card4",
+    "card5",
+    "card6",
+    "card7",
+    "card8",
+    "card9",
+    "card10"
+  ];
+
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      toUpdate[field] = req.body[field];
+    }
+  });
+
+  cardList
+    .findByIdAndUpdate(req.params.id, { $set: toUpdate }, { new: true })
+    .then(updatedCardList => res.status(204).end())
+    .catch(err => res.status(500).json({ message: "Internal Server Error" }));
+});
+
+app.delete("/cardlists:id", (req, res) => {
+  cardList
+    .findByIdAndRemove(req.params.id)
+    .then(() => res.status(204).end())
+    .catch(err => res.status(500).json({ message: "Internal Server Error" }));
+});
+
 app.use("*", function(req, res) {
   res.status(404).json({ message: "Not Found" });
 });
