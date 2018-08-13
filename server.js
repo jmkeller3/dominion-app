@@ -37,6 +37,17 @@ app.use("/api/auth/", authRouter);
 
 const jwtAuth = passport.authenticate("jwt", { session: false });
 
+//Protected endpoint
+app.get("/api/protected", jwtAuth, (req, res) => {
+  return res.json({
+    data: "rosebud"
+  });
+});
+
+app.use("*", (req, res) => {
+  return res.status(404).json({ message: "Not Found" });
+});
+
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -167,10 +178,10 @@ app.use("*", function(req, res) {
 
 let server;
 
-function runServer(databaseURL, port = PORT) {
+function runServer(DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(
-      databaseURL,
+      DATABASE_URL,
       err => {
         if (err) {
           return reject(err);
