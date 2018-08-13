@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </head>
+
 <body>
     <div class="wrapper">
         <div class="filter">
@@ -19,6 +21,23 @@
             <button class="reaction-btn" type="submit">Reaction</button>
             <button class="rank-btn" type="submit">Rank</button>
             <button class="all-btn" type="submit">All</button>
+            <div class="styled-select blue semi-square">
+                <select id="setOptions" name="setOptions">
+                    <option value=''>Sort by Set</option>
+                    <option value='Base'>Base</option>
+                    <option value='Intrigue'>Intrigue</option>
+                    <option value='Seaside'>Seaside</option>
+                    <option value='Alchemy'>Alchemy</option>
+                    <option value='Prosperity'>Prosperity</option>
+                    <option value='Cornucopia'>Cornucopia</option>
+                    <option value='Hinterlands'>Hinterlands</option>
+                    <option value='Dark Ages'>Dark Ages</option>
+                    <option value='Guilds'>Guilds</option>
+                    <option value='Adventures'>Adventures</option>
+                    <option value='Empires'>Empires</option>
+                    <option value='2nd'>Base (Second Edition)</option>
+                </select>
+            </div>
         </div>
         <div class="sidebar">
             <ul>
@@ -36,9 +55,14 @@
         </div>
         <div class="content">
 
-        </div>    
+        </div>
     </div>
-
+    <script>
+        function filterSets() {
+            document.getElementById("setDropdown").classList.toggle("show");
+        }
+    </script>
     <script src="app.js"></script>
 </body>
+
 </html>

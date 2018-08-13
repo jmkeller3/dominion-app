@@ -1,103 +1,118 @@
-'use strict';
+"use strict";
 
 (async function() {
-    const setdata = await $.getJSON("dominion-cards.json");
-    
-    console.log(setdata);
+  const setdata = await $.getJSON("dominion-cards.json");
 
-    let carddata = [];
-    for (let arr of Object.values(setdata)) {
-        carddata = carddata.concat(arr);
-    };
+  console.log(setdata);
 
-    console.log(carddata);
+  let carddata = [];
+  for (let arr of Object.values(setdata)) {
+    carddata = carddata.concat(arr);
+  }
 
-    function displayCards(cards) {
-        // const card = cards[0];
-        const hmtlcards = cards.map(card =>`
+  console.log(carddata);
+
+  function displayCards(cards) {
+    // const card = cards[0];
+    const hmtlcards = cards.map(
+      card => `
             <div class="card">
                 <img class="card-img" src="${card.picture}" alt="${card.rules}">
-            </div>`);
-        $('.content').html(hmtlcards);
-    }
+            </div>`
+    );
+    $(".content").html(hmtlcards);
+  }
 
-    //filter by attacks
-    let attackCards = carddata.filter(filterAttack);
+  //filter by attacks
+  let attackCards = carddata.filter(filterAttack);
 
-    let treasureCards = carddata.filter(filterTreasure);
+  let treasureCards = carddata.filter(filterTreasure);
 
-    let reactionCards = carddata.filter(filterReaction);
+  let reactionCards = carddata.filter(filterReaction);
 
-    //sort by rank    
-    let rankCards = carddata.slice().sort((a, b) => {
-        let expansions = Object.keys(setdata);
-        let aIndex = expansions.indexOf(a.expansion);
-        let bIndex = expansions.indexOf(b.expansion);
-        return a.expansion == b.expansion ?       a.rank-b.rank : aIndex - bIndex
-    });
+  //sort by rank
+  let rankCards = carddata.slice().sort((a, b) => {
+    let expansions = Object.keys(setdata);
+    let aIndex = expansions.indexOf(a.expansion);
+    let bIndex = expansions.indexOf(b.expansion);
+    return a.expansion == b.expansion ? a.rank - b.rank : aIndex - bIndex;
+  });
 
-    console.log(attackCards);
+  console.log(attackCards);
 
-    console.log(treasureCards);
+  console.log(treasureCards);
 
-    console.log(reactionCards);
+  console.log(reactionCards);
 
-    console.log(rankCards);
+  console.log(rankCards);
 
+  displayCards(carddata);
+
+  $(".attack-btn").click(() => {
+    event.preventDefault();
+    displayCards(attackCards);
+    console.log(`Button worked!`);
+  });
+  $(".treasure-btn").click(() => {
+    event.preventDefault();
+    displayCards(treasureCards);
+    console.log(`Button worked!`);
+  });
+  $(".reaction-btn").click(() => {
+    event.preventDefault();
+    displayCards(reactionCards);
+    console.log(`Button worked!`);
+  });
+  $(".rank-btn").click(() => {
+    event.preventDefault();
+    displayCards(rankCards);
+    console.log(`Button worked!`);
+  });
+  $(".all-btn").click(() => {
+    event.preventDefault();
     displayCards(carddata);
-    
-    $('.attack-btn').click(() => {
-        event.preventDefault();
-        displayCards(attackCards);
-        console.log(`Button worked!`);
-    });
-    $('.treasure-btn').click(() => {
-        event.preventDefault();
-        displayCards(treasureCards);
-        console.log(`Button worked!`);
-    });
-    $('.reaction-btn').click(() => {
-        event.preventDefault();
-        displayCards(reactionCards);
-        console.log(`Button worked!`);
-    });
-    $('.rank-btn').click(() => {
-        event.preventDefault();
-        displayCards(rankCards);
-        console.log(`Button worked!`);
-    });
-    $('.all-btn').click(() => {
-        event.preventDefault();
-        displayCards(carddata);
-        console.log(`Button worked!`)
-    })
-   
-    
-    // filter functions
+    console.log(`Button worked!`);
+  });
 
-    function filterAttack(card) {
-        return card.type.includes("Attack")
-    }
+  document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+      document.querySelector(
+        'select[name="setOptions"]'
+      ).onchange = changeEventHandler;
+    },
+    false
+  );
 
-    function filterTreasure(card) {
-        return card.type.includes("Treasure")
-    }
+  let selectedSet;
+  function changeEventHandler(event) {
+    // You can use “this” to refer to the selected element.
+    if (!event.target.value) alert("Please Select A Set");
+    else selectedSet = event.target.value;
+    console.log(selectedSet);
+    displayCards();
+  }
 
-    function filterReaction(card) {
-        return card.type.includes("Reaction")
-    }
+  // filter functions
 
-   
-    // function sortRank(cardrankingss) {
-    //     cardrankingss.sort(function(a, b){return a - b});
-    // }
+  function filterAttack(card) {
+    return card.type.includes("Attack");
+  }
 
-})()
+  function filterTreasure(card) {
+    return card.type.includes("Treasure");
+  }
 
+  function filterReaction(card) {
+    return card.type.includes("Reaction");
+  }
 
+  function filterSets(card) {
+    const set = document.getElementById("setOptions");
+    let selectedSet = set.options[set.selectedIndex].text;
 
+    console.log(selectedSet);
 
-
-
-
-
+    return card.expansion.includes(selectedSet);
+  }
+})();

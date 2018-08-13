@@ -1,11 +1,10 @@
-
 * {
   margin: 0;
   box-sizing: border-box;
-}  
+}
 
 body {
-  background-color: #DAD3C3; 
+  background-color: #dad3c3;
   color: black;
 }
 
@@ -26,29 +25,28 @@ body {
 }
 
 .filter {
-  grid-area: header; 
-  background-color: #EAEAEA;
+  grid-area: header;
+  background-color: #eaeaea;
   color: black;
-  
+
   padding: 20px;
 }
 
 .sidebar {
   grid-area: sidebar;
   background-color: #666666;
-  color: white;  
+  color: white;
 }
 
 ul {
   list-style: none;
   position: fixed;
-  padding-top: 80px; 
-  
+  padding-top: 80px;
 }
 
 li {
   text-align: center;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   font-size: 20px;
   font-weight: 500;
 }
@@ -57,11 +55,11 @@ li {
   display: grid;
   /* grid-gap: 10px; */
   grid-template-columns: minmax(150px, 15%) 1fr;
-  grid-template-areas: "sidebar header"
-  "sidebar content";
-  background-color: #EAEAEA;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar content";
+  background-color: #eaeaea;
 }
-
 
 .card-img {
   width: 100%;
@@ -76,22 +74,51 @@ button {
   font-size: 16px;
   border-radius: 2px;
   transition-duration: 0.4s;
-  border: 1px solid #000;
+  border: 1px solid #fff;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   padding: 15px 32px;
-  background-color: #3867C9;
+  background-color: #3867c9;
+  color: #fff;
+  cursor: pointer;
 }
 
-button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: #000;
-  color: #3867C9;
+button:hover,
+button:focus {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fff;
+  color: #3867c9;
 }
-  
 
+/* Select Sets Filter */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
 
+.semi-square {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 
+.styled-select select {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  height: 48px;
+  padding: 5px; /* If you add too much padding here, the options won't show in IE */
+  width: 150px;
+}
 
-  
+.blue select {
+  background-color: #3867c9;
+  color: #fff;
+}
+
+.blue select {
+  color: #fff;
+  font-size: 14px;
+}
