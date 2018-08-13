@@ -2,8 +2,8 @@
 
 const express = require("express");
 const mongoose = require("mongoose");
-const uuid = require("uuid");
-const jsonParser = bodyParser.json();
+const uuid = require("uuid/v4");
+const jsonParser = require("body-parser").json();
 
 mongoose.Promise = global.Promise;
 
@@ -45,6 +45,8 @@ app.get("/cardlists/:id", (req, res) => {
 //Check to see if lists are filled.
 app.post("/cardlists", jsonParser, (req, res) => {
   const requiredFields = [
+    "name",
+    "userid",
     "card1",
     "card2",
     "card3",
@@ -67,6 +69,9 @@ app.post("/cardlists", jsonParser, (req, res) => {
 
   cardList
     .create({
+      name: req.body.name,
+      userid: req.body.userid,
+      //change to req.user later
       card1: req.body.card1,
       card2: req.body.card2,
       card3: req.body.card3,
@@ -85,7 +90,7 @@ app.post("/cardlists", jsonParser, (req, res) => {
     });
 });
 
-app.put("/cardlists:id", jsonParser, (req, res) => {
+app.put("/cardlists/:id", jsonParser, (req, res) => {
   if (!(req.params.id === req.body.id)) {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
@@ -98,6 +103,7 @@ app.put("/cardlists:id", jsonParser, (req, res) => {
   console.log(`Updating cardlist item \`${req.params.id}\``);
   const toUpdate = {};
   const updateableFields = [
+    "name",
     "card1",
     "card2",
     "card3",
@@ -122,7 +128,7 @@ app.put("/cardlists:id", jsonParser, (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-app.delete("/cardlists:id", (req, res) => {
+app.delete("/cardlists/:id", (req, res) => {
   cardList
     .findByIdAndRemove(req.params.id)
     .then(() => res.status(204).end())

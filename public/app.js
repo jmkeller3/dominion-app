@@ -23,7 +23,7 @@
     $(".content").html(hmtlcards);
   }
 
-  //filter by attacks
+  //filters
   let attackCards = carddata.filter(filterAttack);
 
   let treasureCards = carddata.filter(filterTreasure);
@@ -74,26 +74,40 @@
     console.log(`Button worked!`);
   });
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-      document.querySelector(
-        'select[name="setOptions"]'
-      ).onchange = changeEventHandler;
-    },
-    false
-  );
-
-  let selectedSet;
-  function changeEventHandler(event) {
-    // You can use “this” to refer to the selected element.
-    if (!event.target.value) alert("Please Select A Set");
-    else selectedSet = event.target.value;
+  $("#setOptions").change(event => {
+    let selectedSet = event.target.value;
     console.log(selectedSet);
-    displayCards();
-  }
+    // filter by set
+    function filterSets(card) {
+      if (selectedSet == "") {
+        return true;
+      }
+      return card.expansion == selectedSet;
+    }
 
-  // filter functions
+    displayCards(carddata.filter(filterSets));
+  });
+
+  // document.addEventListener(
+  //   "DOMContentLoaded",
+  //   function() {
+  //     document.querySelector(
+  //       'select[name="setOptions"]'
+  //     ).onchange = changeEventHandler;
+  //   },
+  //   false
+  // );
+
+  // let selectedSet;
+  // function changeEventHandler(event) {
+  //   // You can use “this” to refer to the selected element.
+  //   if (!event.target.value) alert("Please Select A Set");
+  //   else selectedSet = event.target.value;
+  //   console.log(selectedSet);
+  //   displayCards();
+  // }
+
+  // filter by type functions
 
   function filterAttack(card) {
     return card.type.includes("Attack");
@@ -105,14 +119,5 @@
 
   function filterReaction(card) {
     return card.type.includes("Reaction");
-  }
-
-  function filterSets(card) {
-    const set = document.getElementById("setOptions");
-    let selectedSet = set.options[set.selectedIndex].text;
-
-    console.log(selectedSet);
-
-    return card.expansion.includes(selectedSet);
   }
 })();
