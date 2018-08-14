@@ -1,5 +1,5 @@
 "use strict";
-global.DATABASE_URL = "mongod://localhost/dominion-app";
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const jwt = require("jsonwebtoken");

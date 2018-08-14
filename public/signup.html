@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign-Up Page</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sign-Up Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="app.js"></script>
 </head>
+
 <body>
-    <form action="/">
-        <div class="container">
-          <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr>
-      
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
-      
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <label for="repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-          
-          <label class="remember">
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-      
-          <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Sign Up</button>
-          </div>
-        </div>
-      </form>
-    
-    
+  <form id="signup" action="" method="post">
+    <fieldset>
+      <legend>Sign-Up</legend>
+      <h2 class="title">Create your account</h2>
+      <h3 class="subtitle">This allows you to save lists!</h3>
+      <input type="text" name="email" placeholder="Email" />
+      <input type="password" name="pass" placeholder="Password" />
+      <input type="password" name="cpass" placeholder="Confirm Password" />
+      <input type="submit" name="submit" class="submit action-button" value="Submit" />
+  </form>
+
+
 </body>
+
 </html>
+<!-- <div class="container">
+    <input type='checkbox' id='form-switch'>
+    <form id='login-form' action="" method='post'>
+      <label for="Username">
+        <b>Username:</b>
+      </label>
+      <input type="text" placeholder="Username" name="Username" required>
+      <label for="Password">
+        <b>Password:</b>
+      </label>
+      <input type="password" placeholder="Password" name="Password" required>
+      <button type='submit'>Login</button>
+      <label for='form-switch'>
+        <span>Register</span>
+      </label>
+    </form>
+    <form id='register-form' action="" method='post'>
+      <label for="Username">
+        <b>Username:</b>
+      </label>
+      <input type="text" placeholder="Username" name="Username" required>
+      <label for="Email">
+        <b>Email:</b>
+      </label>
+      <input type="email" placeholder="Email" name="Email" required>
+      <label for="Password">
+        <b>Password:</b>
+      </label>
+      <input type="password" placeholder="Password" name="Password" required>
+      <label for="RePassword">
+        <b>Re-Enter Password:</b>
+      </label>
+      <input type="password" placeholder="Re-enter Password" name="RePassword" required>
+      <button type='submit'>Register</button>
+      <label for='form-switch'>Already Member? Sign In Now!</label>
+    </form>
+  </div> -->

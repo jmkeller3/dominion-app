@@ -1,77 +1,85 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
-
-form {
-    border: 1px solid #ccc;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
+html {
+  height: 100%;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+#signup {
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
 }
 
-hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
+#signup fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 10%;
 }
 
-/* Set a style for all buttons */
+#signup .action-button {
+  width: 100px;
+  background: #3867c9;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+legend {
+  color: #3867c9;
+  text-align: right;
+  border: 1px solid #3867c9;
+  padding: 0.2em 0.5em;
+  background-color: white;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  margin-bottom: 3px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border: 3px solid #555;
+}
+
 button {
-    background-color: #934caf;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
+  padding: 10px;
 }
 
-button:hover {
-    opacity:1;
+label {
+  cursor: pointer;
+  display: inline-block;
 }
 
-.remember {
-    margin-bottom: 15px;
+#form-switch {
+  display: none;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #3659f4;
+#register-form {
+  display: none;
 }
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
+#form-switch:checked ~ #register-form {
+  display: block;
 }
 
-/* Add padding to container elements */
-.container {
-    padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-       width: 100%;
-    }
+#form-switch:checked ~ #login-form {
+  display: none;
 }
