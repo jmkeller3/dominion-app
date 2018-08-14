@@ -12,18 +12,56 @@
 </head>
 
 <body>
-  <form id="signup" action="" method="post">
-    <fieldset>
-      <legend>Sign-Up</legend>
-      <h2 class="title">Create your account</h2>
-      <h3 class="subtitle">This allows you to save lists!</h3>
-      <input type="text" name="email" placeholder="Email" />
-      <input type="password" name="pass" placeholder="Password" />
-      <input type="password" name="cpass" placeholder="Confirm Password" />
-      <input type="submit" name="submit" class="submit action-button" value="Submit" />
-  </form>
+  <div class="forms">
+    <ul class="tab-group">
+      <li class="tab active">
+        <a href="#login">Log In</a>
+      </li>
+      <li class="tab">
+        <a href="#signup">Sign Up</a>
+      </li>
+    </ul>
 
-
+    <form id="signup" action="" method="post">
+      <fieldset>
+        <legend>Sign-Up</legend>
+        <h1 class="title">Create your account</h1>
+        <h2 class="subtitle">This allows you to save lists!</h2>
+        <br>
+        <div class="input-field">
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="pass" placeholder="Password" />
+          <input type="password" name="cpass" placeholder="Confirm Password" />
+          <button type="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+    <form id="login" action="" method="post">
+      <fieldset>
+        <legend>Login</legend>
+        <h1 class="title">Welcome Back</h1>
+        <h2 class="subtitle">Your lists are safe and waiting</h2>
+        <br>
+        <div class="input-field">
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="pass" placeholder="Password" />
+          <button type="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.tab a').on('click', function (e) {
+        e.preventDefault();
+        $(this).parent().addClass('active');
+        $(this).parent().siblings().removeClass('active');
+        var href = $(this).attr('href');
+        $('.forms > form').hide();
+        $(href).fadeIn(500);
+      });
+    });
+  </script>
 </body>
 
 </html>
