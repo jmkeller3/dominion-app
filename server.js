@@ -3,7 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const uuid = require("uuid/v4");
-const bodyParser = require("body-parser").json();
+const bodyParser = require("body-parser");
 const passport = require("passport");
 const morgan = require("morgan");
 
@@ -19,30 +19,31 @@ const jsonParser = bodyParser.json();
 app.use(morgan("common"));
 
 //CORS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  if (req.method === "OPTIONS") {
-    return res.send(204);
-  }
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+//   if (req.method === "OPTIONS") {
+//     return res.send(204);
+//   }
+//   next();
+// });
 
-passport.use(localStrategy);
-passport.use(jwtStrategy);
+//Passport JWT
+// passport.use(localStrategy);
+// passport.use(jwtStrategy);
 
-app.use("/api/users/", usersRouter);
-app.use("/api/auth/", authRouter);
+// app.use("/api/users/", usersRouter);
+// app.use("/api/auth/", authRouter);
 
-const jwtAuth = passport.authenticate("jwt", { session: false });
+// const jwtAuth = passport.authenticate("jwt", { session: false });
 
 //Protected endpoint
-app.get("/api/protected", jwtAuth, (req, res) => {
-  return res.json({
-    data: "rosebud"
-  });
-});
+// app.get("/api/protected", jwtAuth, (req, res) => {
+//   return res.json({
+//     data: "rosebud"
+//   });
+// });
 
 app.use("*", (req, res) => {
   return res.status(404).json({ message: "Not Found" });
@@ -107,7 +108,7 @@ app.post("/cardlists", jsonParser, (req, res) => {
   cardList
     .create({
       name: req.body.name,
-      userid: req.body.userid,
+      // userid: req.body.userid,
       //change to req.user later
       card1: req.body.card1,
       card2: req.body.card2,
