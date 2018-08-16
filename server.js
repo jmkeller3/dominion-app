@@ -45,10 +45,6 @@ app.use(morgan("common"));
 //   });
 // });
 
-app.use("*", (req, res) => {
-  return res.status(404).json({ message: "Not Found" });
-});
-
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -84,7 +80,7 @@ app.get("/cardlists/:id", (req, res) => {
 app.post("/cardlists", jsonParser, (req, res) => {
   const requiredFields = [
     "name",
-    "userid",
+    // "userid",
     "card1",
     "card2",
     "card3",

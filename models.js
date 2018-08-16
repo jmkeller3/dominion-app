@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const uuid = require("uuid");
 
 const listSchema = mongoose.Schema({
-  userid: { type: String, required: true },
+  // userid: { type: String, required: true },
   name: { type: String, required: true },
   card1: { type: String, required: true },
   card2: { type: String, required: true },
@@ -21,7 +21,7 @@ const listSchema = mongoose.Schema({
 listSchema.methods.serialize = function() {
   return {
     id: this._id,
-    userid: this.userid,
+    // userid: this.userid,
     name: this.name,
     card1: this.card1,
     card2: this.card2,
