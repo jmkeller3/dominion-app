@@ -1,7 +1,5 @@
 "use strict";
 
-const JWT_SECRET = "Jesusisthekey";
-
 exports.DATABASE_URL =
   process.env.DATABASE_URL ||
   "mongodb://john:john123@ds141671.mlab.com:41671/dominion-card-app";

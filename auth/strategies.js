@@ -1,5 +1,5 @@
 "use strict";
-const { Strategy: LocalStrategy } = require("passport");
+const { Strategy: LocalStrategy } = require("passport-local");
 
 const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 
@@ -14,7 +14,7 @@ const localStrategy = new LocalStrategy((email, password, callback) => {
       if (!user) {
         return Promise.reject({
           reason: "LoginError",
-          message: "Incorrect username or password"
+          message: "Incorrect email or password"
         });
       }
       return user.validatePassword(password);
@@ -23,7 +23,7 @@ const localStrategy = new LocalStrategy((email, password, callback) => {
       if (!isValid) {
         return Promise.reject({
           reason: "LoginError",
-          message: "Incorrect username or password"
+          message: "Incorrect email or password"
         });
       }
       return callback(null, user);
@@ -38,7 +38,7 @@ const localStrategy = new LocalStrategy((email, password, callback) => {
 
 const jwtStrategy = new JwtStrategy(
   {
-    secretOrKey: process.env.SECRET,
+    secretOrKey: JWT_SECRET,
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("Bearer"),
     algorithms: ["HS256"]
   },
