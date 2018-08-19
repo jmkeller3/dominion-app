@@ -12,10 +12,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe("Protected endpoint", function() {
-  const username = "exampleUser";
+  const email = "exampleEmail";
   const password = "examplePass";
-  const firstName = "Example";
-  const lastName = "User";
 
   before(function() {
     return runServer();
@@ -28,10 +26,8 @@ describe("Protected endpoint", function() {
   beforeEach(function() {
     return User.hashPassword(password).then(password =>
       User.create({
-        username,
-        password,
-        firstName,
-        lastName
+        email,
+        password
       })
     );
   });
@@ -59,9 +55,8 @@ describe("Protected endpoint", function() {
     it("Should reject requests with an invalid token", function() {
       const token = jwt.sign(
         {
-          username,
-          firstName,
-          lastName
+          email,
+          password
         },
         "wrongSecret",
         {
@@ -88,16 +83,15 @@ describe("Protected endpoint", function() {
       const token = jwt.sign(
         {
           user: {
-            username,
-            firstName,
-            lastName
+            email,
+            password
           },
           exp: Math.floor(Date.now() / 1000) - 10
         },
         JWT_SECRET,
         {
           algorithm: "HS256",
-          subject: username
+          subject: email
         }
       );
 
@@ -119,15 +113,14 @@ describe("Protected endpoint", function() {
       const token = jwt.sign(
         {
           user: {
-            username,
-            firstName,
-            lastName
+            email,
+            password
           }
         },
         JWT_SECRET,
         {
           algorithm: "HS256",
-          subject: username,
+          subject: email,
           expiresIn: "7d"
         }
       );
@@ -139,7 +132,7 @@ describe("Protected endpoint", function() {
         .then(res => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an("object");
-          expect(res.body.data).to.equal("rosebud");
+          expect(res.body.data).to.equal("Snoopy");
         });
     });
   });

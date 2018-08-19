@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const config = require("../config");
 const router = express.Router();
 
+const { cardList } = require("./models");
+
 const jsonParser = bodyParser.json();
 
 //GET request to /cardlists => return all lists

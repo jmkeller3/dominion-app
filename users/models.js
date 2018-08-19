@@ -22,9 +22,7 @@ UserSchema.statics.hashPassword = function(password) {
 
 UserSchema.methods.serialize = function() {
   return {
-    username: this.username || "",
-    firstName: this.firstName || "",
-    lastName: this.lastName || ""
+    email: this.email || ""
   };
 };
 
