@@ -8,6 +8,9 @@ const passport = require("passport");
 const morgan = require("morgan");
 
 mongoose.Promise = global.Promise;
+//Defining routers for users and JWT Auth
+const { router: usersRouter } = require("./users");
+const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
 
 const { PORT, DATABASE_URL } = require("./config");
 const { cardList } = require("./models");
@@ -19,31 +22,31 @@ const jsonParser = bodyParser.json();
 app.use(morgan("common"));
 
 //CORS
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-//   if (req.method === "OPTIONS") {
-//     return res.send(204);
-//   }
-//   next();
-// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+  if (req.method === "OPTIONS") {
+    return res.send(204);
+  }
+  next();
+});
 
 //Passport JWT
-// passport.use(localStrategy);
-// passport.use(jwtStrategy);
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
-// app.use("/api/users/", usersRouter);
-// app.use("/api/auth/", authRouter);
+app.use("/api/users/", usersRouter);
+app.use("/api/auth/", authRouter);
 
-// const jwtAuth = passport.authenticate("jwt", { session: false });
+const jwtAuth = passport.authenticate("jwt", { session: false });
 
-//Protected endpoint
-// app.get("/api/protected", jwtAuth, (req, res) => {
-//   return res.json({
-//     data: "rosebud"
-//   });
-// });
+//Test Protected endpoint
+app.get("/api/protected", jwtAuth, (req, res) => {
+  return res.json({
+    data: "Snoopy"
+  });
+});
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -169,8 +172,33 @@ app.delete("/cardlists/:id", (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-app.use("*", function(req, res) {
-  res.status(404).json({ message: "Not Found" });
+//Error if user tries wrong endpoints
+// app.use("*", function(req, res) {
+//   res.status(404).json({ message: "Not Found" });
+// });
+
+//Sign-Up Page
+app.post("/users", jsonParser, (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+  if (email == null || password == null) {
+    const message = `Missing Required Fields. Please enter valid ${
+      email == null && password == null
+        ? "email and password"
+        : email == null
+          ? "email"
+          : password == null
+            ? "password"
+            : ""
+    }`;
+    console.error(message);
+    res.status(400).json({ message: "Missing Required Fields" });
+  }
+
+  //Create New User in Database
+  //Create Token for User
+  //Send Token back to User
+  //Client-side take user back to card page
 });
 
 let server;

@@ -1,5 +1,6 @@
 "use strict";
 
+//Card Display
 (async function() {
   const setdata = await $.getJSON("dominion-cards.json");
 

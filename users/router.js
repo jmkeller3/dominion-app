@@ -10,7 +10,7 @@ const jsonParser = bodyParser.json();
 
 //Post to register a new user
 router.post("/", jsonParser, (req, res) => {
-  const requiredFields = ["username", "password"];
+  const requiredFields = ["email", "password"];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -22,7 +22,7 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
-  const stringFields = ["username", "password", "firstName", "lastName"];
+  const stringFields = ["email", "password"];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== "string"
   );
@@ -37,7 +37,7 @@ router.post("/", jsonParser, (req, res) => {
   }
 
   //explicit trimming
-  const explicitlyTrimmedFields = ["username", "password"];
+  const explicitlyTrimmedFields = ["email", "password"];
   const nonTrimmedField = explicitlyTrimmedFields.find(
     field => req.body[field].trim() !== req.body[filed]
   );
@@ -52,11 +52,11 @@ router.post("/", jsonParser, (req, res) => {
   }
 
   const sizedFields = {
-    username: {
-      min: 1
+    email: {
+      min: 4
     },
     password: {
-      min: 1,
+      min: 6,
       max: 72
     }
   };
@@ -82,21 +82,16 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
-  let { username, password, firstName = "", lastName = "" } = req.body;
-
-  firstName = firstName.trim();
-  lastName = lastName.trim();
-
-  return User.find({ username })
+  return User.find({ email })
     .count()
     .then(count => {
       if (count > 0) {
-        // If there is an existing user with the same username
+        // If there is an existing user with the same email
         return Promise.reject({
           code: 422,
           reason: "ValidationError",
-          message: "Username already taken",
-          location: "username"
+          message: "Email already taken",
+          location: "Email"
         });
       }
       // If there is no existing user, hash the password
@@ -104,10 +99,8 @@ router.post("/", jsonParser, (req, res) => {
     })
     .then(hash => {
       return User.create({
-        username,
-        password: hash,
-        firstName,
-        lastName
+        email,
+        password: hash
       });
     })
     .then(user => {
