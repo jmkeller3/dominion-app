@@ -7,6 +7,7 @@ const { app, runServer, closeServer } = require("../server");
 describe("Web Page", function() {
   //test strategy:
   // 1. check to see if the webpage is loading
+
   it("should load page upon GET", function() {
     return chai
       .request(app)
