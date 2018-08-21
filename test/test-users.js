@@ -317,7 +317,7 @@ describe("/api/user", function() {
             expect(res.body).to.be.an("array");
             expect(res.body).to.have.length(2);
             expect(res.body[0]).to.deep.equal({
-              emailB
+              email
             });
             expect(res.body[1]).to.deep.equal({
               email: emailB

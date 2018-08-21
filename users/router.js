@@ -37,19 +37,19 @@ router.post("/", jsonParser, (req, res) => {
   }
 
   //explicit trimming
-  const explicitlyTrimmedFields = ["email", "password"];
-  const nonTrimmedField = explicitlyTrimmedFields.find(
-    field => req.body[field].trim() !== req.body[filed]
-  );
+  // const explicitlyTrimmedFields = ["email", "password"];
+  // const nonTrimmedField = explicitlyTrimmedFields.find(
+  //   field => req.body[field].trim() !== req.body[filed]
+  // );
 
-  if (nonTrimmedField) {
-    return res.status(422).json({
-      code: 422,
-      reason: "ValidationError",
-      message: "Cannot start or end with whitespace",
-      location: nonTrimmedField
-    });
-  }
+  // if (nonTrimmedField) {
+  //   return res.status(422).json({
+  //     code: 422,
+  //     reason: "ValidationError",
+  //     message: "Cannot start or end with whitespace",
+  //     location: nonTrimmedField
+  //   });
+  // }
 
   const sizedFields = {
     email: {
@@ -82,6 +82,8 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
+  let { email, password } = req.body;
+
   return User.find({ email })
     .count()
     .then(count => {
@@ -112,6 +114,13 @@ router.post("/", jsonParser, (req, res) => {
       }
       res.status(500).json({ code: 500, message: "Internal server error" });
     });
+});
+
+//remove before production
+router.get("/", (req, res) => {
+  return User.find()
+    .then(users => res.json(users.map(user => user.serialize())))
+    .catch(err => res.status(500).json({ message: "Internal server error" }));
 });
 
 module.exports = { router };

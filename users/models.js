@@ -16,10 +16,6 @@ const UserSchema = mongoose.Schema({
   }
 });
 
-UserSchema.statics.hashPassword = function(password) {
-  return bcrypt.hash(password, 10);
-};
-
 UserSchema.methods.serialize = function() {
   return {
     email: this.email || ""
