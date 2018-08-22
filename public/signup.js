@@ -17,7 +17,9 @@ $("#Signup").click(e => {
     alert(`Please enter valid email`);
     return;
   }
-  $.ajax("/users", {
+
+  //Create New User Request
+  $.ajax("api/users", {
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({
@@ -26,5 +28,6 @@ $("#Signup").click(e => {
     })
   }).then(response => {
     console.log(`${response}`);
+    let tempToken = response;
   });
 });
