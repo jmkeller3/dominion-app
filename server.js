@@ -37,7 +37,7 @@ passport.use(jwtStrategy);
 
 app.use("/api/users/", usersRouter);
 app.use("/api/auth/", authRouter);
-app.use("/cardlists", cardlistRouter);
+app.use("/api/cardlist/", cardlistRouter);
 
 const jwtAuth = passport.authenticate("jwt", { session: false });
 

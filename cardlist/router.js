@@ -11,7 +11,7 @@ const jsonParser = bodyParser.json();
 
 //GET request to /cardlists => return all lists
 
-router.get("/cardlists", (req, res) => {
+router.get("/", (req, res) => {
   cardList
     .find()
     .then(cardlists => {
@@ -26,7 +26,7 @@ router.get("/cardlists", (req, res) => {
 });
 
 //GET request to return card lists by ID
-router.get("/cardlists/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   cardList
     .findById(req.params.id)
     .then(cardlists => res.json(cardlists.serialize()))
@@ -38,7 +38,7 @@ router.get("/cardlists/:id", (req, res) => {
 
 //POST request to add lists
 //Check to see if lists are filled.
-router.post("/cardlists", jsonParser, (req, res) => {
+router.post("/", jsonParser, (req, res) => {
   const requiredFields = [
     "name",
     // "userid",
@@ -85,7 +85,7 @@ router.post("/cardlists", jsonParser, (req, res) => {
     });
 });
 
-router.put("/cardlists/:id", jsonParser, (req, res) => {
+router.put("/:id", jsonParser, (req, res) => {
   if (!(req.params.id === req.body.id)) {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
@@ -96,7 +96,7 @@ router.put("/cardlists/:id", jsonParser, (req, res) => {
   }
 
   console.log(`Updating cardlist item \`${req.params.id}\``);
-  const toUpdate = {};
+  const updatedCardList = {};
   const updateableFields = [
     "name",
     "card1",
@@ -118,12 +118,12 @@ router.put("/cardlists/:id", jsonParser, (req, res) => {
   });
 
   cardList
-    .findByIdAndUpdate(req.params.id, { $set: toUpdate }, { new: true })
+    .findByIdAndUpdate(req.params.id, { $set: updatedCardList }, { new: true })
     .then(updatedCardList => res.status(204).end())
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-router.delete("/cardlists/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   cardList
     .findByIdAndRemove(req.params.id)
     .then(() => res.status(204).end())
