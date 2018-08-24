@@ -18,7 +18,9 @@
     const hmtlcards = cards.map(
       card => `
             <div class="card">
-                <img class="card-img" src="${card.picture}" alt="${card.rules}">
+                <img class="card-img" src="${card.picture}" id="${
+        card.name
+      }" alt="${card.rules}">
             </div>`
     );
     $(".content").html(hmtlcards);
@@ -88,6 +90,28 @@
 
     displayCards(carddata.filter(filterSets));
   });
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  //search individual cards
+  function searchCards() {
+    let input, filter, cards, show, i;
+    input = document.getElementById("cardSearch");
+    filter = capitalizeFirstLetter(input.value);
+    cards = document.getElementsByClassName("card");
+    //loop through card array
+    for (i = 0; i < cards.length; i++) {
+      show = cards[i].getElementsByTagName("img")[0];
+      if (show.id.indexOf(filter) > -1) {
+        cards[i].style.display = "";
+      } else {
+        cards[i].style.display = "none";
+      }
+    }
+  }
+
+  document.getElementById("cardSearch").addEventListener("keyup", searchCards);
 
   // document.addEventListener(
   //   "DOMContentLoaded",

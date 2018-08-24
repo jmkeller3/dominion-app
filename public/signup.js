@@ -19,15 +19,48 @@ $("#Signup").click(e => {
   }
 
   //Create New User Request
-  $.ajax("api/users", {
+  let tempToken = "";
+
+  $.ajax({
+    url: "/api/users",
+    headers: {
+      Authorization: localStorage.getItem("token")
+    },
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({
       email,
       password
-    })
-  }).then(response => {
-    console.log(`${response}`);
-    let tempToken = response;
+    }),
+    error: function(err) {
+      console.log(`Error!`, err);
+    },
+    success: function(data) {
+      console.log(`User created!`);
+    },
+    complete: function() {
+      {
+        $.ajax({
+          url: "/api/auth/login",
+          method: "POST",
+          data: {
+            email,
+            password
+          },
+          success: function(response) {
+            console.log(`Success!`);
+            console.log(response);
+            localStorage.setItem("token", data.id_token);
+            tempToken = response.authToken;
+            console.log(`${tempToken}`);
+            console.log(`Bearer ${token}`);
+          }
+        });
+      }
+    }
   });
 });
+//Ajax authentication before bearer token
+// beforeSend: function(xhr) {
+//   xhr.setRequestHeader("Authorization", "Bearer" + token);
+// }
