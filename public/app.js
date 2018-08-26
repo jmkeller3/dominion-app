@@ -56,7 +56,15 @@
   });
   $(".rank-btn").click(() => {
     event.preventDefault();
-    displayCards(rankCards);
+    activeType = "Rank";
+    displayCards(
+      carddata.filter(filterSets).sort((a, b) => {
+        let expansions = Object.keys(setdata);
+        let aIndex = expansions.indexOf(a.expansion);
+        let bIndex = expansions.indexOf(b.expansion);
+        return a.expansion == b.expansion ? a.rank - b.rank : aIndex - bIndex;
+      })
+    );
     console.log(`Button worked!`);
   });
   $(".all-btn").click(() => {
@@ -75,6 +83,7 @@
         return card.type.includes("Treasure");
       case "Reaction":
         return card.type.includes("Reaction");
+
       default:
         return true;
     }
