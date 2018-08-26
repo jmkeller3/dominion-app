@@ -26,13 +26,6 @@
     $(".content").html(hmtlcards);
   }
 
-  //filters
-  let attackCards = carddata.filter(filterAttack);
-
-  let treasureCards = carddata.filter(filterTreasure);
-
-  let reactionCards = carddata.filter(filterReaction);
-
   //sort by rank
   let rankCards = carddata.slice().sort((a, b) => {
     let expansions = Object.keys(setdata);
@@ -41,29 +34,24 @@
     return a.expansion == b.expansion ? a.rank - b.rank : aIndex - bIndex;
   });
 
-  console.log(attackCards);
-
-  console.log(treasureCards);
-
-  console.log(reactionCards);
-
-  console.log(rankCards);
-
   displayCards(carddata);
 
   $(".attack-btn").click(() => {
     event.preventDefault();
-    displayCards(attackCards);
+    activeType = "Attack";
+    displayCards(carddata.filter(cardFilter));
     console.log(`Button worked!`);
   });
   $(".treasure-btn").click(() => {
     event.preventDefault();
-    displayCards(treasureCards);
+    activeType = "Treasure";
+    displayCards(carddata.filter(cardFilter));
     console.log(`Button worked!`);
   });
   $(".reaction-btn").click(() => {
     event.preventDefault();
-    displayCards(reactionCards);
+    activeType = "Reaction";
+    displayCards(carddata.filter(cardFilter));
     console.log(`Button worked!`);
   });
   $(".rank-btn").click(() => {
@@ -73,22 +61,40 @@
   });
   $(".all-btn").click(() => {
     event.preventDefault();
-    displayCards(carddata);
+    activeType = "default";
+    displayCards(carddata.filter(cardFilter));
     console.log(`Button worked!`);
   });
 
-  $("#setOptions").change(event => {
-    let selectedSet = event.target.value;
-    console.log(selectedSet);
-    // filter by set
-    function filterSets(card) {
-      if (selectedSet == "") {
+  let activeType;
+  function filterType(card) {
+    switch (activeType) {
+      case "Attack":
+        return card.type.includes("Attack");
+      case "Treasure":
+        return card.type.includes("Treasure");
+      case "Reaction":
+        return card.type.includes("Reaction");
+      default:
         return true;
-      }
-      return card.expansion == selectedSet;
     }
+  }
 
-    displayCards(carddata.filter(filterSets));
+  let selectedSet = "";
+  function filterSets(card) {
+    if (selectedSet == "") {
+      return true;
+    }
+    return card.expansion == selectedSet;
+  }
+
+  function cardFilter(card) {
+    return filterSets(card) && filterType(card);
+  }
+
+  $("#setOptions").change(event => {
+    selectedSet = event.target.value;
+    displayCards(carddata.filter(cardFilter));
   });
 
   function capitalizeFirstLetter(string) {
@@ -133,16 +139,4 @@
   // }
 
   // filter by type functions
-
-  function filterAttack(card) {
-    return card.type.includes("Attack");
-  }
-
-  function filterTreasure(card) {
-    return card.type.includes("Treasure");
-  }
-
-  function filterReaction(card) {
-    return card.type.includes("Reaction");
-  }
 })();
