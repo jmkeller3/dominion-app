@@ -1,5 +1,32 @@
 "use strict";
 
+$("#Login").click(e => {
+  e.preventDefault();
+  let email = $('[name="logemail"]').val();
+  let password = $('[name="logpass"]').val();
+  if (email === "") {
+    alert(`Please enter valid email`);
+    return;
+  }
+  if (password === "") {
+    alert(`Please enter a valid password`);
+    return;
+  }
+  (async () => {
+    let token = await $.ajax({
+      url: "/api/auth/login",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        email,
+        password
+      })
+    });
+    console.log(token.authToken);
+    localStorage.setItem("token", token.authToken);
+  })();
+});
+
 $("#Signup").click(e => {
   e.preventDefault();
   let email = $('[name="email"]').val();
@@ -22,9 +49,9 @@ $("#Signup").click(e => {
   (async () => {
     await $.ajax({
       url: "/api/users",
-      headers: {
-        Authorization: localStorage.getItem("token")
-      },
+      // headers: {
+      //   Authorization: localStorage.getItem("token")
+      // },
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify({
