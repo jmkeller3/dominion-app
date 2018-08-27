@@ -36,7 +36,7 @@ body {
 
 .filter {
   grid-area: header;
-  background-color: #eaeaea;
+  background-color: #dad3c3;
   color: black;
 
   padding: 20px;
@@ -44,7 +44,7 @@ body {
 
 .sidebar {
   grid-area: sidebar;
-  background-color: #3867c9;
+  background-color: #51aa50;
   color: white;
   margin-right: 0.4rem;
 }
@@ -52,14 +52,16 @@ body {
 ul {
   list-style: none;
   position: fixed;
-  padding-top: 80px;
+
+  padding-left: 0;
 }
 
 li {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   font-size: 20px;
   font-weight: 500;
+  width: 120px;
 }
 
 .wrapper {
@@ -70,24 +72,26 @@ li {
     "nav nav"
     "sidebar header"
     "sidebar content";
-  background-color: #eaeaea;
+  background-color: #765937;
 }
 
 .card-img {
   width: 100%;
+  border-radius: 4px;
 }
 
 .card {
   width: 200px;
   float: left;
   margin: 0.4rem 0.4rem;
+  cursor: pointer;
 }
 
 button {
   font-size: 16px;
   border-radius: 2px;
   transition-duration: 0.4s;
-  border: 1px solid #fff;
+  border: 1px solid #dad3c3;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -103,6 +107,17 @@ button:focus {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   background-color: #fff;
   color: #3867c9;
+}
+
+.list-btn {
+  background-color: #fff;
+  color: #51aa50;
+  width: 103.5%;
+  border: 0;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 #cardSearch {
@@ -137,4 +152,21 @@ button:focus {
   background-color: #3867c9;
   color: #fff;
   font-size: 16px;
+}
+
+/* draggable images */
+
+.hold {
+  border: solid 5px #ccc;
+}
+
+.empty {
+  display: block;
+  margin-bottom: 5px;
+  border: solid 2px #765937;
+}
+
+.hovered {
+  background: #dad3c3;
+  border-style: dashed;
 }

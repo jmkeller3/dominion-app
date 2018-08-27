@@ -1,7 +1,7 @@
 "use strict";
 
-//Card Display
 (async function() {
+  //Card Display
   const setdata = await $.getJSON("dominion-cards.json");
 
   console.log(setdata);
@@ -14,25 +14,16 @@
   console.log(carddata);
 
   function displayCards(cards) {
-    // const card = cards[0];
     const hmtlcards = cards.map(
       card => `
-            <div class="card">
-                <img class="card-img" src="${card.picture}" id="${
-        card.name
-      }" alt="${card.rules}">
+            <div class="card fill" draggable="true" id="${card.name}">
+                <img class="card-img" src="${card.picture}"  alt="${
+        card.rules
+      }">
             </div>`
     );
     $(".content").html(hmtlcards);
   }
-
-  //sort by rank
-  let rankCards = carddata.slice().sort((a, b) => {
-    let expansions = Object.keys(setdata);
-    let aIndex = expansions.indexOf(a.expansion);
-    let bIndex = expansions.indexOf(b.expansion);
-    return a.expansion == b.expansion ? a.rank - b.rank : aIndex - bIndex;
-  });
 
   displayCards(carddata);
 
@@ -83,12 +74,12 @@
         return card.type.includes("Treasure");
       case "Reaction":
         return card.type.includes("Reaction");
-
       default:
         return true;
     }
   }
 
+  //filters
   let selectedSet = "";
   function filterSets(card) {
     if (selectedSet == "") {
@@ -117,7 +108,7 @@
     cards = document.getElementsByClassName("card");
     //loop through card array
     for (i = 0; i < cards.length; i++) {
-      show = cards[i].getElementsByTagName("img")[0];
+      show = cards[i];
       if (show.id.indexOf(filter) > -1) {
         cards[i].style.display = "";
       } else {
@@ -125,27 +116,76 @@
       }
     }
   }
-
   document.getElementById("cardSearch").addEventListener("keyup", searchCards);
 
-  // document.addEventListener(
-  //   "DOMContentLoaded",
-  //   function() {
-  //     document.querySelector(
-  //       'select[name="setOptions"]'
-  //     ).onchange = changeEventHandler;
-  //   },
-  //   false
-  // );
+  //Drag Functions
+  var fills = document.querySelectorAll(".fill"),
+    result;
+  for (let i = 0; i < fills.length; i++) {
+    result = fills[i];
+    result.addEventListener("dragstart", dragStart);
+    result.addEventListener("dragend", dragEnd);
+  }
+  const empties = document.querySelectorAll(".empty");
 
-  // let selectedSet;
-  // function changeEventHandler(event) {
-  //   // You can use “this” to refer to the selected element.
-  //   if (!event.target.value) alert("Please Select A Set");
-  //   else selectedSet = event.target.value;
-  //   console.log(selectedSet);
-  //   displayCards();
-  // }
+  //fill listeners
+  // fills.addEventListener("dragstart", dragStart);
+  // fills.addEventListener("dragend", dragEnd);
 
-  // filter by type functions
+  //Loop through empties and call drag events
+  for (const empty of empties) {
+    empty.addEventListener("dragover", dragOver);
+    empty.addEventListener("dragenter", dragEnter);
+    empty.addEventListener("dragleave", dragLeave);
+    empty.addEventListener("drop", dragDrop);
+  }
+  // Drag functions
+  let cardname;
+  function dragStart() {
+    cardname = this.id;
+    setTimeout(() => (this.className = "invisible"), 0);
+    this.className += " hold";
+    console.log(cardname);
+  }
+
+  function dragEnd() {
+    this.className = "fill";
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+  }
+
+  function dragEnter(e) {
+    e.preventDefault();
+    this.className += " hovered";
+  }
+
+  function dragLeave() {
+    this.className = "empty";
+  }
+
+  function dragDrop() {
+    this.className = "empty";
+    this.innerHTML = cardname;
+  }
+
+  //Save list to server
+  // $.ajax({
+  //   url: "api/cardlist",
+  //   method: "GET",
+  //   data: JSON.stringify({
+  //     name,
+  //     card1,
+  //     card2,
+  //     card3,
+  //     card4,
+  //     card5,
+  //     card6,
+  //     card7,
+  //     card8,
+  //     card9,
+  //     card10
+  //   })
+  // });
 })();
