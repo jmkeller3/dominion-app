@@ -18,6 +18,16 @@ body {
 
 /* grid */
 
+.nav-bar {
+  grid-area: nav;
+  height: 50px;
+  position: relative;
+}
+
+.nav-bar a {
+  text-align: right;
+}
+
 .content {
   grid-area: content;
   float: left;
@@ -34,8 +44,9 @@ body {
 
 .sidebar {
   grid-area: sidebar;
-  background-color: #666666;
+  background-color: #3867c9;
   color: white;
+  margin-right: 0.4rem;
 }
 
 ul {
@@ -53,9 +64,10 @@ li {
 
 .wrapper {
   display: grid;
-  /* grid-gap: 10px; */
+
   grid-template-columns: minmax(150px, 15%) 1fr;
   grid-template-areas:
+    "nav nav"
     "sidebar header"
     "sidebar content";
   background-color: #eaeaea;
@@ -68,6 +80,7 @@ li {
 .card {
   width: 200px;
   float: left;
+  margin: 0.4rem 0.4rem;
 }
 
 button {
@@ -92,16 +105,23 @@ button:focus {
   color: #3867c9;
 }
 
-/* Select Sets Filter */
-.custom-select {
-  position: relative;
-  font-family: Arial;
+#cardSearch {
+  float: right;
+  padding: 6px;
+  border: none;
+
+  margin-bottom: 20px;
+
+  font-size: 17px;
 }
+
+/* Select Sets Filter */
 
 .semi-square {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  display: inline;
 }
 
 .styled-select select {
@@ -116,9 +136,5 @@ button:focus {
 .blue select {
   background-color: #3867c9;
   color: #fff;
-}
-
-.blue select {
-  color: #fff;
-  font-size: 14px;
+  font-size: 16px;
 }
