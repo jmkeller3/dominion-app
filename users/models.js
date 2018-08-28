@@ -13,7 +13,9 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  cardlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "cardlist" }]
+  //check above
 });
 
 UserSchema.methods.serialize = function() {

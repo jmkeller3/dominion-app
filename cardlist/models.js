@@ -1,10 +1,9 @@
 "use strict";
 
 const mongoose = require("mongoose");
-const uuid = require("uuid");
 
 const listSchema = mongoose.Schema({
-  // userid: { type: String, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: { type: String, required: true },
   card1: { type: String, required: true },
   card2: { type: String, required: true },
@@ -21,7 +20,8 @@ const listSchema = mongoose.Schema({
 listSchema.methods.serialize = function() {
   return {
     id: this._id,
-    // userid: this.userid,
+    creatorid: this.creator._id,
+    //check above
     name: this.name,
     card1: this.card1,
     card2: this.card2,

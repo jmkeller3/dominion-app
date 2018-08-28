@@ -141,15 +141,17 @@
   }
   // Drag functions
   let cardname;
+  let selectedCard;
   function dragStart() {
     cardname = this.id;
-    setTimeout(() => (this.className = "invisible"), 0);
+    selectedCard = this;
+
     this.className += " hold";
     console.log(cardname);
   }
 
   function dragEnd() {
-    this.className = "fill";
+    this.className = this.className.replace("hold", "");
   }
 
   function dragOver(e) {
@@ -166,8 +168,10 @@
   }
 
   function dragDrop() {
-    this.className = "empty";
-    this.innerHTML = cardname;
+    $(this)
+      .children("li")
+      .html(cardname);
+    this.className = this.className.replace("hovered", "");
   }
 
   //Save list to server
