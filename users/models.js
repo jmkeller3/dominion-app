@@ -18,12 +18,12 @@ const UserSchema = mongoose.Schema({
   cardlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "cardlist" }]
 });
 
-listSchema.pre("findOne", function(next) {
+UserSchema.pre("findOne", function(next) {
   this.populate("cardlists");
   next();
 });
 
-listSchema.pre("find", function(next) {
+UserSchema.pre("find", function(next) {
   this.populate("cardlists");
   next();
 });

@@ -210,7 +210,7 @@ router.delete("/:id", (req, res) => {
 });
 
 //Error if user tries wrong endpoints
-app.use("*", function(req, res) {
+router.use("*", function(req, res) {
   res.status(404).json({ message: "Not Found" });
 });
 
