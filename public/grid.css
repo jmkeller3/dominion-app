@@ -4,28 +4,60 @@
 }
 
 body {
-  background-color: #dad3c3;
+  background-color: #fff;
   color: black;
 }
 
 /* .test {
   green: #51AA50; 
-  white: #DAD3C3;
+  white: #fff;
   blue: #3867C9;
-  brown: #765937;
+  brown: #7C590A;
   red: #CB3834;
+  light-blue: #6194FF;
 } */
 
 /* grid */
 
 .nav-bar {
-  grid-area: nav;
   height: 50px;
   position: relative;
 }
 
 .nav-bar a {
   text-align: right;
+  text-decoration: none;
+  color: #fff;
+}
+
+nav {
+  grid-area: nav;
+  height: 40px;
+  width: 100%;
+  background-color: #16377c;
+  position: fixed;
+  float: left;
+}
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+nav li {
+  display: inline;
+}
+
+nav a {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+}
+nav li:hover {
+  background-color: #3867c9;
+}
+nav a#openup {
+  display: none;
 }
 
 .content {
@@ -36,32 +68,47 @@ body {
 
 .filter {
   grid-area: header;
-  background-color: #dad3c3;
+  background-color: #fff;
   color: black;
-
+  position: relative;
   padding: 20px;
 }
 
 .sidebar {
   grid-area: sidebar;
-  background-color: #51aa50;
+  background-color: #6194ff;
   color: white;
-  margin-right: 0.4rem;
 }
 
-ul {
+.list-ul {
   list-style: none;
   position: fixed;
-
-  padding-left: 0;
+  border: 1px solid #000;
+  margin-left: 40px;
+  padding: 0;
 }
 
-li {
+li,
+.list {
   text-align: center;
-  margin-bottom: 24px;
+  padding: 6px;
   font-size: 20px;
   font-weight: 500;
-  width: 120px;
+  color: #000;
+  transition-duration: 0.6s;
+}
+
+.list:hover,
+.list:focus {
+  background-color: #fff;
+  color: #3867c9;
+  box-shadow: 12px 10px 16px 0 rgba(0, 0, 0, 0.24),
+    37px 0 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.filled > li {
+  background-color: #fff;
+  color: #3867c9;
 }
 
 .wrapper {
@@ -72,7 +119,7 @@ li {
     "nav nav"
     "sidebar header"
     "sidebar content";
-  background-color: #765937;
+  background-color: #fff;
 }
 
 .card-img {
@@ -91,7 +138,7 @@ button {
   font-size: 16px;
   border-radius: 2px;
   transition-duration: 0.4s;
-  border: 1px solid #dad3c3;
+  border: 1px solid #fff;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -110,24 +157,20 @@ button:focus {
 }
 
 .list-btn {
-  background-color: #fff;
-  color: #51aa50;
-  width: 103.5%;
+  background-color: #000;
+  color: #6194ff;
   border: 0;
   border-radius: 0;
   font-size: 20px;
   font-weight: 500;
-  margin-bottom: 10px;
 }
 
 #cardSearch {
   float: right;
-  padding: 6px;
-  border: none;
-
-  margin-bottom: 20px;
-
-  font-size: 17px;
+  padding: 15px 5px;
+  border: 1px solid #6194ff;
+  color: #000;
+  font-size: 16px;
 }
 
 /* Select Sets Filter */
@@ -162,11 +205,11 @@ button:focus {
 
 .empty {
   display: block;
-  margin-bottom: 5px;
-  border: solid 2px #765937;
+
+  border-top: 1px solid #000;
 }
 
 .hovered {
-  background: #dad3c3;
+  background: #7c590a;
   border-style: dashed;
 }

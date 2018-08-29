@@ -10,16 +10,24 @@
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
     <link rel="stylesheet" href="grid.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="nav-bar">
-            <a href="#">Home</a>
-            <a href="#">My Profile</a>
-            <a href="#">My Lists</a>
-        </div>
+        <nav class="nav-bar cf">
+            <ul class='cf'>
+                <li>
+                    <a href='#'>Log Out</a>
+                </li>
+                <li>
+                    <a href='#'>My Lists</a>
+                </li>
+                <li>
+                    <a href='#'>Community Lists</a>
+                </li>
+            </ul>
+            <a href="#" id="openup">Menu</a>
+        </nav>
         <div class="filter">
             <input type="text" id="cardSearch" placeholder="Search for names..">
             <button class="attack-btn btn" type="submit">Attack</button>
@@ -46,38 +54,38 @@
             </div>
         </div>
         <div class="sidebar">
-            <ul>
+            <ul class="list-ul">
                 <button class="list-btn btn" type="submit">Save List</button>
-                <li>Name</li>
+                <li class="list">Name</li>
                 <div class="empty">
-                    <li>Card 1</li>
+                    <li class="list">Card 1</li>
                 </div>
                 <div class="empty">
-                    <li>Card 2</li>
+                    <li class="list">Card 2</li>
                 </div>
                 <div class="empty">
-                    <li>Card 3</li>
+                    <li class="list">Card 3</li>
                 </div>
                 <div class="empty">
-                    <li>Card 4</li>
+                    <li class="list">Card 4</li>
                 </div>
                 <div class="empty">
-                    <li>Card 5</li>
+                    <li class="list">Card 5</li>
                 </div>
                 <div class="empty">
-                    <li>Card 6</li>
+                    <li class="list">Card 6</li>
                 </div>
                 <div class="empty">
-                    <li>Card 7</li>
+                    <li class="list">Card 7</li>
                 </div>
                 <div class="empty">
-                    <li>Card 8</li>
+                    <li class="list">Card 8</li>
                 </div>
                 <div class="empty">
-                    <li>Card 9</li>
+                    <li class="list">Card 9</li>
                 </div>
                 <div class="empty">
-                    <li>Card 10</li>
+                    <li class="list">Card 10</li>
                 </div>
             </ul>
         </div>

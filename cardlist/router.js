@@ -187,7 +187,7 @@ router.put("/:id", jsonParser, jwtAuth, (req, res) => {
     .then(updatedCardList =>
       res.status(204).json({
         id: updatedCardList.id,
-        creator: updatedCardList.creator_id,
+        //creator: updatedCardList.creator_id,
         //double check this use of virtualization
         name: updatedCardList.name,
         card1: updatedCardList.card1,

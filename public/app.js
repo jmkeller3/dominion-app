@@ -128,10 +128,6 @@
   }
   const empties = document.querySelectorAll(".empty");
 
-  //fill listeners
-  // fills.addEventListener("dragstart", dragStart);
-  // fills.addEventListener("dragend", dragEnd);
-
   //Loop through empties and call drag events
   for (const empty of empties) {
     empty.addEventListener("dragover", dragOver);
@@ -160,7 +156,7 @@
 
   function dragEnter(e) {
     e.preventDefault();
-    this.className += " hovered";
+    $(this).toggleClass("hovered");
   }
 
   function dragLeave() {
@@ -171,8 +167,13 @@
     $(this)
       .children("li")
       .html(cardname);
-    this.className = this.className.replace("hovered", "");
+    $(this).toggleClass("hovered");
+    $(this)
+      .children("li")
+      .addClass("filled");
   }
+
+  //Navbar
 
   //Save list to server
   // $.ajax({
