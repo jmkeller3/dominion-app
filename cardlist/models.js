@@ -17,10 +17,24 @@ const listSchema = mongoose.Schema({
   card10: { type: String, required: true }
 });
 
+listSchema.pre("findOne", function(next) {
+  this.populate("creator");
+  next();
+});
+
+listSchema.pre("find", function(next) {
+  this.populate("creator");
+  next();
+});
+
+listSchema.virtual("creator_id").get(function() {
+  return `${this.creator._id}`.trim();
+});
+
 listSchema.methods.serialize = function() {
   return {
     id: this._id,
-    creatorid: this.creator._id,
+    creator: this.creator_id,
     //check above
     name: this.name,
     card1: this.card1,

@@ -6,6 +6,7 @@ const config = require("../config");
 const router = express.Router();
 
 const { cardList } = require("./models");
+const { User } = require("../users/models");
 
 const jsonParser = bodyParser.json();
 
@@ -15,9 +16,25 @@ router.get("/", (req, res) => {
   cardList
     .find()
     .then(cardlists => {
-      res.json({
-        cardlists: cardlists.map(cardlists => cardlists.serialize())
-      });
+      res.json(
+        cardlists.map(cardlist => {
+          return {
+            id: cardlist._id,
+            creator: cardlist.creator_id,
+            name: cardlist.name,
+            card1: cardlist.card1,
+            card2: cardlist.card2,
+            card3: cardlist.card3,
+            card4: cardlist.card4,
+            card5: cardlist.card5,
+            card6: cardlist.card6,
+            card7: cardlist.card7,
+            card8: cardlist.card8,
+            card9: cardlist.card9,
+            card10: cardlist.card10
+          };
+        })
+      );
     })
     .catch(err => {
       console.error(err);
@@ -29,7 +46,23 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   cardList
     .findById(req.params.id)
-    .then(cardlists => res.json(cardlists.serialize()))
+    .then(cardlist =>
+      res.json({
+        id: cardlist._id,
+        creator: cardlist.creator_id,
+        name: cardlist.name,
+        card1: cardlist.card1,
+        card2: cardlist.card2,
+        card3: cardlist.card3,
+        card4: cardlist.card4,
+        card5: cardlist.card5,
+        card6: cardlist.card6,
+        card7: cardlist.card7,
+        card8: cardlist.card8,
+        card9: cardlist.card9,
+        card10: cardlist.card10
+      })
+    )
     .catch(err => {
       console.error(err);
       res.status(500).json({ message: "Internal server error" });
@@ -41,7 +74,7 @@ router.get("/:id", (req, res) => {
 router.post("/", jsonParser, (req, res) => {
   const requiredFields = [
     "name",
-    // "userid",
+    "user_id",
     "card1",
     "card2",
     "card3",
@@ -62,23 +95,52 @@ router.post("/", jsonParser, (req, res) => {
     }
   }
 
-  cardList
-    .create({
-      name: req.body.name,
-      // userid: req.body.userid,
-      //change to req.user later
-      card1: req.body.card1,
-      card2: req.body.card2,
-      card3: req.body.card3,
-      card4: req.body.card4,
-      card5: req.body.card5,
-      card6: req.body.card6,
-      card7: req.body.card7,
-      card8: req.body.card8,
-      card9: req.body.card9,
-      card10: req.body.card10
+  User.findById(req.body.user_id)
+    .then(user => {
+      if (user) {
+        cardList
+          .create({
+            name: req.body.name,
+            creator: req.body.id,
+            card1: req.body.card1,
+            card2: req.body.card2,
+            card3: req.body.card3,
+            card4: req.body.card4,
+            card5: req.body.card5,
+            card6: req.body.card6,
+            card7: req.body.card7,
+            card8: req.body.card8,
+            card9: req.body.card9,
+            card10: req.body.card10
+          })
+          .then(cardlist =>
+            res.status(201).json({
+              id: cardlist.id,
+              creator: creator.creator_id,
+              //double check this use of virtualization
+              name: cardlist.name,
+              card1: cardlist.card1,
+              card2: cardlist.card2,
+              card3: cardlist.card3,
+              card4: cardlist.card4,
+              card5: cardlist.card5,
+              card6: cardlist.card6,
+              card7: cardlist.card7,
+              card8: cardlist.card8,
+              card9: cardlist.card9,
+              card10: cardlist.card10
+            })
+          )
+          .catch(err => {
+            console.log(err);
+            res.status(500).json({ message: "Internal Server Error" });
+          });
+      } else {
+        const message = "User not found";
+        console.error(message);
+        return res.status(400).send(message);
+      }
     })
-    .then(cardlist => res.status(201).json(cardlist.serialize()))
     .catch(err => {
       console.log(err);
       res.status(500).json({ message: "Internal Server Error" });
@@ -118,8 +180,25 @@ router.put("/:id", jsonParser, (req, res) => {
   });
 
   cardList
-    .findByIdAndUpdate(req.params.id, { $set: updatedCardList }, { new: true })
-    .then(updatedCardList => res.status(204).end())
+    .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
+    .then(updatedCardList =>
+      res.status(204).json({
+        id: updatedCardList.id,
+        creator: updatedCardList.creator_id,
+        //double check this use of virtualization
+        name: updatedCardList.name,
+        card1: updatedCardList.card1,
+        card2: updatedCardList.card2,
+        card3: updatedCardList.card3,
+        card4: updatedCardList.card4,
+        card5: updatedCardList.card5,
+        card6: updatedCardList.card6,
+        card7: updatedCardList.card7,
+        card8: updatedCardList.card8,
+        card9: updatedCardList.card9,
+        card10: updatedCardList.card10
+      })
+    )
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
@@ -130,12 +209,12 @@ router.delete("/:id", (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-module.exports = { router };
-
 //Error if user tries wrong endpoints
-// app.use("*", function(req, res) {
-//   res.status(404).json({ message: "Not Found" });
-// });
+app.use("*", function(req, res) {
+  res.status(404).json({ message: "Not Found" });
+});
+
+module.exports = { router };
 
 //Sign-Up Page
 // app.post("/users", jsonParser, (req, res) => {

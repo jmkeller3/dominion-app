@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 const UserSchema = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   email: {
     type: String,
     required: true,
@@ -15,12 +16,21 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   cardlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "cardlist" }]
-  //check above
+});
+
+listSchema.pre("findOne", function(next) {
+  this.populate("cardlists");
+  next();
+});
+
+listSchema.pre("find", function(next) {
+  this.populate("cardlists");
+  next();
 });
 
 UserSchema.methods.serialize = function() {
   return {
-    email: this.email || ""
+    email: this.email
   };
 };
 
