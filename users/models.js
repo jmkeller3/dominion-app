@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 const UserSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   email: {
     type: String,
     required: true,
@@ -30,7 +29,7 @@ UserSchema.pre("find", function(next) {
 
 UserSchema.methods.serialize = function() {
   return {
-    email: this.email
+    email: this.email || ""
   };
 };
 

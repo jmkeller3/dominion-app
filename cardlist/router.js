@@ -22,7 +22,8 @@ router.get("/", jwtAuth, (req, res) => {
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            creator: cardlist.creator_id,
+            //creator: cardlist.creator_id,
+            //creator not working currently
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
@@ -45,7 +46,7 @@ router.get("/", jwtAuth, (req, res) => {
 });
 
 //GET request to return card lists by ID
-router.get("/:id", (req, res) => {
+router.get("/:id", jwtAuth, (req, res) => {
   cardList
     .findById(req.params.id)
     .then(cardlist =>
@@ -103,7 +104,7 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
         cardList
           .create({
             name: req.body.name,
-            creator: req.body.id,
+            //creator: req.body.user_id,
             card1: req.body.card1,
             card2: req.body.card2,
             card3: req.body.card3,
@@ -118,7 +119,7 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
           .then(cardlist =>
             res.status(201).json({
               id: cardlist.id,
-              creator: creator.creator_id,
+              //creator: creator.creator_id,
               //double check this use of virtualization
               name: cardlist.name,
               card1: cardlist.card1,
