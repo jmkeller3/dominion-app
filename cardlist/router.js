@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const passport = require("passport");
 const config = require("../config");
 const router = express.Router();
 
@@ -10,9 +10,11 @@ const { User } = require("../users/models");
 
 const jsonParser = bodyParser.json();
 
+const jwtAuth = passport.authenticate("jwt", { session: false });
+
 //GET request to /cardlists => return all lists
 
-router.get("/", (req, res) => {
+router.get("/", jwtAuth, (req, res) => {
   cardList
     .find()
     .then(cardlists => {
@@ -71,7 +73,7 @@ router.get("/:id", (req, res) => {
 
 //POST request to add lists
 //Check to see if lists are filled.
-router.post("/", jsonParser, (req, res) => {
+router.post("/", jsonParser, jwtAuth, (req, res) => {
   const requiredFields = [
     "name",
     "user_id",
@@ -147,7 +149,7 @@ router.post("/", jsonParser, (req, res) => {
     });
 });
 
-router.put("/:id", jsonParser, (req, res) => {
+router.put("/:id", jsonParser, jwtAuth, (req, res) => {
   if (!(req.params.id === req.body.id)) {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
@@ -202,7 +204,7 @@ router.put("/:id", jsonParser, (req, res) => {
     .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", jwtAuth, (req, res) => {
   cardList
     .findByIdAndRemove(req.params.id)
     .then(() => res.status(204).end())

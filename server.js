@@ -2,7 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const uuid = require("uuid/v4");
+
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const morgan = require("morgan");
