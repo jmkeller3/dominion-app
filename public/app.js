@@ -118,6 +118,25 @@
   }
   document.getElementById("cardSearch").addEventListener("keyup", searchCards);
 
+  //cardlist sidebar
+
+  const cardlist = $(".list-ul").find("li");
+  var clickedCard = $(".card");
+  var clickedCardName;
+
+  clickedCard.dblclick(() => {
+    event.preventDefault();
+    clickedCardName = $(event.target.parentElement).attr("id");
+    console.log(cardlist);
+    for (let i = 0; i < cardlist.length; i++)
+      if ($(cardlist).className !== "filled") {
+        $(cardlist).html(clickedCardName);
+        $(cardlist).addClass("filled");
+        console.log(clickedCardName);
+        console.log(cardlist);
+      }
+  });
+
   //Drag Functions
   var fills = document.querySelectorAll(".fill"),
     result;
@@ -164,6 +183,7 @@
   }
 
   function dragDrop() {
+    console.log(cardname);
     $(this)
       .children("li")
       .html(cardname);
