@@ -22,7 +22,7 @@ router.get("/", jwtAuth, (req, res) => {
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            //creator: cardlist.creator_id,
+            creator: cardlist.creator_id,
             //creator not working currently
             name: cardlist.name,
             card1: cardlist.card1,

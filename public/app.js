@@ -23,6 +23,8 @@
             </div>`
     );
     $(".content").html(hmtlcards);
+    dbclickListener();
+    dragCards();
   }
 
   displayCards(carddata);
@@ -119,42 +121,47 @@
   document.getElementById("cardSearch").addEventListener("keyup", searchCards);
 
   //cardlist sidebar
+  function dbclickListener() {
+    const cardlist = $(".list-ul").find("li");
+    var clickedCard = $(".card");
+    var clickedCardName;
 
-  const cardlist = $(".list-ul").find("li");
-  var clickedCard = $(".card");
-  var clickedCardName;
-
-  clickedCard.dblclick(() => {
-    event.preventDefault();
-    clickedCardName = $(event.target.parentElement).attr("id");
-    console.log(cardlist);
-    for (let i = 0; i < cardlist.length; i++)
-      if ($(cardlist).className !== "filled") {
-        $(cardlist).html(clickedCardName);
-        $(cardlist).addClass("filled");
-        console.log(clickedCardName);
-        console.log(cardlist);
+    clickedCard.dblclick(event => {
+      event.preventDefault();
+      clickedCardName = $(event.target.parentElement).attr("id");
+      console.log(cardlist);
+      for (let i = 0; i < cardlist.length; i++) {
+        const cardListElement = $(cardlist).eq(i);
+        if (!cardListElement.hasClass("filled")) {
+          cardListElement.html(clickedCardName);
+          cardListElement.addClass("filled");
+          console.log(clickedCardName);
+          break;
+        }
       }
-  });
+    });
+  }
 
   //Drag Functions
-  var fills = document.querySelectorAll(".fill"),
-    result;
-  for (let i = 0; i < fills.length; i++) {
-    result = fills[i];
-    result.addEventListener("dragstart", dragStart);
-    result.addEventListener("dragend", dragEnd);
+  function dragCards() {
+    const fills = document.querySelectorAll(".fill");
+    let result;
+    for (let i = 0; i < fills.length; i++) {
+      result = fills[i];
+      result.addEventListener("dragstart", dragStart);
+      result.addEventListener("dragend", dragEnd);
+    }
   }
-  const empties = document.querySelectorAll(".empty");
+  // Drag functions
 
   //Loop through empties and call drag events
+  const empties = document.querySelectorAll(".empty");
   for (const empty of empties) {
     empty.addEventListener("dragover", dragOver);
     empty.addEventListener("dragenter", dragEnter);
     empty.addEventListener("dragleave", dragLeave);
     empty.addEventListener("drop", dragDrop);
   }
-  // Drag functions
   let cardname;
   let selectedCard;
   function dragStart() {
