@@ -35,7 +35,6 @@ listSchema.methods.serialize = function() {
   return {
     id: this._id,
     creator: this.creator_id,
-    //check above
     name: this.name,
     card1: this.card1,
     card2: this.card2,

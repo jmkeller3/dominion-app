@@ -29,7 +29,8 @@ UserSchema.pre("find", function(next) {
 
 UserSchema.methods.serialize = function() {
   return {
-    email: this.email || ""
+    id: this._id,
+    email: this.email
   };
 };
 

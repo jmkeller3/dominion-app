@@ -14,7 +14,7 @@ const jwtAuth = passport.authenticate("jwt", { session: false });
 
 //GET request to /cardlists => return all lists
 
-router.get("/", jwtAuth, (req, res) => {
+router.get("/", (req, res) => {
   cardList
     .find()
     .then(cardlists => {
@@ -77,7 +77,6 @@ router.get("/:id", jwtAuth, (req, res) => {
 router.post("/", jsonParser, jwtAuth, (req, res) => {
   const requiredFields = [
     "name",
-    "user_id",
     "card1",
     "card2",
     "card3",
@@ -98,13 +97,13 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
     }
   }
 
-  User.findById(req.body.user_id)
+  User.findById(req.user.id)
     .then(user => {
       if (user) {
         cardList
           .create({
             name: req.body.name,
-            //creator: req.body.user_id,
+            creator: req.user.id,
             card1: req.body.card1,
             card2: req.body.card2,
             card3: req.body.card3,
@@ -119,7 +118,7 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
           .then(cardlist =>
             res.status(201).json({
               id: cardlist.id,
-              //creator: creator.creator_id,
+              creator: cardlist.creator_id,
               //double check this use of virtualization
               name: cardlist.name,
               card1: cardlist.card1,
