@@ -49,10 +49,6 @@ listSchema.methods.serialize = function() {
   };
 };
 
-//users
-//username
-//password
-
 const cardList = mongoose.model("cardlist", listSchema);
 
 module.exports = { cardList };

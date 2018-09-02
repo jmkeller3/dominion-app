@@ -23,7 +23,6 @@ router.get("/", (req, res) => {
           return {
             id: cardlist._id,
             creator: cardlist.creator_id,
-            //creator not working currently
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
@@ -118,8 +117,7 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
           .then(cardlist =>
             res.status(201).json({
               id: cardlist.id,
-              creator: cardlist.creator_id,
-              //double check this use of virtualization
+              creator: user.id,
               name: cardlist.name,
               card1: cardlist.card1,
               card2: cardlist.card2,
@@ -154,6 +152,15 @@ router.put("/:id", jsonParser, jwtAuth, (req, res) => {
     const message =
       `Request path id (${req.params.id}) and request body id ` +
       `(${req.body.id}) must match`;
+
+    console.error(message);
+    return res.status(400).json({ message: message });
+  }
+
+  if (!(req.user.id === req.cardlist.creator_id)) {
+    const message =
+      `Request user id (${req.user.id}) and request cardlist id ` +
+      `(${req.cardlist.creator_id}) must match`;
 
     console.error(message);
     return res.status(400).json({ message: message });
@@ -217,26 +224,3 @@ router.use("*", function(req, res) {
 });
 
 module.exports = { router };
-
-//Sign-Up Page
-// app.post("/users", jsonParser, (req, res) => {
-//   let email = req.body.email;
-//   let password = req.body.password;
-//   if (email == null || password == null) {
-//     const message = `Missing Required Fields. Please enter valid ${
-//       email == null && password == null
-//         ? "email and password"
-//         : email == null
-//           ? "email"
-//           : password == null
-//             ? "password"
-//             : ""
-//     }`;
-//     console.error(message);
-//     res.status(400).json({ message: "Missing Required Fields" });
-//   }
-// });
-//Create New User in Database
-//Create Token for User
-//Send Token back to User
-//Client-side take user back to card page

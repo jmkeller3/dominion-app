@@ -30,7 +30,8 @@ UserSchema.pre("find", function(next) {
 UserSchema.methods.serialize = function() {
   return {
     id: this._id,
-    email: this.email
+    email: this.email,
+    cardlists: this.cardlist
   };
 };
 
