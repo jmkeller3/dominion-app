@@ -17,7 +17,13 @@ const jwtAuth = passport.authenticate("jwt", { session: false });
 router.get("/", (req, res) => {
   cardList
     .find()
-    .then(cardlists => {
+    .populate("creator")
+    .exec(function(err, cardlists) {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+      }
+
       res.json(
         cardlists.map(cardlist => {
           return {
@@ -37,10 +43,6 @@ router.get("/", (req, res) => {
           };
         })
       );
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ message: "Internal server error" });
     });
 });
 

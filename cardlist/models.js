@@ -19,10 +19,10 @@ const listSchema = mongoose.Schema({
   card10: { type: String, required: true }
 });
 
-listSchema.pre("findOne", function(next) {
-  this.populate("creator");
-  next();
-});
+// listSchema.pre("findOne", function(next) {
+//   this.populate("creator");
+//   next();
+// });
 
 // listSchema.pre("find", function(next) {
 //   this.populate("creator");
