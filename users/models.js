@@ -31,7 +31,7 @@ UserSchema.methods.serialize = function() {
   return {
     id: this._id,
     email: this.email,
-    cardlists: this.cardlist
+    cardlists: this.cardlists
   };
 };
 

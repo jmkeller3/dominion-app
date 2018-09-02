@@ -2,6 +2,8 @@
 
 const mongoose = require("mongoose");
 
+const { User } = require("../users/models");
+
 const listSchema = mongoose.Schema({
   creator: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: { type: String, required: true },
@@ -22,9 +24,18 @@ listSchema.pre("findOne", function(next) {
   next();
 });
 
-listSchema.pre("find", function(next) {
-  this.populate("creator");
-  next();
+// listSchema.pre("find", function(next) {
+//   this.populate("creator");
+//   next();
+// });
+
+listSchema.pre("save", function(next) {
+  User.findById(this.creator).exec((error, user) => {
+    user.cardlists.push(this);
+    user.save(() => {
+      next();
+    });
+  });
 });
 
 listSchema.virtual("creator_id").get(function() {
