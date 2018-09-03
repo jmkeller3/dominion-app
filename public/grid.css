@@ -33,13 +33,15 @@ nav ul {
 nav li {
   display: inline;
   float: right;
+  margin: 0;
+  font-size: 24px;
 }
 
 nav a {
   display: inline-block;
   margin: auto;
   text-align: center;
-  padding: 8px;
+  padding: 0 12px;
   text-decoration: none;
   text-align: right;
   color: #fff;
@@ -69,17 +71,22 @@ nav a#openup {
   grid-area: sidebar;
   background-color: #6194ff;
   color: white;
+  position: relative;
 }
 
 .list-ul {
   list-style: none;
-  position: fixed;
+  position: relative;
   border: 1px solid #000;
-  /* margin-left: 40px; */
   margin-left: auto;
   margin-right: auto;
   padding: 0;
 }
+
+.list {
+  position: relative;
+}
+
 li,
 .list {
   text-align: center;
@@ -106,7 +113,7 @@ li,
 
 .wrapper {
   display: grid;
-
+  font-family: times;
   grid-template-columns: 15% 1fr;
   grid-template-areas:
     "nav nav"
@@ -134,7 +141,7 @@ li,
 }
 
 button {
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 2px;
   transition-duration: 0.4s;
   border: 1px solid #fff;
@@ -145,6 +152,7 @@ button {
   background-color: #3867c9;
   color: #fff;
   cursor: pointer;
+  font-family: times;
 }
 
 button:hover,
@@ -158,6 +166,9 @@ button:focus {
 .list-btn {
   background-color: #fff;
   color: #000;
+  width: 100%;
+  padding: 8px;
+  margin: 0;
   border: 0;
   border-radius: 0;
   font-size: 20px;
@@ -175,10 +186,11 @@ button:focus {
 
 #cardSearch {
   float: right;
-  padding: 15px 5px;
+  padding: 12px 5px;
   border: 1px solid #6194ff;
   color: #000;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: times;
 }
 
 /* Select Sets Filter */
@@ -193,7 +205,7 @@ button:focus {
 .styled-select select {
   background: transparent;
   border: none;
-  font-size: 16px;
+  font-family: times;
   height: 48px;
   padding: 5px; /* If you add too much padding here, the options won't show in IE */
   width: 150px;
@@ -202,7 +214,7 @@ button:focus {
 .blue select {
   background-color: #3867c9;
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* draggable images */
