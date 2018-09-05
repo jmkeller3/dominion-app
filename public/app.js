@@ -81,6 +81,50 @@
     }
   }
 
+  // submit list button
+
+  $("#list-submit").click(e => {
+    e.preventDefault();
+    let savelist = $(".filled")
+      .toArray()
+      .map(li => li.innerHTML);
+    console.log(savelist);
+
+    if (savelist.length < 9) {
+      alert(`Please fill list with ten cards`);
+      return;
+    }
+
+    let name = prompt("Please enter a name for your list", "My List");
+
+    let jwtAuth = localStorage.getItem("token");
+
+    if (jwtAuth == "") {
+      alert(`Please login before you save a list`);
+      return;
+    }
+
+    $.ajax({
+      url: "api/cardlist",
+      method: "POST",
+      headers: { Authorization: `Bearer ${jwtAuth}` },
+      contentType: "application/json",
+      data: JSON.stringify({
+        name,
+        card1: savelist[0],
+        card2: savelist[1],
+        card3: savelist[2],
+        card4: savelist[3],
+        card5: savelist[4],
+        card6: savelist[5],
+        card7: savelist[6],
+        card8: savelist[7],
+        card9: savelist[8],
+        card10: savelist[9]
+      })
+    });
+  });
+
   //filters
   let selectedSet = "";
   function filterSets(card) {

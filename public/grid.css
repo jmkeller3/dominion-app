@@ -246,6 +246,7 @@ button:focus {
 
   .content {
     margin-top: 70px;
+    margin-left: 15px;
   }
 
   .filter {
@@ -269,10 +270,111 @@ button:focus {
   }
 
   .sidebar {
-    margin: 29px 110px 100px;
+    margin: 29px 117px 100px;
     position: fixed;
     display: inline;
-    width: 220px;
+    width: 66%;
+    overflow: scroll;
+    z-index: 2;
+  }
+
+  li,
+  .list {
+    font-size: 16px;
+    padding: 9px;
+  }
+
+  .list {
+    width: 70px;
+  }
+
+  .list-ul {
+    display: inline-flex;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 3px 1px;
+    display: block;
+    padding: 8px 12px;
+    width: 100px;
+  }
+
+  .list-btn {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .card {
+    width: 180px;
+    margin: 0.4rem 0.4rem;
+  }
+
+  #cardSearch {
+    margin-bottom: 3px;
+    padding: 6px 2px;
+    font-size: 12px;
+    width: 100px;
+    float: none;
+  }
+
+  .styled-select select {
+    padding: 3px;
+    margin-top: 2px;
+    height: 35px;
+    width: 100px;
+  }
+
+  .blue select {
+    font-size: 14px;
+  }
+  .empty {
+    border-left: 1px solid #000;
+    border-top: none;
+  }
+}
+
+/* Tablet (728px) */
+@media only screen and (min-width: 728px) and (max-width: 1023px) {
+  .wrapper {
+    grid-template-columns: 124px 1fr;
+    grid-template-areas:
+      "nav nav"
+      "header sidebar"
+      "header content";
+  }
+
+  .content {
+    margin-top: 90px;
+    margin-left: 20px;
+  }
+
+  .filter {
+    padding: 10px;
+    position: fixed;
+    margin-top: 39px;
+  }
+
+  nav {
+    height: 40px;
+    position: fixed;
+    z-index: 2;
+  }
+
+  nav li {
+    font-size: 20px;
+  }
+
+  nav a {
+    padding: 0 5px;
+  }
+
+  .sidebar {
+    margin: 39px 150px 100px;
+    position: fixed;
+    display: inline;
+    width: 80%;
     overflow: scroll;
     z-index: 2;
   }
@@ -297,6 +399,7 @@ button:focus {
     margin: 3px 1px;
     display: block;
     padding: 8px 12px;
+    width: 120px;
   }
 
   .list-btn {
@@ -305,21 +408,23 @@ button:focus {
   }
 
   .card {
-    width: 200px;
-    margin: 0.4rem 1rem;
+    width: 180px;
+    margin: 0.4rem 0.4rem;
   }
 
   #cardSearch {
+    margin-bottom: 3px;
     padding: 6px 2px;
-    font-size: 12px;
-    width: 90px;
+    font-size: 16px;
+    width: 120px;
     float: none;
   }
 
   .styled-select select {
     padding: 3px;
+    margin-top: 2px;
     height: 35px;
-    width: 100px;
+    width: 120px;
   }
 
   .blue select {
@@ -330,7 +435,3 @@ button:focus {
     border-top: none;
   }
 }
-
-/* Tablet (728px) */
-
-/* Laptop (1024px) */
