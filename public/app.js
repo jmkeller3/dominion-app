@@ -67,20 +67,6 @@
     console.log(`Button worked!`);
   });
 
-  let activeType;
-  function filterType(card) {
-    switch (activeType) {
-      case "Attack":
-        return card.type.includes("Attack");
-      case "Treasure":
-        return card.type.includes("Treasure");
-      case "Reaction":
-        return card.type.includes("Reaction");
-      default:
-        return true;
-    }
-  }
-
   // submit list button
 
   $("#list-submit").click(e => {
@@ -126,6 +112,20 @@
   });
 
   //filters
+
+  let activeType;
+  function filterType(card) {
+    switch (activeType) {
+      case "Attack":
+        return card.type.includes("Attack");
+      case "Treasure":
+        return card.type.includes("Treasure");
+      case "Reaction":
+        return card.type.includes("Reaction");
+      default:
+        return true;
+    }
+  }
   let selectedSet = "";
   function filterSets(card) {
     if (selectedSet == "") {

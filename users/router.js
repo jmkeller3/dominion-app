@@ -1,12 +1,15 @@
 "use strict";
 const express = require("express");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 const { User } = require("./models");
 
 const router = express.Router();
 
 const jsonParser = bodyParser.json();
+
+const jwtAuth = passport.authenticate("jwt", { session: false });
 
 // Post to register a new user
 router.post("/", jsonParser, (req, res) => {
@@ -112,6 +115,14 @@ router.post("/", jsonParser, (req, res) => {
       }
       res.status(500).json({ code: 500, message: "Internal server error" });
     });
+});
+
+router.get("/:id", jwtAuth, (req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      return res.status(200).json(user.serialize());
+    })
+    .catch(err => res.status(500).json({ message: "Internal server error" }));
 });
 
 router.get("/", (req, res) => {

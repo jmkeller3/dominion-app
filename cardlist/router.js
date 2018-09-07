@@ -23,12 +23,11 @@ router.get("/", (req, res) => {
         console.error(err);
         res.status(500).json({ message: "Internal server error" });
       }
-
       res.json(
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            creator: cardlist.creator_id,
+            //creator: cardlist.creator_id,
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
