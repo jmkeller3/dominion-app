@@ -1,6 +1,26 @@
 "use strict";
 
 (async function() {
+  const setdata = await $.getJSON("dominion-cards.json");
+
+  let carddata = [];
+  for (let arr of Object.values(setdata)) {
+    carddata = carddata.concat(arr);
+  }
+
+  function displayCards(cards) {
+    const hmtlcards = cards.map(
+      card => `
+            <div class="card fill" draggable="true" id="${card.name}">
+                <img class="card-img" src="${card.picture}"  alt="${
+        card.rules
+      }">
+            </div>`
+    );
+    console.log(`success`);
+    $(".sidebar").html(hmtlcards);
+  }
+
   let cardlists = await $.ajax({
     url: "/api/cardlist",
     headers: {
@@ -10,6 +30,7 @@
     contentType: "application/json"
   });
   console.log(cardlists);
+
   function displayLists(lists) {
     const htmllist = lists.map(
       list => `
@@ -32,5 +53,29 @@
     );
     $("#community-lists").html(htmllist);
   }
+  let listcards;
+  function listfilter(card, array) {
+    for (let i = 0; i < array.length; i++) return card.name.includes(array[i]);
+  }
+  function getCards(lists) {
+    return (listcards = lists.map(
+      list => [
+        list.card1,
+        list.card2,
+        list.card3,
+        list.card4,
+        list.card5,
+        list.card6,
+        list.card7,
+        list.card8,
+        list.card9,
+        list.card10
+      ],
+      listfilter(card, listcards),
+      displayCards(carddata.filter(listfilter))
+    ));
+  }
+
   displayLists(cardlists);
+  getCards(cardlists);
 })();
