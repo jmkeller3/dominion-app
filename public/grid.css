@@ -232,6 +232,44 @@ button:focus {
   background: #7c590a;
 }
 
+.community-ul {
+  border: 1px solid #16377c;
+  margin: 5px;
+  text-align: center;
+}
+
+.community-ul h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  color: #16377c;
+}
+
+.community-ul > li {
+  list-style: none;
+  color: #16377c;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3867c9;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #16377c;
+}
+
 /* Media Queries */
 
 /* Smartphone (320px) */
@@ -245,8 +283,8 @@ button:focus {
   }
 
   .content {
-    margin-top: 70px;
-    margin-left: 15px;
+    margin-top: 86px;
+    margin-left: 20px;
   }
 
   .filter {
@@ -270,7 +308,7 @@ button:focus {
   }
 
   .sidebar {
-    margin: 29px 117px 100px;
+    margin: 30px 117px 100px;
     position: fixed;
     display: inline;
     width: 66%;

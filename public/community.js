@@ -34,10 +34,9 @@
   function displayLists(lists) {
     const htmllist = lists.map(
       list => `
-              <div class="list" id="${list.name}">
+              <div class="commmunity-list" id="${list.name}">
                   <ul class="community-ul">
-                    <li>Name: ${list.name}</li>
-                    
+                    <h1>Name: ${list.name}</h1>
                     <li>Card 1: ${list.card1}</li>
                     <li>Card 2: ${list.card2}</li>
                     <li>Card 3: ${list.card3}</li>
@@ -53,12 +52,19 @@
     );
     $("#community-lists").html(htmllist);
   }
-  let listcards;
-  function listfilter(card, array) {
-    for (let i = 0; i < array.length; i++) return card.name.includes(array[i]);
+
+  function listfilter(card) {
+    for (let i = 0; i < cards.length; i++) {
+      console.log(cards[i].name);
+      if (array.indexOf(cards[i].name) > -1) {
+        return cards[i];
+      }
+      //return cards[a].name.includes([array[i]]);
+    }
   }
+
   function getCards(lists) {
-    return (listcards = lists.map(
+    const listcards = lists.map(
       list => [
         list.card1,
         list.card2,
@@ -70,10 +76,12 @@
         list.card8,
         list.card9,
         list.card10
-      ],
-      listfilter(card, listcards),
-      displayCards(carddata.filter(listfilter))
-    ));
+      ]
+
+      // displayCards(carddata.filter(listfilter))
+    );
+    console.log(listcards);
+    displayCards(carddata.filter(listfilter(listcards[0], carddata)));
   }
 
   displayLists(cardlists);
