@@ -232,24 +232,6 @@ button:focus {
   background: #7c590a;
 }
 
-.community-ul {
-  border: 1px solid #16377c;
-  margin: 5px;
-  text-align: center;
-}
-
-.community-ul h1 {
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
-  color: #16377c;
-}
-
-.community-ul > li {
-  list-style: none;
-  color: #16377c;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
@@ -268,6 +250,48 @@ button:focus {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #16377c;
+}
+
+.community-list h1 {
+  font-size: 28px;
+
+  margin: 5px 10px;
+  padding: 0;
+  color: #16377c;
+}
+
+.community-list {
+  border: 1px solid #16377c;
+  margin: 20px;
+}
+
+.community-cards {
+  display: inherit;
+}
+
+.community-cards > .card {
+  width: 16%;
+}
+
+.text-list {
+  display: inline-block;
+}
+
+td,
+th {
+  border: 1px solid #16377c;
+  text-align: left;
+  padding: 8px;
+  color: #000;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+td:hover {
+  background-color: #16377c;
+  color: #fff;
 }
 
 /* Media Queries */
@@ -373,8 +397,17 @@ button:focus {
   }
 }
 
+.community-cards {
+  display: inline-block;
+  margin: 0 40px;
+}
+
+.community-cards > .card {
+  width: 180px;
+}
+
 /* Tablet (728px) */
-@media only screen and (min-width: 728px) and (max-width: 1023px) {
+@media only screen and (min-width: 728px) and (max-width: 1085px) {
   .wrapper {
     grid-template-columns: 124px 1fr;
     grid-template-areas:
@@ -471,5 +504,14 @@ button:focus {
   .empty {
     border-left: 1px solid #000;
     border-top: none;
+  }
+
+  .community-cards {
+    display: inline-block;
+    margin: 0 40px;
+  }
+
+  .community-cards > .card {
+    width: 17%;
   }
 }

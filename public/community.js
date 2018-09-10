@@ -34,102 +34,170 @@
   function displayLists(lists) {
     const htmllist = lists.map(
       list => `
-              <div class="community-list-cards">
-              <h1>Name: ${list.name}</h1>
-                <!-- card 1 -->
-                <div class="card" id="${list.card1.name}">
-                <img class="card-img" src="${list.card1.picture}" alt="${
+            <div class="community-list">
+            <h1>${list.name}</h1>
+            <h2>By Creator</h2>
+            <div class="community-cards">
+              <!-- card 1 -->
+              <div class="card" id="${list.card1.name}">
+              <img class="card-img" src="${list.card1.picture}" alt="${
         list.card1.rules
       }">
-                <!-- card 2 -->
-                <div class="card" id="${list.card2.name}">
-                <img class="card-img" src="${list.card2.picture}" alt="${
+    </div>
+              <!-- card 2 -->
+              <div class="card" id="${list.card2.name}">
+              <img class="card-img" src="${list.card2.picture}" alt="${
         list.card2.rules
       }">
-                <!-- card 3 -->
-                <div class="card" id="${list.card3.name}">
-                <img class="card-img" src="${list.card3.picture}" alt="${
+    </div>
+              <!-- card 3 -->
+              <div class="card" id="${list.card3.name}">
+              <img class="card-img" src="${list.card3.picture}" alt="${
         list.card3.rules
       }">
-                <!-- card 4 -->
-                <div class="card" id="${list.card4.name}">
-                <img class="card-img" src="${list.card4.picture}" alt="${
+    </div>
+              <!-- card 4 -->
+              <div class="card" id="${list.card4.name}">
+              <img class="card-img" src="${list.card4.picture}" alt="${
         list.card4.rules
       }">
-                <!-- card 5 -->
-                <div class="card" id="${list.card5.name}">
-                <img class="card-img" src="${list.card5.picture}" alt="${
+    </div>
+              <!-- card 5 -->
+              <div class="card" id="${list.card5.name}">
+              <img class="card-img" src="${list.card5.picture}" alt="${
         list.card5.rules
       }">
-                <!-- card 6 -->
-                <div class="card" id="${list.card6.name}">
-                <img class="card-img" src="${list.card6.picture}" alt="${
+    </div>
+              <!-- card 6 -->
+              <div class="card" id="${list.card6.name}">
+              <img class="card-img" src="${list.card6.picture}" alt="${
         list.card6.rules
       }">
-                <!-- card 7 -->
-                <div class="card" id="${list.card7.name}">
-                <img class="card-img" src="${list.card7.picture}" alt="${
+    </div>
+              <!-- card 7 -->
+              <div class="card" id="${list.card7.name}">
+              <img class="card-img" src="${list.card7.picture}" alt="${
         list.card7.rules
       }">
-                <!-- card 8 -->
-                <div class="card" id="${list.card8.name}">
-                <img class="card-img" src="${list.card8.picture}" alt="${
+    </div>
+              <!-- card 8 -->
+              <div class="card" id="${list.card8.name}">
+              <img class="card-img" src="${list.card8.picture}" alt="${
         list.card8.rules
       }">
-                <!-- card 9 -->
-                <div class="card" id="${list.card9.name}">
-                <img class="card-img" src="${list.card9.picture}" alt="${
+    </div>
+              <!-- card 9 -->
+              <div class="card" id="${list.card9.name}">
+              <img class="card-img" src="${list.card9.picture}" alt="${
         list.card9.rules
       }">
-                <!-- card 10 -->
-                <div class="card" id="${list.card10.name}">
-                <img class="card-img" src="${list.card10.picture}" alt="${
+    </div>
+              <!-- card 10 -->
+              <div class="card" id="${list.card10.name}">
+              <img class="card-img" src="${list.card10.picture}" alt="${
         list.card10.rules
       }">
-                <ul class="community-ul">
-                    <li>Card 1: ${list.card1.name}</li>
-                    <li>Card 2: ${list.card2.name}</li>
-                    <li>Card 3: ${list.card3.name}</li>
-                    <li>Card 4: ${list.card4.name}</li>
-                    <li>Card 5: ${list.card5.name}</li>
-                    <li>Card 6: ${list.card6.name}</li>
-                    <li>Card 7: ${list.card7.name}</li>
-                    <li>Card 8: ${list.card8.name}</li>
-                    <li>Card 9: ${list.card9.name}</li>
-                    <li>Card 10: ${list.card10.name}</li>
-                  </ul>
-              </div>`
+    </div>
+    </div>
+      <table class="text-list">
+        <tr>
+          <th>Name</th>
+          <th>Expansion</th>
+          <th>Cost</th>
+          <th>Type</th>
+          <th>Rank</th> 
+          <th>Rules</th>
+        </tr>
+        <tr>
+          <td>${list.card1.name}</td>
+          <td>${list.card1.expansion}</td>
+          <td>${list.card1.cost}</td>
+          <td>${list.card1.type}</td>
+          <td>${list.card1.rank}</td> 
+          <td>${list.card1.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card2.name}</td>
+          <td>${list.card2.expansion}</td>
+          <td>${list.card2.cost}</td>
+          <td>${list.card2.type}</td>
+          <td>${list.card2.rank}</td> 
+          <td>${list.card2.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card3.name}</td>
+          <td>${list.card3.expansion}</td>
+          <td>${list.card3.cost}</td>
+          <td>${list.card3.type}</td>
+          <td>${list.card3.rank}</td> 
+          <td>${list.card3.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card4.name}</td>
+          <td>${list.card4.expansion}</td>
+          <td>${list.card4.cost}</td>
+          <td>${list.card4.type}</td>
+          <td>${list.card4.rank}</td> 
+          <td>${list.card4.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card5.name}</td>
+          <td>${list.card5.expansion}</td>
+          <td>${list.card5.cost}</td>
+          <td>${list.card5.type}</td>
+          <td>${list.card5.rank}</td> 
+          <td>${list.card5.rules}</td>
+        </tr>      
+        <tr>
+          <td>${list.card6.name}</td>
+          <td>${list.card6.expansion}</td>
+          <td>${list.card6.cost}</td>
+          <td>${list.card6.type}</td>
+          <td>${list.card6.rank}</td> 
+          <td>${list.card6.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card7.name}</td>
+          <td>${list.card7.expansion}</td>
+          <td>${list.card7.cost}</td>
+          <td>${list.card7.type}</td>
+          <td>${list.card7.rank}</td> 
+          <td>${list.card7.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card8.name}</td>
+          <td>${list.card8.expansion}</td>
+          <td>${list.card8.cost}</td>
+          <td>${list.card8.type}</td>
+          <td>${list.card8.rank}</td> 
+          <td>${list.card8.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card9.name}</td>
+          <td>${list.card9.expansion}</td>
+          <td>${list.card9.cost}</td>
+          <td>${list.card9.type}</td>
+          <td>${list.card9.rank}</td> 
+          <td>${list.card9.rules}</td>
+        </tr>
+        <tr>
+          <td>${list.card10.name}</td>
+          <td>${list.card10.expansion}</td>
+          <td>${list.card10.cost}</td>
+          <td>${list.card10.type}</td>
+          <td>${list.card10.rank}</td> 
+          <td>${list.card10.rules}</td>
+        </tr>
+      </table>              
+    </div>`
     );
-    $(".text-lists").html(htmllist);
+    $("#community-lists").html(htmllist);
   }
 
   function listFilterCreator(listcards) {
     return function listfilter(card) {
       return listcards.some(cardName => cardName === card.name);
-
-      //return cards[a].name.includes([array[i]]);
     };
-  }
-
-  function getCards(lists) {
-    const listcards = lists.map(
-      list => [
-        list.card1,
-        list.card2,
-        list.card3,
-        list.card4,
-        list.card5,
-        list.card6,
-        list.card7,
-        list.card8,
-        list.card9,
-        list.card10
-      ]
-
-      // displayCards(carddata.filter(listfilter))
-    );
-    console.log(listcards);
-    displayCards(carddata.filter(listFilterCreator(listcards[0])));
   }
 
   function propEq(prop, val) {
@@ -153,5 +221,4 @@
   }));
 
   displayLists(newCardLists);
-  //getCards(cardlists);
 })();
