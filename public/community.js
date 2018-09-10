@@ -8,19 +8,6 @@
     carddata = carddata.concat(arr);
   }
 
-  function displayCards(cards) {
-    const hmtlcards = cards.map(
-      card => `
-            <div class="card" id="${card.name}">
-                <img class="card-img" src="${card.picture}"  alt="${
-        card.rules
-      }">
-            </div>`
-    );
-    console.log(`success`);
-    $("#community-lists").html(hmtlcards);
-  }
-
   let cardlists = await $.ajax({
     url: "/api/cardlist",
     headers: {
