@@ -17,15 +17,15 @@ const UserSchema = mongoose.Schema({
   cardlists: [{ type: mongoose.Schema.Types.ObjectId, ref: "cardlist" }]
 });
 
-UserSchema.pre("findOne", function(next) {
-  this.populate("cardlists");
-  next();
-});
+// UserSchema.pre("findOne", function(next) {
+//   this.populate("cardlists");
+//   next();
+// });
 
-UserSchema.pre("find", function(next) {
-  this.populate("cardlists");
-  next();
-});
+// UserSchema.pre("find", function(next) {
+//   this.populate("cardlists");
+//   next();
+// });
 
 UserSchema.methods.serialize = function() {
   return {

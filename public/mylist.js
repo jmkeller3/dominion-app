@@ -1,8 +1,10 @@
 (async function() {
+  let user_id = localStorage.getItem("user_id");
+
   let user = await $.ajax({
-    url: "/api/users",
+    url: `/api/users/${user_id}`,
     headers: {
-      Authorization: localStorage.getItem("token")
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     },
     method: "GET",
     contentType: "application/json"
@@ -18,11 +20,12 @@
   }
 
   function displayLists(lists) {
+    console.log(`made a list`);
     const htmllist = lists.map(
       list => `
             <div class="community-list">
             <h1>${list.name}</h1>
-            <h2>By Creator</h2>
+            
             <div class="community-cards">
               <!-- card 1 -->
               <div class="card" id="${list.card1.name}">
@@ -194,6 +197,7 @@
 
   let newCardLists = cardlists.map(list => ({
     name: list.name,
+
     card1: carddata.find(propEq("name", list.card1)),
     card2: carddata.find(propEq("name", list.card2)),
     card3: carddata.find(propEq("name", list.card3)),
@@ -207,4 +211,4 @@
   }));
 
   displayLists(newCardLists);
-});
+})();

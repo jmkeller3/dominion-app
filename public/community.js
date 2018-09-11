@@ -11,7 +11,7 @@
   let cardlists = await $.ajax({
     url: "/api/cardlist",
     headers: {
-      Authorization: localStorage.getItem("token")
+      Authorization: `Bearer ${localStorage.getItem("token")}`
     },
     method: "GET",
     contentType: "application/json"
@@ -23,7 +23,7 @@
       list => `
             <div class="community-list">
             <h1>${list.name}</h1>
-            <h2>By Creator</h2>
+            <h2>By ${list.creator.email}</h2>
             <div class="community-cards">
               <!-- card 1 -->
               <div class="card" id="${list.card1.name}">
@@ -195,6 +195,7 @@
 
   let newCardLists = cardlists.map(list => ({
     name: list.name,
+    creator: list.creator,
     card1: carddata.find(propEq("name", list.card1)),
     card2: carddata.find(propEq("name", list.card2)),
     card3: carddata.find(propEq("name", list.card3)),

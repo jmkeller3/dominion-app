@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            creator: cardlist.creator_id,
+            creator: cardlist.creator.serialize(),
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
@@ -59,7 +59,7 @@ router.get("/:id", jwtAuth, (req, res) => {
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            creator: cardlist.creator_id,
+            creator: cardlist.creator.serialize(),
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
@@ -79,7 +79,7 @@ router.get("/:id", jwtAuth, (req, res) => {
 
 //POST request to add lists
 //Check to see if lists are filled.
-router.post("/", jsonParser, jwtAuth, (req, res) => {
+router.post("/", jsonParser, jwtAuth, async (req, res) => {
   const requiredFields = [
     "name",
     "card1",
@@ -102,55 +102,56 @@ router.post("/", jsonParser, jwtAuth, (req, res) => {
     }
   }
 
-  User.findById(req.user.id)
-    .then(user => {
-      if (user) {
-        cardList
-          .create({
-            name: req.body.name,
-            creator: req.user.id,
-            card1: req.body.card1,
-            card2: req.body.card2,
-            card3: req.body.card3,
-            card4: req.body.card4,
-            card5: req.body.card5,
-            card6: req.body.card6,
-            card7: req.body.card7,
-            card8: req.body.card8,
-            card9: req.body.card9,
-            card10: req.body.card10
-          })
-          .then(cardlist =>
-            res.status(201).json({
-              id: cardlist.id,
-              creator: user.id,
-              name: cardlist.name,
-              card1: cardlist.card1,
-              card2: cardlist.card2,
-              card3: cardlist.card3,
-              card4: cardlist.card4,
-              card5: cardlist.card5,
-              card6: cardlist.card6,
-              card7: cardlist.card7,
-              card8: cardlist.card8,
-              card9: cardlist.card9,
-              card10: cardlist.card10
-            })
-          )
-          .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: "Internal Server Error" });
-          });
-      } else {
-        const message = "User not found";
-        console.error(message);
-        return res.status(400).send(message);
+  try {
+    let user = await User.findById(req.user.id);
+    if (user) {
+      try {
+        let createdCardList = await cardList.create({
+          name: req.body.name,
+          creator: req.user.id,
+          card1: req.body.card1,
+          card2: req.body.card2,
+          card3: req.body.card3,
+          card4: req.body.card4,
+          card5: req.body.card5,
+          card6: req.body.card6,
+          card7: req.body.card7,
+          card8: req.body.card8,
+          card9: req.body.card9,
+          card10: req.body.card10
+        });
+
+        user.cardlists.push(createdCardList);
+        user.save();
+
+        res.status(201).json({
+          id: createdCardList.id,
+          creator: user.id,
+          name: createdCardList.name,
+          card1: createdCardList.card1,
+          card2: createdCardList.card2,
+          card3: createdCardList.card3,
+          card4: createdCardList.card4,
+          card5: createdCardList.card5,
+          card6: createdCardList.card6,
+          card7: createdCardList.card7,
+          card8: createdCardList.card8,
+          card9: createdCardList.card9,
+          card10: createdCardList.card10
+        });
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Internal Server Error" });
       }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ message: "Internal Server Error" });
-    });
+    } else {
+      const message = "User not found";
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
 
 router.put("/:id", jsonParser, jwtAuth, (req, res) => {

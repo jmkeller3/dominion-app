@@ -29,14 +29,14 @@ const listSchema = mongoose.Schema({
 //   next();
 // });
 
-listSchema.pre("save", function(next) {
-  User.findById(this.creator).exec((error, user) => {
-    user.cardlists.push(this);
-    user.save(() => {
-      next();
-    });
-  });
-});
+// listSchema.pre("save", function(next) {
+//   User.findById(this.creator).exec((error, user) => {
+//     user.cardlists.push(this);
+//     user.save(() => {
+//       next();
+//     });
+//   });
+// });
 
 listSchema.virtual("creator_id").get(function() {
   return `${this.creator._id}`.trim();
