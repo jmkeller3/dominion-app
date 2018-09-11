@@ -1,5 +1,5 @@
 (async function() {
-  let cardlists = await $.ajax({
+  let user = await $.ajax({
     url: "/api/users",
     headers: {
       Authorization: localStorage.getItem("token")
@@ -7,6 +7,8 @@
     method: "GET",
     contentType: "application/json"
   });
+
+  let cardlists = user.cardlists;
 
   const setdata = await $.getJSON("dominion-cards.json");
 
@@ -175,7 +177,7 @@
       </table>              
     </div>`
     );
-    $("#community-lists").html(htmllist);
+    $("#my-lists").html(htmllist);
   }
 
   function listFilterCreator(listcards) {

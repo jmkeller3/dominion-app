@@ -23,11 +23,11 @@ router.get("/", (req, res) => {
         console.error(err);
         res.status(500).json({ message: "Internal server error" });
       }
-      res.json(
+      res.status(200).json(
         cardlists.map(cardlist => {
           return {
             id: cardlist._id,
-            //creator: cardlist.creator_id,
+            creator: cardlist.creator_id,
             name: cardlist.name,
             card1: cardlist.card1,
             card2: cardlist.card2,
@@ -49,26 +49,31 @@ router.get("/", (req, res) => {
 router.get("/:id", jwtAuth, (req, res) => {
   cardList
     .findById(req.params.id)
-    .then(cardlist =>
-      res.json({
-        id: cardlist._id,
-        creator: cardlist.creator_id,
-        name: cardlist.name,
-        card1: cardlist.card1,
-        card2: cardlist.card2,
-        card3: cardlist.card3,
-        card4: cardlist.card4,
-        card5: cardlist.card5,
-        card6: cardlist.card6,
-        card7: cardlist.card7,
-        card8: cardlist.card8,
-        card9: cardlist.card9,
-        card10: cardlist.card10
-      })
-    )
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ message: "Internal server error" });
+    .populate("creator")
+    .exec(function(err, cardlists) {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+      }
+      res.status(200).json(
+        cardlists.map(cardlist => {
+          return {
+            id: cardlist._id,
+            creator: cardlist.creator_id,
+            name: cardlist.name,
+            card1: cardlist.card1,
+            card2: cardlist.card2,
+            card3: cardlist.card3,
+            card4: cardlist.card4,
+            card5: cardlist.card5,
+            card6: cardlist.card6,
+            card7: cardlist.card7,
+            card8: cardlist.card8,
+            card9: cardlist.card9,
+            card10: cardlist.card10
+          };
+        })
+      );
     });
 });
 

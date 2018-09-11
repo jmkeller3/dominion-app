@@ -119,12 +119,17 @@ router.post("/", jsonParser, (req, res) => {
 
 router.get("/:id", jwtAuth, (req, res) => {
   User.findById(req.params.id)
-    .then(user => {
-      return res.status(200).json(user.serialize());
-    })
-    .catch(err => res.status(500).json({ message: "Internal server error" }));
+    .populate("cardlists")
+    .exec(function(err, user) {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+      }
+      res.status(200).json(user.serialize());
+    });
 });
 
+//Remove before production
 router.get("/", (req, res) => {
   return User.find()
     .then(users => res.json(users.map(user => user.serialize())))
