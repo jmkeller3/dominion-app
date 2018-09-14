@@ -153,6 +153,7 @@ button {
   color: #fff;
   cursor: pointer;
   font-family: times;
+  margin: 5px 0;
 }
 
 button:hover,
@@ -185,11 +186,12 @@ button:focus {
 
 #cardSearch {
   float: right;
-  padding: 12px 5px;
+  padding: 14px 6px;
   border: 1px solid #6194ff;
   color: #000;
   font-size: 18px;
   font-family: times;
+  margin: 7px 18px 0 0;
 }
 
 /* Select Sets Filter */
@@ -412,12 +414,12 @@ td:hover {
     grid-template-columns: 124px 1fr;
     grid-template-areas:
       "nav nav"
-      "header sidebar"
-      "header content";
+      "sidebar header"
+      "sidebar content";
   }
 
   .content {
-    margin-top: 90px;
+    margin-top: 130px;
     margin-left: 20px;
   }
 
@@ -425,6 +427,9 @@ td:hover {
     padding: 10px;
     position: fixed;
     margin-top: 39px;
+    margin-left: 120px;
+    background-color: #fff;
+    z-index: 2;
   }
 
   nav {
@@ -442,11 +447,9 @@ td:hover {
   }
 
   .sidebar {
-    margin: 39px 150px 100px;
+    margin: 39px 20px 100px;
     position: fixed;
     display: inline;
-    width: 80%;
-    overflow: scroll;
     z-index: 2;
   }
 
@@ -456,26 +459,21 @@ td:hover {
     padding: 9px;
   }
 
-  .list {
-    width: 70px;
-  }
-
   .list-ul {
-    display: inline-flex;
+    display: inline-block;
   }
 
   button {
     padding: 8px 12px;
     font-size: 16px;
-    margin: 3px 1px;
-    display: block;
+    display: inline-block;
     padding: 8px 12px;
     width: 120px;
   }
 
   .list-btn {
     font-size: 16px;
-    padding: 0 20px;
+    padding: 10px 18px;
   }
 
   .card {
@@ -487,7 +485,7 @@ td:hover {
     margin-bottom: 3px;
     padding: 6px 2px;
     font-size: 16px;
-    width: 120px;
+    width: 243px;
     float: none;
   }
 
@@ -500,10 +498,6 @@ td:hover {
 
   .blue select {
     font-size: 16px;
-  }
-  .empty {
-    border-left: 1px solid #000;
-    border-top: none;
   }
 
   .community-cards {
