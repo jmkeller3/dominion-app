@@ -57,6 +57,7 @@ function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(
       DATABASE_URL,
+      { useNewUrlParser: true },
       err => {
         if (err) {
           return reject(err);
