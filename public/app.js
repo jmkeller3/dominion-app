@@ -85,7 +85,8 @@
 
     let jwtAuth = localStorage.getItem("token");
 
-    if (jwtAuth == "") {
+    if (jwtAuth == null) {
+      console.log("jwtAuth working");
       alert(`Please login before you save a list`);
       return;
     }
@@ -109,6 +110,7 @@
         card10: savelist[9]
       })
     });
+    window.location.reload();
   });
 
   //filters
@@ -277,25 +279,4 @@
       .children("li")
       .addClass("filled");
   }
-
-  //Navbar
-
-  //Save list to server
-  // $.ajax({
-  //   url: "api/cardlist",
-  //   method: "GET",
-  //   data: JSON.stringify({
-  //     name,
-  //     card1,
-  //     card2,
-  //     card3,
-  //     card4,
-  //     card5,
-  //     card6,
-  //     card7,
-  //     card8,
-  //     card9,
-  //     card10
-  //   })
-  // });
 })();

@@ -26,6 +26,7 @@ $("#Login").click(e => {
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
   })();
+  window.location.replace("/index.html");
 });
 
 $("#Signup").click(e => {
@@ -77,10 +78,6 @@ $("#Signup").click(e => {
     console.log(token.authToken);
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
+    window.location.replace("/index.html");
   })();
 });
-
-//Ajax authentication before bearer token
-// beforeSend: function(xhr) {
-//   xhr.setRequestHeader("Authorization", "Bearer" + token);
-// }
