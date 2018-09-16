@@ -172,54 +172,55 @@
     var clickedCard = $(".card");
     var clickedCardName;
 
-    clickedCard.dblclick(event => {
-      event.preventDefault();
-      clickedCardName = $(event.target.parentElement).attr("id");
-      console.log(cardlist);
-      for (let i = 0; i < cardlist.length; i++) {
-        const cardListElement = $(cardlist).eq(i);
-        if (!cardListElement.hasClass("filled")) {
-          cardListElement.html(clickedCardName);
-          cardListElement.addClass("filled");
-          console.log(clickedCardName);
-          break;
-        }
-      }
-    });
-    // clickedCard.on(
-    //   {
-    //     dbclick: function(event) {
-    //       event.preventDefault();
-    //       clickedCardName = $(event.target.parentElement).attr("id");
-    //       console.log(cardlist);
-    //       for (let i = 0; i < cardlist.length; i++) {
-    //         const cardListElement = $(cardlist).eq(i);
-    //         if (!cardListElement.hasClass("filled")) {
-    //           cardListElement.html(clickedCardName);
-    //           cardListElement.addClass("filled");
-    //           console.log(clickedCardName);
-    //           break;
-    //         }
-    //       }
-    //     }
-    //   },
-    //   {
-    //     tap: function(event) {
-    //       event.preventDefault();
-    //       clickedCardName = $(event.target.parentElement).attr("id");
-    //       console.log(cardlist);
-    //       for (let i = 0; i < cardlist.length; i++) {
-    //         const cardListElement = $(cardlist).eq(i);
-    //         if (!cardListElement.hasClass("filled")) {
-    //           cardListElement.html(clickedCardName);
-    //           cardListElement.addClass("filled");
-    //           console.log(clickedCardName);
-    //           break;
-    //         }
-    //       }
+    // clickedCard.dblclick(event => {
+    //   event.preventDefault();
+    //   clickedCardName = $(event.target.parentElement).attr("id");
+    //   console.log(cardlist);
+    //   for (let i = 0; i < cardlist.length; i++) {
+    //     const cardListElement = $(cardlist).eq(i);
+    //     if (!cardListElement.hasClass("filled")) {
+    //       cardListElement.html(clickedCardName);
+    //       cardListElement.addClass("filled");
+    //       console.log(clickedCardName);
+    //       break;
     //     }
     //   }
-    // );
+    // });
+    clickedCard.on(
+      {
+        dblclick: function(event) {
+          event.preventDefault();
+          clickedCardName = $(event.target.parentElement).attr("id");
+          console.log(cardlist);
+          for (let i = 0; i < cardlist.length; i++) {
+            const cardListElement = $(cardlist).eq(i);
+            if (!cardListElement.hasClass("filled")) {
+              cardListElement.html(clickedCardName);
+              cardListElement.addClass("filled");
+              console.log(clickedCardName);
+              break;
+            }
+          }
+        }
+      },
+      {
+        touchend: function(event) {
+          alert("hey");
+          event.preventDefault();
+          clickedCardName = $(event.target.parentElement).attr("id");
+          console.log(cardlist);
+          for (let i = 0; i < cardlist.length; i++) {
+            const cardListElement = $(cardlist).eq(i);
+            if (!cardListElement.hasClass("filled")) {
+              cardListElement.html(clickedCardName);
+              cardListElement.addClass("filled");
+              console.log(clickedCardName);
+              break;
+            }
+          }
+        }
+      }
+    );
   }
 
   //Drag Functions
