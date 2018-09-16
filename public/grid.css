@@ -21,8 +21,8 @@ body {
 
 nav {
   grid-area: nav;
-  height: 5vh;
   width: 100%;
+  height: 35px;
   background-color: #16377c;
   position: fixed;
   z-index: 2;
@@ -58,8 +58,8 @@ nav a#openup {
   grid-area: content;
   float: left;
   position: relative;
-  margin-top: 15vh;
-  margin-left: 8%;
+  margin-top: 127px;
+  margin-left: 17px;
 }
 
 .filter {
@@ -67,9 +67,8 @@ nav a#openup {
   position: fixed;
   background-color: #fff;
   color: black;
-  width: 100%;
   padding: 10px;
-  margin-top: 4.1vh;
+  margin-top: 40px;
   z-index: 2;
 }
 
@@ -78,9 +77,9 @@ nav a#openup {
   background-color: #6194ff;
   color: white;
   position: fixed;
-  margin: 5vh 16.5vh 14vh;
+  margin: 35px 40px 40px 120px;
   display: inline;
-  /* width: 60vw; */
+  width: 62vw;
   overflow: scroll;
   z-index: 2;
 }
@@ -314,7 +313,14 @@ td:hover {
 
 /* Media Queries */
 
-/* Tablet (728px) */
+@media only screen and (min-width: 696px) and (max-width: 767px) {
+  .sidebar {
+    overflow: none;
+    width: auto;
+  }
+}
+
+/* Tablet (768px) */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .wrapper {
     grid-template-columns: 124px 1fr;
@@ -348,6 +354,7 @@ td:hover {
 
   .sidebar {
     margin: 39px 20px 100px;
+    width: auto;
   }
 
   .list-ul {
@@ -356,7 +363,7 @@ td:hover {
 
   li,
   .list {
-    font-size: 18px;
+    font-size: 16px;
     padding: 12px;
   }
 
@@ -365,7 +372,7 @@ td:hover {
   }
 
   .card {
-    width: 200px;
+    width: 180px;
   }
 
   button {
@@ -391,6 +398,11 @@ td:hover {
 
   .blue select {
     font-size: 16px;
+  }
+
+  .empty {
+    border-left: none;
+    border-top: 1px solid #000;
   }
 
   /* Community Cards */
@@ -425,24 +437,30 @@ td:hover {
   }
 
   .content {
-    margin-top: 150px;
+    margin-top: 200px;
     margin-left: 0;
   }
 
   .filter {
-    padding: 20px;
+    padding: 20px 0 20px 40px;
     margin-top: 40px;
-    margin-left: 175px;
+    margin-left: 125px;
   }
 
   .sidebar {
     display: block;
-    margin: 39px 0 0 0;
+    margin: 39px 0 0 20px;
     overflow: none;
+    width: auto;
   }
 
   .list-ul {
     display: inline-block;
+    width: 120px;
+  }
+
+  .list {
+    width: 100%;
   }
 
   li,
@@ -457,13 +475,13 @@ td:hover {
 
   button {
     font-size: 18px;
-    display: inline-block;
-    margin: 5px 0;
-    padding: 13px 30px;
+    display: inline;
+    padding: 13px 0;
   }
 
   .list-btn {
     font-size: 20px;
+    padding: 8px 20px;
   }
 
   #cardSearch {
