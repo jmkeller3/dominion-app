@@ -21,7 +21,7 @@ body {
 
 nav {
   grid-area: nav;
-  height: 40px;
+  height: 5vh;
   width: 100%;
   background-color: #16377c;
   position: fixed;
@@ -35,14 +35,14 @@ nav li {
   display: inline;
   float: right;
   margin: 0;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 nav a {
   display: inline-block;
   margin: auto;
   text-align: center;
-  padding: 0 12px;
+  padding: 0 5px;
   text-decoration: none;
   text-align: right;
   color: #fff;
@@ -58,18 +58,18 @@ nav a#openup {
   grid-area: content;
   float: left;
   position: relative;
-  margin-top: 150px;
+  margin-top: 15vh;
+  margin-left: 8%;
 }
 
 .filter {
   grid-area: header;
+  position: fixed;
   background-color: #fff;
   color: black;
   width: 100%;
-  padding: 20px;
-  position: fixed;
-  margin-top: 40px;
-  margin-left: 175px;
+  padding: 10px;
+  margin-top: 4.1vh;
   z-index: 2;
 }
 
@@ -78,7 +78,11 @@ nav a#openup {
   background-color: #6194ff;
   color: white;
   position: fixed;
-  margin-top: 39px;
+  margin: 5vh 16.5vh 14vh;
+  display: inline;
+  /* width: 60vw; */
+  overflow: scroll;
+  z-index: 2;
 }
 
 .list-ul {
@@ -88,6 +92,7 @@ nav a#openup {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
+  display: inline-flex;
 }
 
 .list {
@@ -97,8 +102,8 @@ nav a#openup {
 li,
 .list {
   text-align: center;
-  padding: 6px;
-  font-size: 20px;
+  padding: 9px;
+  font-size: 16px;
   font-weight: 500;
   color: #000;
   transition-duration: 0.6s;
@@ -115,16 +120,18 @@ li,
 .filled {
   background-color: #fff;
   color: #3867c9;
+  width: 100px;
+  height: 100%;
 }
 
 .wrapper {
   display: grid;
   font-family: times;
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: 100px 1fr;
   grid-template-areas:
     "nav nav"
-    "sidebar header"
-    "sidebar content";
+    "header sidebar"
+    "header content";
   background-color: #fff;
 }
 
@@ -134,7 +141,7 @@ li,
 }
 
 .card {
-  width: 200px;
+  width: 180px;
   float: left;
   margin: 0.4rem 0.4rem;
   cursor: pointer;
@@ -147,19 +154,20 @@ li,
 }
 
 button {
-  font-size: 18px;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin: 3px 1px;
+  display: block;
   border-radius: 2px;
   transition-duration: 0.4s;
   border: 1px solid #fff;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  padding: 13px 30px;
   background-color: #3867c9;
   color: #fff;
   cursor: pointer;
   font-family: times;
-  margin: 5px 0;
+  width: 100px;
 }
 
 button:hover,
@@ -177,7 +185,8 @@ button:focus {
   margin: 0;
   border: 0;
   border-radius: 0;
-  font-size: 20px;
+  padding: 0 20px;
+  font-size: 16px;
   font-weight: 500;
   transition-duration: 0.6s;
 }
@@ -185,18 +194,18 @@ button:focus {
 .list-btn:hover {
   background-color: #16377c;
   color: #fff;
-
   box-shadow: 12px 10px 16px 0 rgba(0, 0, 0, 0.24),
     37px 0 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 #cardSearch {
-  padding: 12px 5px;
+  padding: 6px 2px;
+  font-size: 12px;
+  margin-bottom: 3px;
   border: 1px solid #6194ff;
   color: #000;
-  font-size: 18px;
   font-family: times;
-  margin: 7px 3px 0 0;
+  width: 100px;
 }
 
 /* Select Sets Filter */
@@ -212,15 +221,16 @@ button:focus {
   background: transparent;
   border: none;
   font-family: times;
-  height: 48px;
-  padding: 5px; /* If you add too much padding here, the options won't show in IE */
-  width: 150px;
+  margin-top: 2px;
+  height: 35px;
+  padding: 3px;
+  width: 100px;
 }
 
 .blue select {
   background-color: #3867c9;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 /* draggable images */
@@ -231,8 +241,7 @@ button:focus {
 
 .empty {
   display: block;
-
-  border-top: 1px solid #000;
+  border-left: 1px solid #000;
 }
 
 .hovered {
@@ -259,8 +268,9 @@ button:focus {
   background: #16377c;
 }
 
+/* Community Cards */
 .community-list h1 {
-  font-size: 28px;
+  font-size: 18px;
 
   margin: 5px 10px;
   padding: 0;
@@ -273,11 +283,12 @@ button:focus {
 }
 
 .community-cards {
-  display: inherit;
+  display: inline-block;
+  margin: 0 40px;
 }
 
 .community-cards > .card {
-  width: 16%;
+  width: 180px;
 }
 
 .text-list {
@@ -303,118 +314,8 @@ td:hover {
 
 /* Media Queries */
 
-/* Smartphone (320px) */
-@media only screen and (min-width: 320px) and (max-width: 727px) {
-  .wrapper {
-    grid-template-columns: 100px 1fr;
-    grid-template-areas:
-      "nav nav"
-      "header sidebar"
-      "header content";
-  }
-
-  .content {
-    margin-top: 15vh;
-    margin-left: 8%;
-  }
-
-  .filter {
-    padding: 10px;
-    position: fixed;
-    margin-top: 4.1vh;
-  }
-
-  nav {
-    height: 5vh;
-    position: fixed;
-    z-index: 2;
-  }
-
-  nav li {
-    font-size: 16px;
-  }
-
-  nav a {
-    padding: 0 5px;
-  }
-
-  .sidebar {
-    margin: 5vh 16.5vh 14vh;
-    position: fixed;
-    display: inline;
-    width: 60vw;
-    overflow: scroll;
-    z-index: 2;
-  }
-
-  li,
-  .list {
-    font-size: 16px;
-    padding: 9px;
-  }
-
-  .list-ul {
-    display: inline-flex;
-  }
-
-  button {
-    padding: 8px 12px;
-    font-size: 14px;
-    margin: 3px 1px;
-    display: block;
-    padding: 8px 12px;
-    width: 100px;
-  }
-
-  .list-btn {
-    font-size: 16px;
-    padding: 0 20px;
-  }
-
-  .card {
-    width: 180px;
-    margin: 0.4rem 0.4rem;
-  }
-
-  #cardSearch {
-    margin-bottom: 3px;
-    padding: 6px 2px;
-    font-size: 12px;
-    width: 100px;
-    float: none;
-  }
-
-  .styled-select select {
-    padding: 3px;
-    margin-top: 2px;
-    height: 35px;
-    width: 100px;
-  }
-
-  .blue select {
-    font-size: 14px;
-  }
-  .empty {
-    border-left: 1px solid #000;
-    border-top: none;
-  }
-  .filled {
-    width: 100px;
-    height: 100%;
-  }
-}
-
-.community-cards {
-  display: inline-block;
-  margin: 0 40px;
-}
-
-.community-cards > .card {
-  width: 180px;
-}
-
 /* Tablet (728px) */
-@media only screen and (min-width: 728px) and (max-width: 1085px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .wrapper {
     grid-template-columns: 124px 1fr;
     grid-template-areas:
@@ -429,18 +330,12 @@ td:hover {
   }
 
   .filter {
-    padding: 10px;
-    position: fixed;
     margin-top: 40px;
     margin-left: 180px;
-    background-color: #fff;
-    z-index: 2;
   }
 
   nav {
     height: 40px;
-    position: fixed;
-    z-index: 2;
   }
 
   nav li {
@@ -448,31 +343,34 @@ td:hover {
   }
 
   nav a {
-    padding: 0 5px;
+    padding: 0 6px;
   }
 
   .sidebar {
     margin: 39px 20px 100px;
-    position: fixed;
-    display: inline;
-    z-index: 2;
-  }
-
-  li,
-  .list {
-    font-size: 16px;
-    padding: 9px;
   }
 
   .list-ul {
     display: inline-block;
   }
 
+  li,
+  .list {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .filled {
+    width: 135px;
+  }
+
+  .card {
+    width: 200px;
+  }
+
   button {
-    padding: 8px 12px;
     font-size: 16px;
     display: inline-block;
-    padding: 8px 12px;
     width: 120px;
   }
 
@@ -481,23 +379,13 @@ td:hover {
     padding: 10px 18px;
   }
 
-  .card {
-    width: 180px;
-    margin: 0.4rem 0.4rem;
-  }
-
   #cardSearch {
-    margin-bottom: 3px;
-    padding: 6px 2px;
     font-size: 16px;
-    width: 243px;
+    width: 240px;
     float: none;
   }
 
   .styled-select select {
-    padding: 3px;
-    margin-top: 2px;
-    height: 35px;
     width: 120px;
   }
 
@@ -505,12 +393,116 @@ td:hover {
     font-size: 16px;
   }
 
-  .community-cards {
-    display: inline-block;
-    margin: 0 40px;
+  /* Community Cards */
+  .community-list h1 {
+    font-size: 24px;
   }
 
   .community-cards > .card {
     width: 17%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 15% 1fr;
+    grid-template-areas:
+      "nav nav"
+      "sidebar header"
+      "sidebar content";
+  }
+
+  nav {
+    height: 40px;
+  }
+
+  nav li {
+    font-size: 24px;
+  }
+
+  nav a {
+    padding: 0 12px;
+  }
+
+  .content {
+    margin-top: 150px;
+    margin-left: 0;
+  }
+
+  .filter {
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 175px;
+  }
+
+  .sidebar {
+    display: block;
+    margin: 39px 0 0 0;
+    overflow: none;
+  }
+
+  .list-ul {
+    display: inline-block;
+  }
+
+  li,
+  .list {
+    padding: 6px;
+    font-size: 20px;
+  }
+
+  .card {
+    width: 200px;
+  }
+
+  button {
+    font-size: 18px;
+    display: inline-block;
+    margin: 5px 0;
+    padding: 13px 30px;
+  }
+
+  .list-btn {
+    font-size: 20px;
+  }
+
+  #cardSearch {
+    padding: 12px 5px;
+    margin: 7px 3px 0 0;
+    font-size: 18px;
+    width: auto;
+  }
+
+  .styled-select select {
+    height: 48px;
+    padding: 5px;
+    width: 150px;
+  }
+
+  .blue select {
+    font-size: 18px;
+  }
+
+  .empty {
+    border-top: 1px solid #000;
+    border-left: none;
+  }
+
+  /* Community */
+  .community-list h1 {
+    font-size: 28px;
+  }
+
+  .community-list {
+    margin: 20px;
+  }
+
+  .community-cards {
+    display: inherit;
+    margin: 0;
+  }
+
+  .community-cards > .card {
+    width: 16%;
   }
 }
