@@ -6,7 +6,7 @@ function loadNav() {
   let user_id = localStorage.getItem("user_id");
   $(".nav-bar").html(`<ul class='cf'>
         ${
-          user_id != ""
+          user_id != null
             ? `
           <li>
             <a class="login out" href="./signup.html">
