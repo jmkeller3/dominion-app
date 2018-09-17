@@ -313,10 +313,15 @@ td:hover {
 
 /* Media Queries */
 
+@media only screen and (min-width: 504px) and (max-width: 697px) {
+  .sidebar {
+    width: 75%;
+  }
+}
+
 @media only screen and (min-width: 696px) and (max-width: 767px) {
   .sidebar {
-    overflow: none;
-    width: auto;
+    width: 81%;
   }
 }
 
