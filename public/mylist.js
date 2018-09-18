@@ -1,4 +1,4 @@
-"use strict"(async function() {
+(async function() {
   let user_id = localStorage.getItem("user_id");
 
   let user = await $.ajax({
@@ -18,17 +18,20 @@
   for (let arr of Object.values(setdata)) {
     carddata = carddata.concat(arr);
   }
+
   //displays the user's lists
   function displayLists(lists) {
     console.log(`made a list`);
     const htmllist = lists.map(
       list => `
-            <div class="community-list">
+            <div id="${list.id}" class="community-list">
             <h1>${list.name}</h1>
-            <div class="mylist-btn"
-            <button id="edit-list">Edit List</button>
-            <button id="delete-list">Delete List</button>
-            </div>
+            
+            <button data-id="${list.id}" class="edit-list">Edit List</button>
+            <button data-id="${
+              list.id
+            }" class="delete-list">Delete List</button>
+            
             
             <div class="community-cards">
               <!-- card 1 -->
@@ -185,6 +188,31 @@
     </div>`
     );
     $("#my-lists").html(htmllist);
+    //Edit List
+    $(".edit-list").click(e => {
+      e.preventDefault();
+      let list = e.currentTarget;
+      console.log($(list).data("id"));
+    });
+
+    //Delete List
+    $(".delete-list").click(e => {
+      e.preventDefault();
+      let list = e.currentTarget;
+      let list_id = $(list).data("id");
+      console.log(list_id);
+      $.ajax({
+        url: `/api/cardlist/${list_id}`,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+        method: "DELETE",
+        contentType: "application/json"
+      });
+      $(list)
+        .parent()
+        .css("display", "none");
+    });
   }
 
   function listFilterCreator(listcards) {
@@ -201,7 +229,7 @@
 
   let newCardLists = cardlists.map(list => ({
     name: list.name,
-
+    id: list._id,
     card1: carddata.find(propEq("name", list.card1)),
     card2: carddata.find(propEq("name", list.card2)),
     card3: carddata.find(propEq("name", list.card3)),

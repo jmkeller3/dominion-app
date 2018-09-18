@@ -56,7 +56,7 @@ let server;
 function runServer() {
   return new Promise((resolve, reject) => {
     mongoose.connect(
-      DATABASE_URL,
+      require.main === module ? DATABASE_URL : TEST_DATABASE_URL,
       { useNewUrlParser: true },
       err => {
         if (err) {
