@@ -25,6 +25,10 @@
       list => `
             <div class="community-list">
             <h1>${list.name}</h1>
+            <div class="mylist-btn"
+            <button id="edit-list">Edit List</button>
+            <button id="delete-list">Delete List</button>
+            </div>
             
             <div class="community-cards">
               <!-- card 1 -->
