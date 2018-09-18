@@ -18,7 +18,7 @@
   for (let arr of Object.values(setdata)) {
     carddata = carddata.concat(arr);
   }
-
+  //displays the user's lists
   function displayLists(lists) {
     console.log(`made a list`);
     const htmllist = lists.map(
