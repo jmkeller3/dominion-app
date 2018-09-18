@@ -1,4 +1,4 @@
-(async function() {
+"use strict"(async function() {
   let user_id = localStorage.getItem("user_id");
 
   let user = await $.ajax({
