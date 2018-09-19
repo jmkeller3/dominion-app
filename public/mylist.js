@@ -192,7 +192,10 @@
     $(".edit-list").click(e => {
       e.preventDefault();
       let list = e.currentTarget;
+      let list_id = $(list).data("id");
       console.log($(list).data("id"));
+      localStorage.setItem("cardlist-id", list_id);
+      window.location.replace("/index.html");
     });
 
     //Delete List

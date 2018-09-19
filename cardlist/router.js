@@ -50,30 +50,12 @@ router.get("/:id", jwtAuth, (req, res) => {
   cardList
     .findById(req.params.id)
     .populate("creator")
-    .exec(function(err, cardlists) {
+    .exec(function(err, cardlist) {
       if (err) {
         console.error(err);
         res.status(500).json({ message: "Internal server error" });
       }
-      res.status(200).json(
-        cardlists.map(cardlist => {
-          return {
-            id: cardlist._id,
-            creator: cardlist.creator.serialize(),
-            name: cardlist.name,
-            card1: cardlist.card1,
-            card2: cardlist.card2,
-            card3: cardlist.card3,
-            card4: cardlist.card4,
-            card5: cardlist.card5,
-            card6: cardlist.card6,
-            card7: cardlist.card7,
-            card8: cardlist.card8,
-            card9: cardlist.card9,
-            card10: cardlist.card10
-          };
-        })
-      );
+      res.status(200).json(cardlist.serialize());
     });
 });
 
@@ -164,14 +146,16 @@ router.put("/:id", jsonParser, jwtAuth, (req, res) => {
     return res.status(400).json({ message: message });
   }
 
-  if (!(req.user.id === req.cardlist.creator_id)) {
-    const message =
-      `Request user id (${req.user.id}) and request cardlist id ` +
-      `(${req.cardlist.creator_id}) must match`;
+  //Not Working
 
-    console.error(message);
-    return res.status(400).json({ message: message });
-  }
+  // if (!(req.user.id === req.cardlist.creator)) {
+  //   const message =
+  //     `Request user id (${req.user.id}) and request cardlist id ` +
+  //     `(${req.cardlist.creator}) must match`;
+
+  //   console.error(message);
+  //   return res.status(400).json({ message: message });
+  // }
 
   console.log(`Updating cardlist item \`${req.params.id}\``);
   const updatedCardList = {};
@@ -191,17 +175,16 @@ router.put("/:id", jsonParser, jwtAuth, (req, res) => {
 
   updateableFields.forEach(field => {
     if (field in req.body) {
-      toUpdate[field] = req.body[field];
+      updatedCardList[field] = req.body[field];
     }
   });
 
   cardList
-    .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
+    .findByIdAndUpdate(req.params.id, { $set: updatedCardList }, { new: true })
     .then(updatedCardList =>
       res.status(204).json({
         id: updatedCardList.id,
-        //creator: updatedCardList.creator_id,
-        //double check this use of virtualization
+        creator: updatedCardList.creator,
         name: updatedCardList.name,
         card1: updatedCardList.card1,
         card2: updatedCardList.card2,
