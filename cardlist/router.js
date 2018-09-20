@@ -148,14 +148,14 @@ router.put("/:id", jsonParser, jwtAuth, (req, res) => {
 
   //Not Working
 
-  // if (!(req.user.id === req.cardlist.creator)) {
-  //   const message =
-  //     `Request user id (${req.user.id}) and request cardlist id ` +
-  //     `(${req.cardlist.creator}) must match`;
+  if (!(req.user.id === req.body.creator)) {
+    const message =
+      `Request user id (${req.user.id}) and request cardlist id ` +
+      `(${req.body.creator}) must match`;
 
-  //   console.error(message);
-  //   return res.status(400).json({ message: message });
-  // }
+    console.error(message);
+    return res.status(400).json({ message: message });
+  }
 
   console.log(`Updating cardlist item \`${req.params.id}\``);
   const updatedCardList = {};

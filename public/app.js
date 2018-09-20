@@ -146,7 +146,7 @@
             contentType: "application/json",
             data: JSON.stringify({
               id: cardlist_id,
-              user,
+              creator: user,
               name,
               card1: savelist[0],
               card2: savelist[1],
@@ -311,6 +311,7 @@
     empty.addEventListener("drop", dragDrop);
   }
   let cardname;
+  let selectedCard;
   function dragStart() {
     cardname = this.id;
     selectedCard = this;
