@@ -27,10 +27,32 @@
     $(".content").html(hmtlcards);
     clickListener();
     dragCards();
+    divFocus("card-img");
   }
 
-  displayCards(carddata);
+  //Make divs focusable
+  function divFocus(className) {
+    let divs = document.getElementsByClassName(`${className}`);
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].setAttribute("tabindex", "0");
+    }
+  }
 
+  //a11y Acessessible
+  function a11yClick(e) {
+    if (e.type === "click") {
+      return true;
+    } else if (e.type === "keypress") {
+      let code = e.charCode || e.keyCode;
+      if (code === 32 || code === 13) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  //Buttons
   $(".attack-btn").click(() => {
     event.preventDefault();
     activeType = "Attack";
@@ -274,17 +296,19 @@
     var clickedCard = $(".card");
     var clickedCardName;
 
-    clickedCard.click(event => {
+    clickedCard.on("click keypress", function(event) {
       event.preventDefault();
-      clickedCardName = $(event.target.parentElement).attr("id");
-      console.log(cardlist);
-      for (let i = 0; i < cardlist.length; i++) {
-        const cardListElement = $(cardlist).eq(i);
-        if (!cardListElement.hasClass("filled")) {
-          cardListElement.html(clickedCardName);
-          cardListElement.addClass("filled");
-          console.log(clickedCardName);
-          break;
+      if (a11yClick(event) === true) {
+        clickedCardName = $(event.target.parentElement).attr("id");
+        console.log(cardlist);
+        for (let i = 0; i < cardlist.length; i++) {
+          const cardListElement = $(cardlist).eq(i);
+          if (!cardListElement.hasClass("filled")) {
+            cardListElement.html(clickedCardName);
+            cardListElement.addClass("filled");
+            console.log(clickedCardName);
+            break;
+          }
         }
       }
     });
@@ -347,4 +371,7 @@
       .children("li")
       .addClass("filled");
   }
+
+  //Display Cards
+  displayCards(carddata);
 })();
