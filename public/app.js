@@ -30,13 +30,15 @@
     divFocus("card-img");
   }
 
-  //Make divs focusable
+  //Make attrs focusable
   function divFocus(className) {
-    let divs = document.getElementsByClassName(`${className}`);
-    for (let i = 0; i < divs.length; i++) {
-      divs[i].setAttribute("tabindex", "0");
+    let attrs = document.getElementsByClassName(`${className}`);
+    for (let i = 0; i < attrs.length; i++) {
+      attrs[i].setAttribute("tabindex", "0");
     }
   }
+
+  divFocus("list");
 
   //a11y Acessessible
   function a11yClick(e) {

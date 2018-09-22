@@ -102,7 +102,7 @@ li,
 .list {
   text-align: center;
   padding: 9px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   color: #000;
   transition-duration: 0.6s;
@@ -111,16 +111,24 @@ li,
 .list:hover,
 .list:focus {
   background-color: #fff;
-  color: #3867c9;
+  color: #16377c;
   box-shadow: 12px 10px 16px 0 rgba(0, 0, 0, 0.24),
     37px 0 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .filled {
   background-color: #fff;
-  color: #3867c9;
+  color: #16377c;
   width: 100px;
   height: 100%;
+}
+
+.filled:hover,
+.filled:focus {
+  background-color: #16377c;
+  color: #fff;
+  box-shadow: 12px 10px 16px 0 rgba(0, 0, 0, 0.24),
+    37px 0 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .wrapper {
@@ -185,12 +193,13 @@ button:focus {
   border: 0;
   border-radius: 0;
   padding: 0 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   transition-duration: 0.6s;
 }
 
-.list-btn:hover {
+.list-btn:hover,
+.list-btn:focus {
   background-color: #16377c;
   color: #fff;
   box-shadow: 12px 10px 16px 0 rgba(0, 0, 0, 0.24),
@@ -267,6 +276,32 @@ button:focus {
   background: #16377c;
 }
 
+.tooltip {
+  position: relative;
+  z-index: 2;
+}
+
+.tooltip:after {
+  position: absolute;
+  padding: 3px;
+  border: 2px solid #000;
+  border-radius: 6px;
+  background-color: #16377c;
+  color: #fff;
+  content: attr(data-window);
+  min-width: 100px;
+  left: 130%;
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0.4s;
+  visibility: hidden;
+}
+
+.tooltip:hover:after {
+  opacity: 1;
+  visibility: visible;
+  left: 110%;
+}
+
 /* Community Cards */
 .community-list h1 {
   font-size: 18px;
@@ -313,20 +348,20 @@ td:hover {
 
 /* Media Queries */
 
-@media only screen and (min-width: 504px) and (max-width: 697px) {
+@media only screen and (min-width: 503px) and (max-width: 697px) {
   .sidebar {
     width: 75%;
   }
 }
 
-@media only screen and (min-width: 696px) and (max-width: 767px) {
+@media only screen and (min-width: 697px) and (max-width: 768px) {
   .sidebar {
     width: 81%;
   }
 }
 
 /* Tablet (768px) */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
   .wrapper {
     grid-template-columns: 124px 1fr;
     grid-template-areas:
@@ -450,6 +485,7 @@ td:hover {
     padding: 20px 0 20px 40px;
     margin-top: 40px;
     margin-left: 125px;
+    width: 100%;
   }
 
   .sidebar {
@@ -493,7 +529,7 @@ td:hover {
     padding: 12px 5px;
     margin: 7px 3px 0 0;
     font-size: 18px;
-    width: auto;
+    width: 160px;
   }
 
   .styled-select select {
