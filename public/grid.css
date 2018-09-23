@@ -279,27 +279,29 @@ button:focus {
 .tooltip {
   position: relative;
   z-index: 2;
+  font-size: 14px;
 }
 
 .tooltip:after {
   position: absolute;
-  padding: 3px;
-  border: 2px solid #000;
+  padding: 2px;
+  border: 1px solid #000;
   border-radius: 6px;
   background-color: #16377c;
   color: #fff;
   content: attr(data-window);
-  min-width: 100px;
-  left: 130%;
+  min-width: 120px;
+  left: 70px;
+  top: 10px;
   opacity: 0;
-  transition: all 0.3s ease-in-out 0.4s;
+  transition: all 0.3s ease-in;
   visibility: hidden;
 }
 
 .tooltip:hover:after {
   opacity: 1;
   visibility: visible;
-  left: 110%;
+  right: 100%;
 }
 
 /* Community Cards */
@@ -371,13 +373,15 @@ td:hover {
   }
 
   .content {
-    margin-top: 150px;
+    margin-top: 220px;
     margin-left: 50px;
   }
 
   .filter {
     margin-top: 40px;
-    margin-left: 180px;
+    margin-left: 140px;
+    padding: 20px 140px 20px 50px;
+    width: 100%;
   }
 
   nav {
@@ -395,6 +399,7 @@ td:hover {
   .sidebar {
     margin: 39px 20px 100px;
     width: auto;
+    overflow: inherit;
   }
 
   .list-ul {
@@ -428,7 +433,7 @@ td:hover {
 
   #cardSearch {
     font-size: 16px;
-    width: 240px;
+    width: 200px;
     float: none;
   }
 
@@ -443,6 +448,28 @@ td:hover {
   .empty {
     border-left: none;
     border-top: 1px solid #000;
+  }
+
+  .tooltip:after {
+    position: absolute;
+    padding: 6px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #16377c;
+    color: #fff;
+    content: attr(data-window);
+    min-width: 80px;
+    left: 130%;
+    top: 100px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out 0.4s;
+    visibility: hidden;
+  }
+
+  .tooltip:hover:after {
+    opacity: 1;
+    visibility: visible;
+    left: 110%;
   }
 
   /* Community Cards */
@@ -491,7 +518,7 @@ td:hover {
   .sidebar {
     display: block;
     margin: 39px 0 0 20px;
-    overflow: none;
+    overflow: inherit;
     width: auto;
   }
 
@@ -545,6 +572,28 @@ td:hover {
   .empty {
     border-top: 1px solid #000;
     border-left: none;
+  }
+
+  .tooltip:after {
+    position: absolute;
+    padding: 6px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    background-color: #16377c;
+    color: #fff;
+    content: attr(data-window);
+    min-width: 80px;
+    left: 130%;
+    top: 90px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out 0.4s;
+    visibility: hidden;
+  }
+
+  .tooltip:hover:after {
+    opacity: 1;
+    visibility: visible;
+    left: 110%;
   }
 
   /* Community */
