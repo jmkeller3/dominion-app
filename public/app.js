@@ -92,6 +92,20 @@
     displayCards(carddata.filter(cardFilter));
     console.log(`Button worked!`);
   });
+  // Info Button
+  $(".mobile-btn").click(() => {
+    event.preventDefault();
+    $("#listinfo").css("display", "block");
+  });
+  $(".close").click(() => {
+    $("#listinfo").css("display", "none");
+  });
+  // window.onclick = function(event) {
+  //   let modal = document.getElementById("listinfo");
+  //   if (event.target == modal) {
+  //     modal = "none";
+  //   }
+  // };
 
   //update list
   if (localStorage.getItem("cardlist-id") !== null) {

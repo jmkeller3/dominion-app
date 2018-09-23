@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
     <link rel="stylesheet" href="grid.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
@@ -21,12 +22,14 @@
         </nav>
         <div class="filter">
             <input type="text" id="cardSearch" placeholder="Search for names..">
-            <button class="all-btn btn" type="submit">All</button>
-            <button class="attack-btn btn" type="submit">Attack</button>
-            <button class="rank-btn btn" type="submit">Rank</button>
-            <button class="reaction-btn btn" type="submit">Reaction</button>
-            <button class="treasure-btn btn" type="submit">Treasure</button>
-            <div class="styled-select blue semi-square">
+            <button class="all-btn" data-balloon="All Cards" data-balloon-pos="up" type="submit">All</button>
+            <button class="attack-btn" data-balloon="Filter by Attack" data-balloon-pos="up" type="submit">Attack</button>
+            <button class="rank-btn" data-balloon="Filter by Rank" data-balloon-pos="up" type="submit">Rank</button>
+            <button class="reaction-btn" data-balloon="Filter for Reaction Cards" data-balloon-pos="up"
+                data-balloon-length="fit" type="submit">Reaction</button>
+            <button class="treasure-btn" data-balloon="Filter for Treasure Cards" data-balloon-length="fit"
+                data-balloon-pos="up" type="submit">Treasure</button>
+            <div data-balloon="Filter by Sets" data-balloon-pos="up" class="styled-select blue semi-square">
                 <select id="setOptions">
                     <option value=''>Sort by Set</option>
                     <option value='Base'>Base</option>
@@ -43,9 +46,27 @@
                     <option value='2nd'>Base (Second Edition)</option>
                 </select>
             </div>
+            <div class="filter-tooltip mobile">
+                <button class="mobile-btn">&#x1F6C8;</button>
+                <div id="listinfo" class="modal">
+                    <div class="listinfo-content">
+                        <div class="modal-header"><span class="close">&times;</span>
+                            <h1>How to Save Your List</h1>
+                        </div>
+                        <div class="modal-body">
+                            <p>In order to save or edit your list, you must be logged in.</p>
+                            <p>Add Cards to your list by clicking or tapping them. You can also drag and drop cards
+                                into slots.</p>
+                            <p>You can remove cards by clicking on them in your list or by dragging its replacement
+                                over it.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="sidebar">
-            <ul class="list-ul tooltip" data-window="Click or Drag Cards to Fill List">
+        <div class="sidebar tooltip" data-window="Click or Drag Cards to Fill List">
+            <ul class="list-ul">
                 <button class="list-btn btn" id="list-submit" type="submit">Save List</button>
 
                 <div class="empty">

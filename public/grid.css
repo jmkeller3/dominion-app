@@ -58,7 +58,7 @@ nav a#openup {
   grid-area: content;
   float: left;
   position: relative;
-  margin-top: 127px;
+  margin-top: 147px;
   margin-left: 17px;
 }
 
@@ -74,9 +74,10 @@ nav a#openup {
 
 .sidebar {
   grid-area: sidebar;
-  background-color: #6194ff;
+  background-color: #fff;
   color: white;
   position: fixed;
+  padding: 10px 0 20px 0;
   margin: 35px 40px 40px 120px;
   display: inline;
   width: 62vw;
@@ -88,6 +89,7 @@ nav a#openup {
   list-style: none;
   position: relative;
   border: 1px solid #000;
+  background-color: #6194ff;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
@@ -96,6 +98,8 @@ nav a#openup {
 
 .list {
   position: relative;
+  visibility: hidden;
+  white-space: nowrap;
 }
 
 li,
@@ -121,6 +125,7 @@ li,
   color: #16377c;
   width: 100px;
   height: 100%;
+  visibility: visible;
 }
 
 .filled:hover,
@@ -206,6 +211,16 @@ button:focus {
     37px 0 50px 0 rgba(0, 0, 0, 0.19);
 }
 
+.mobile-btn {
+  border-radius: 50%;
+  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  margin: 10px auto;
+  padding: 4px;
+  background-color: #16377c;
+}
+
 #cardSearch {
   padding: 6px 2px;
   font-size: 12px;
@@ -239,6 +254,15 @@ button:focus {
   background-color: #3867c9;
   color: #fff;
   font-size: 14px;
+  transition-duration: 0.4s;
+}
+
+.blue select:focus,
+.blue select:hover {
+  background-color: #fff;
+  color: #16377c;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* draggable images */
@@ -277,22 +301,21 @@ button:focus {
 }
 
 .tooltip {
-  position: relative;
   z-index: 2;
   font-size: 14px;
 }
 
 .tooltip:after {
-  position: absolute;
-  padding: 2px;
+  position: relative;
+  padding: 2px 8px;
   border: 1px solid #000;
   border-radius: 6px;
   background-color: #16377c;
   color: #fff;
   content: attr(data-window);
-  min-width: 120px;
-  left: 70px;
-  top: 10px;
+  width: fit-content;
+  left: 1px;
+  top: 9px;
   opacity: 0;
   transition: all 0.3s ease-in;
   visibility: hidden;
@@ -302,6 +325,87 @@ button:focus {
   opacity: 1;
   visibility: visible;
   right: 100%;
+}
+
+/* Info Button */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  padding-top: 135px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.listinfo-content {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  padding: 0;
+  /* border: 1px solid #000; */
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* Animations */
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -400px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -400px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: 1000;
+}
+
+.close:hover,
+.close:focus {
+  color: #6194ff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 8px 16px;
+  background-color: #16377c;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 20px 16px;
+}
+
+.modal-body > p {
+  padding: 5px 0;
+  font-size: 16px;
 }
 
 /* Community Cards */
@@ -382,6 +486,7 @@ td:hover {
     margin-left: 140px;
     padding: 20px 140px 20px 50px;
     width: 100%;
+    box-shadow: 5px 10px 10px #ccc;
   }
 
   nav {
@@ -397,17 +502,22 @@ td:hover {
   }
 
   .sidebar {
-    margin: 39px 20px 100px;
-    width: auto;
-    overflow: inherit;
+    margin: 40px 0px 100px;
+    width: fit-content;
+    padding: 0 66px 100px 0;
+    overflow: hidden;
+    z-index: 0;
   }
 
   .list-ul {
     display: inline-block;
   }
 
-  li,
   .list {
+    padding: 10px 16px;
+  }
+
+  li {
     font-size: 16px;
     padding: 12px;
   }
@@ -458,9 +568,10 @@ td:hover {
     background-color: #16377c;
     color: #fff;
     content: attr(data-window);
-    min-width: 80px;
-    left: 130%;
-    top: 100px;
+    min-width: 40px;
+    max-width: 100px;
+    right: 130%;
+    top: 420px;
     opacity: 0;
     transition: all 0.3s ease-in-out 0.4s;
     visibility: hidden;
@@ -469,7 +580,20 @@ td:hover {
   .tooltip:hover:after {
     opacity: 1;
     visibility: visible;
-    left: 110%;
+    left: 10px;
+  }
+
+  .modal-header {
+    padding: 6px 20px;
+    font-size: 16px;
+  }
+
+  .modal-body > p {
+    font-size: 24px;
+  }
+
+  .close {
+    font-size: 48px;
   }
 
   /* Community Cards */
@@ -479,6 +603,11 @@ td:hover {
 
   .community-cards > .card {
     width: 17%;
+  }
+
+  .mobile {
+    display: inline-block;
+    margin-left: 5px;
   }
 }
 
@@ -509,30 +638,33 @@ td:hover {
   }
 
   .filter {
-    padding: 20px 0 20px 40px;
+    padding: 20px 0 20px 20px;
     margin-top: 40px;
-    margin-left: 125px;
+    margin-left: 145px;
     width: 100%;
+    box-shadow: 5px 10px 10px #eaeaea;
   }
 
   .sidebar {
-    display: block;
-    margin: 39px 0 0 20px;
+    display: inline-block;
+    margin: 40px 0 0;
     overflow: inherit;
     width: auto;
+    z-index: 0;
   }
 
   .list-ul {
     display: inline-block;
-    width: 120px;
+    width: 140px;
   }
 
   .list {
     width: 100%;
+    padding: 10px 16px;
+    word-wrap: break-word;
   }
 
-  li,
-  .list {
+  li {
     padding: 6px;
     font-size: 20px;
   }
@@ -583,8 +715,8 @@ td:hover {
     color: #fff;
     content: attr(data-window);
     min-width: 80px;
-    left: 130%;
-    top: 90px;
+    right: 130%;
+    top: 430px;
     opacity: 0;
     transition: all 0.3s ease-in-out 0.4s;
     visibility: hidden;
@@ -593,7 +725,20 @@ td:hover {
   .tooltip:hover:after {
     opacity: 1;
     visibility: visible;
-    left: 110%;
+    left: 0;
+  }
+
+  .modal-header {
+    padding: 6px 20px;
+    font-size: 16px;
+  }
+
+  .modal-body > p {
+    font-size: 24px;
+  }
+
+  .close {
+    font-size: 48px;
   }
 
   /* Community */
@@ -612,5 +757,8 @@ td:hover {
 
   .community-cards > .card {
     width: 16%;
+  }
+  .mobile {
+    display: block;
   }
 }
