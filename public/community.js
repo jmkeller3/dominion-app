@@ -19,11 +19,12 @@
   console.log(cardlists);
 
   function displayLists(lists) {
-    const htmllist = lists.map(
-      list => `
+    const htmllist = lists.map(list => {
+      let username = list.creator.email.split("@")[0];
+      return `
             <div class="community-list">
             <h1>${list.name}</h1>
-            <h2>By ${list.creator.email}</h2>
+            <h2>By ${username}</h2>
             <div class="community-cards">
               <!-- card 1 -->
               <div class="card" id="${list.card1.name}">
@@ -87,6 +88,7 @@
     </div>
     </div>
       <table class="text-list">
+        <thead>
         <tr>
           <th>Name</th>
           <th>Expansion</th>
@@ -95,6 +97,8 @@
           <th>Rank</th> 
           <th>Rules</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
           <td>${list.card1.name}</td>
           <td>${list.card1.expansion}</td>
@@ -175,9 +179,10 @@
           <td>${list.card10.rank}</td> 
           <td>${list.card10.rules}</td>
         </tr>
+        </tbody>
       </table>              
-    </div>`
-    );
+    </div>`;
+    });
     $("#community-lists").html(htmllist);
   }
 

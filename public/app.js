@@ -133,19 +133,18 @@
         updatecards.push(updatecard9);
         let updatecard10 = data.card10;
         updatecards.push(updatecard10);
+        console.log(updatecards);
 
         const cardlist = $(".list-ul").find("li");
 
         for (let i = 0; i < cardlist.length; i++) {
-          const cardListElement = $(cardlist).eq(i);
-          for (let a = 0; a < updatecards.length; a++)
-            if (!cardListElement.hasClass("filled")) {
-              cardListElement.html(updatecards[a]);
-              cardListElement.addClass("filled");
-              console.log(updatecards[a]);
-              removeCardListener();
-              break;
-            }
+          let cardListElement = $(cardlist).eq(i);
+          if (!cardListElement.hasClass("filled")) {
+            cardListElement.html(updatecards[i]);
+            cardListElement.addClass("filled");
+            console.log(updatecards[i]);
+          }
+          removeCardListener();
         }
         $("#list-submit").click(e => {
           e.preventDefault();

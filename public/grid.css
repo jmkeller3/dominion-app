@@ -403,9 +403,10 @@ button:focus {
   padding: 20px 16px;
 }
 
-.modal-body > p {
+.modal-body li {
   padding: 5px 0;
   font-size: 16px;
+  text-align: left;
 }
 
 /* Community Cards */
@@ -431,18 +432,6 @@ button:focus {
   width: 180px;
 }
 
-.text-list {
-  display: inline-block;
-}
-
-td,
-th {
-  border: 1px solid #16377c;
-  text-align: left;
-  padding: 8px;
-  color: #000;
-}
-
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -457,6 +446,64 @@ td:hover {
 @media only screen and (min-width: 503px) and (max-width: 697px) {
   .sidebar {
     width: 75%;
+  }
+}
+
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1023px) {
+  table,
+  th,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #16377c;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #6194ff;
+    position: relative;
+    padding-left: 50%;
+    padding-right: 5px;
+  }
+
+  td:before {
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "Expansion";
+  }
+  td:nth-of-type(3):before {
+    content: "Cost";
+  }
+  td:nth-of-type(4):before {
+    content: "Type";
+  }
+  td:nth-of-type(5):before {
+    content: "Rank";
+  }
+  td:nth-of-type(6):before {
+    content: "Rules";
   }
 }
 
@@ -506,6 +553,7 @@ td:hover {
     padding: 70px 66px 100px 0;
     overflow: hidden;
     z-index: 0;
+    box-shadow: 0 0;
   }
 
   .list-ul {
@@ -598,11 +646,26 @@ td:hover {
 
   /* Community Cards */
   .community-list h1 {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .community-list h2 {
+    font-size: 20px;
+    margin: 12px;
   }
 
   .community-cards > .card {
     width: 17%;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td {
+    font-size: 18px;
+    padding-right: 7px;
   }
 
   .mobile {
@@ -651,6 +714,7 @@ td:hover {
     overflow: inherit;
     width: auto;
     z-index: 1;
+    box-shadow: 0 0;
   }
 
   .list-ul {
@@ -744,7 +808,12 @@ td:hover {
 
   /* Community */
   .community-list h1 {
-    font-size: 28px;
+    font-size: 30px;
+  }
+
+  .community-list h2 {
+    font-size: 24px;
+    margin: 14px;
   }
 
   .community-list {
@@ -759,6 +828,33 @@ td:hover {
   .community-cards > .card {
     width: 16%;
   }
+
+  .text-list {
+    display: inline-block;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid #16377c;
+    text-align: left;
+    padding: 8px;
+    color: #000;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  td:hover {
+    background-color: #16377c;
+    color: #fff;
+  }
+
   .mobile {
     display: block;
   }
