@@ -100,12 +100,6 @@
   $(".close").click(() => {
     $("#listinfo").css("display", "none");
   });
-  // window.onclick = function(event) {
-  //   let modal = document.getElementById("listinfo");
-  //   if (event.target == modal) {
-  //     modal = "none";
-  //   }
-  // };
 
   //update list
   if (localStorage.getItem("cardlist-id") !== null) {
@@ -149,6 +143,7 @@
               cardListElement.html(updatecards[a]);
               cardListElement.addClass("filled");
               console.log(updatecards[a]);
+              removeCardListener();
               break;
             }
         }
@@ -309,8 +304,8 @@
   //cardlist sidebar
   function clickListener() {
     const cardlist = $(".list-ul").find("li");
-    var clickedCard = $(".card");
-    var clickedCardName;
+    let clickedCard = $(".card");
+    let clickedCardName;
 
     clickedCard.on("click keypress", function(event) {
       event.preventDefault();
@@ -323,9 +318,23 @@
             cardListElement.html(clickedCardName);
             cardListElement.addClass("filled");
             console.log(clickedCardName);
+            removeCardListener();
             break;
           }
         }
+      }
+    });
+  }
+
+  // Remove card from list
+  function removeCardListener() {
+    let removeableCards = $(".filled");
+    removeableCards.on("click keypress", function(event) {
+      event.preventDefault();
+      if (a11yClick(event) === true) {
+        let removeCard = event.target;
+        $(removeCard).removeClass("filled");
+        $(removeCard).html(" Goodbye   ");
       }
     });
   }

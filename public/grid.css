@@ -82,7 +82,8 @@ nav a#openup {
   display: inline;
   width: 62vw;
   overflow: scroll;
-  z-index: 2;
+  z-index: 1;
+  box-shadow: -3px 8px 8px #ccc;
 }
 
 .list-ul {
@@ -99,7 +100,6 @@ nav a#openup {
 .list {
   position: relative;
   visibility: hidden;
-  white-space: nowrap;
 }
 
 li,
@@ -363,7 +363,7 @@ button:focus {
     opacity: 0;
   }
   to {
-    top: 0;
+    top: 10px;
     opacity: 1;
   }
 }
@@ -374,7 +374,7 @@ button:focus {
     opacity: 0;
   }
   to {
-    top: 0;
+    top: 10px;
     opacity: 1;
   }
 }
@@ -482,11 +482,10 @@ td:hover {
   }
 
   .filter {
-    margin-top: 40px;
-    margin-left: 140px;
+    margin: 40px 0 0 140px;
     padding: 20px 140px 20px 50px;
     width: 100%;
-    box-shadow: 5px 10px 10px #ccc;
+    box-shadow: -5px 10px 10px #ccc;
   }
 
   nav {
@@ -502,9 +501,9 @@ td:hover {
   }
 
   .sidebar {
-    margin: 40px 0px 100px;
+    margin: 60px 0px 100px;
     width: fit-content;
-    padding: 0 66px 100px 0;
+    padding: 70px 66px 100px 0;
     overflow: hidden;
     z-index: 0;
   }
@@ -515,6 +514,7 @@ td:hover {
 
   .list {
     padding: 10px 16px;
+    font-size: 16px;
   }
 
   li {
@@ -571,7 +571,7 @@ td:hover {
     min-width: 40px;
     max-width: 100px;
     right: 130%;
-    top: 420px;
+    top: 0px;
     opacity: 0;
     transition: all 0.3s ease-in-out 0.4s;
     visibility: hidden;
@@ -642,15 +642,15 @@ td:hover {
     margin-top: 40px;
     margin-left: 145px;
     width: 100%;
-    box-shadow: 5px 10px 10px #eaeaea;
+    box-shadow: -5px 10px 10px #ccc;
   }
 
   .sidebar {
     display: inline-block;
-    margin: 40px 0 0;
+    margin: 120px 0 0;
     overflow: inherit;
     width: auto;
-    z-index: 0;
+    z-index: 1;
   }
 
   .list-ul {
@@ -661,7 +661,7 @@ td:hover {
   .list {
     width: 100%;
     padding: 10px 16px;
-    word-wrap: break-word;
+    font-size: 18px;
   }
 
   li {
@@ -716,10 +716,11 @@ td:hover {
     content: attr(data-window);
     min-width: 80px;
     right: 130%;
-    top: 430px;
+    top: -40px;
     opacity: 0;
     transition: all 0.3s ease-in-out 0.4s;
     visibility: hidden;
+    z-index: 0;
   }
 
   .tooltip:hover:after {
