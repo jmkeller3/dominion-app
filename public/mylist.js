@@ -96,6 +96,7 @@
     </div>
     </div>
       <table class="text-list">
+        <thead>
         <tr>
           <th>Name</th>
           <th>Expansion</th>
@@ -104,6 +105,8 @@
           <th>Rank</th> 
           <th>Rules</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
           <td>${list.card1.name}</td>
           <td>${list.card1.expansion}</td>
@@ -184,6 +187,7 @@
           <td>${list.card10.rank}</td> 
           <td>${list.card10.rules}</td>
         </tr>
+        </tbody>
       </table>              
     </div>`
     );

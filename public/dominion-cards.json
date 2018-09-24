@@ -1137,24 +1137,6 @@
       "rules": "+1 Card; +1 Action; +1 CoinDuring your Buy phase, this costs 2 Coins less per Action card you have in play, but not less than 0 Coins.",
       "picture": "./scans/prosperity/peddler.jpg",
       "rank": "16"
-    },
-    {
-      "number": "26",
-      "name": "Platinum",
-      "expansion": "Prosperity",
-      "type": "Treasure",
-      "cost": "$9",
-      "rules": "5 Coins.",
-      "picture": "./scans/prosperity/platinum.jpg"
-    },
-    {
-      "number": "27",
-      "name": "Colony",
-      "expansion": "Prosperity",
-      "type": "Victory",
-      "cost": "$11",
-      "rules": "10 <VP>.",
-      "picture": "./scans/prosperity/colony.jpg"
     }
   ],
   "Cornucopia": [

@@ -104,7 +104,7 @@ nav a#openup {
 
 li,
 .list {
-  text-align: center;
+  /* text-align: center; */
   padding: 9px;
   font-size: 14px;
   font-weight: 500;
@@ -403,10 +403,9 @@ button:focus {
   padding: 20px 16px;
 }
 
-.modal-body li {
+.modal-body > p {
   padding: 5px 0;
   font-size: 16px;
-  text-align: left;
 }
 
 /* Community Cards */
@@ -432,6 +431,10 @@ button:focus {
   width: 180px;
 }
 
+#my-lists {
+  margin: 30px;
+}
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -449,7 +452,7 @@ td:hover {
   }
 }
 
-@media only screen and (max-width: 760px),
+@media only screen and (max-width: 765px),
   (min-device-width: 768px) and (max-device-width: 1023px) {
   table,
   th,
@@ -513,8 +516,8 @@ td:hover {
   }
 }
 
-/* Tablet (768px) */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+/* Tablet (766px) */
+@media only screen and (min-width: 766px) and (max-width: 1024px) {
   .wrapper {
     grid-template-columns: 124px 1fr;
     grid-template-areas:
@@ -654,13 +657,17 @@ td:hover {
     margin: 12px;
   }
 
-  .community-cards > .card {
-    width: 17%;
-  }
-
   table {
     width: 100%;
     border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 1px solid #16377c;
+    text-align: left;
+    padding: 8px;
+    color: #000;
   }
 
   td {
@@ -729,8 +736,8 @@ td:hover {
   }
 
   li {
-    padding: 6px;
-    font-size: 20px;
+    /* padding: 6px; */
+    font-size: 24px;
   }
 
   .card {
@@ -808,7 +815,7 @@ td:hover {
 
   /* Community */
   .community-list h1 {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .community-list h2 {
@@ -818,24 +825,16 @@ td:hover {
 
   .community-list {
     margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .community-cards {
     display: inherit;
-    margin: 0;
   }
 
   .community-cards > .card {
     width: 16%;
-  }
-
-  .text-list {
-    display: inline-block;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
   }
 
   td,
@@ -846,13 +845,12 @@ td:hover {
     color: #000;
   }
 
-  tr:nth-child(even) {
-    background-color: #dddddd;
+  td {
+    font-size: 20px;
   }
 
-  td:hover {
-    background-color: #16377c;
-    color: #fff;
+  th {
+    font-size: 22px;
   }
 
   .mobile {
