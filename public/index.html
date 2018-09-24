@@ -16,11 +16,11 @@
 
 <body>
     <div class="wrapper">
-        <nav class="nav-bar cf">
+        <nav role="navigation" class="nav-bar cf">
 
 
         </nav>
-        <div class="filter">
+        <div class="filter" aria-label="Filters to Sort Cards">
             <input type="text" id="cardSearch" placeholder="Search for names..">
             <button class="all-btn" data-balloon="All Cards" data-balloon-pos="up" type="submit">All</button>
             <button class="attack-btn" data-balloon="Filter by Attack" data-balloon-pos="up" type="submit">Attack</button>
@@ -49,7 +49,7 @@
             <div class="filter-tooltip mobile">
                 <button class="mobile-btn">&#x1F6C8;</button>
                 <div id="listinfo" class="modal">
-                    <div class="listinfo-content">
+                    <div class="listinfo-content" aria-live="assertive">
                         <div class="modal-header"><span class="close">&times;</span>
                             <h1>How to Save Your List</h1>
                         </div>
