@@ -1,6 +1,7 @@
 "use strict";
 
 (async function() {
+  // Access Card Data
   const setdata = await $.getJSON("dominion-cards.json");
 
   let carddata = [];
@@ -8,6 +9,7 @@
     carddata = carddata.concat(arr);
   }
 
+  // Access Community Lists
   let cardlists = await $.ajax({
     url: "/api/cardlist",
     headers: {
@@ -16,8 +18,8 @@
     method: "GET",
     contentType: "application/json"
   });
-  console.log(cardlists);
 
+  // Displays User Lists
   function displayLists(lists) {
     const htmllist = lists.map(list => {
       let username = list.creator.email.split("@")[0];
@@ -188,12 +190,14 @@
     $("#community-lists").html(htmllist);
   }
 
+  // Creates list filter
   function listFilterCreator(listcards) {
     return function listfilter(card) {
       return listcards.some(cardName => cardName === card.name);
     };
   }
 
+  // Populates Card list with card data through function binding
   function propEq(prop, val) {
     return function(obj) {
       return obj[prop] === val;

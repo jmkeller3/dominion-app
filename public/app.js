@@ -3,18 +3,15 @@
 (async function() {
   const jwtAuth = localStorage.getItem("token");
 
-  //Card Display
+  //Card Data
   const setdata = await $.getJSON("dominion-cards.json");
-
-  console.log(setdata);
 
   let carddata = [];
   for (let arr of Object.values(setdata)) {
     carddata = carddata.concat(arr);
   }
 
-  console.log(carddata);
-
+  // Displays Cards and loads listeners
   function displayCards(cards) {
     const hmtlcards = cards.map(
       card => `
@@ -40,7 +37,7 @@
 
   divFocus("list");
 
-  //a11y Acessessible
+  //a11y Acessessible check for click functions
   function a11yClick(e) {
     if (e.type === "click") {
       return true;
@@ -54,24 +51,21 @@
     }
   }
 
-  //Buttons
+  // Filter Buttons
   $(".attack-btn").click(() => {
     event.preventDefault();
     activeType = "Attack";
     displayCards(carddata.filter(cardFilter));
-    console.log(`Button worked!`);
   });
   $(".treasure-btn").click(() => {
     event.preventDefault();
     activeType = "Treasure";
     displayCards(carddata.filter(cardFilter));
-    console.log(`Button worked!`);
   });
   $(".reaction-btn").click(() => {
     event.preventDefault();
     activeType = "Reaction";
     displayCards(carddata.filter(cardFilter));
-    console.log(`Button worked!`);
   });
   $(".rank-btn").click(() => {
     event.preventDefault();
@@ -84,13 +78,11 @@
         return a.expansion == b.expansion ? a.rank - b.rank : aIndex - bIndex;
       })
     );
-    console.log(`Button worked!`);
   });
   $(".all-btn").click(() => {
     event.preventDefault();
     activeType = "default";
     displayCards(carddata.filter(cardFilter));
-    console.log(`Button worked!`);
   });
   // Info Button
   $(".mobile-btn").click(() => {
@@ -101,10 +93,9 @@
     $("#listinfo").css("display", "none");
   });
 
-  //update list
+  // Updates if taken from User's list page
   if (localStorage.getItem("cardlist-id") !== null) {
     let cardlist_id = localStorage.getItem("cardlist-id");
-    console.log(cardlist_id);
     $.ajax({
       url: `api/cardlist/${cardlist_id}`,
       method: "GET",
@@ -133,7 +124,6 @@
         updatecards.push(updatecard9);
         let updatecard10 = data.card10;
         updatecards.push(updatecard10);
-        console.log(updatecards);
 
         const cardlist = $(".list-ul").find("li");
 
@@ -142,7 +132,6 @@
           if (!cardListElement.hasClass("filled")) {
             cardListElement.html(updatecards[i]);
             cardListElement.addClass("filled");
-            console.log(updatecards[i]);
           }
           removeCardListener();
         }
@@ -151,7 +140,6 @@
           let savelist = $(".filled")
             .toArray()
             .map(li => li.innerHTML);
-          console.log(savelist);
 
           if (savelist.length < 9) {
             alert(`Please fill list with ten cards`);
@@ -169,7 +157,6 @@
           }
 
           let user = localStorage.getItem("user_id");
-          console.log(cardlist_id);
 
           $.ajax({
             url: `api/cardlist/${cardlist_id}`,
@@ -199,7 +186,7 @@
     });
   }
 
-  // submit list button
+  // Submit list button, with various checks before placing POST request
   $("#list-submit").click(e => {
     e.preventDefault();
 
@@ -210,7 +197,6 @@
     let savelist = $(".filled")
       .toArray()
       .map(li => li.innerHTML);
-    console.log(savelist);
 
     if (savelist.length < 9) {
       alert(`Please fill list with ten cards`);
@@ -220,7 +206,6 @@
     let name = prompt("Please enter a name for your list", "My List");
 
     if (jwtAuth == null) {
-      console.log("jwtAuth working");
       alert(`Please login before you save a list`);
       return;
     }
@@ -247,7 +232,7 @@
     window.location.reload();
   });
 
-  //filters
+  // Filters for Card Display
 
   let activeType;
   function filterType(card) {
@@ -282,7 +267,7 @@
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  //search individual cards
+  // Search individual cards
   function searchCards() {
     let input, filter, cards, show, i;
     input = document.getElementById("cardSearch");
@@ -300,7 +285,7 @@
   }
   document.getElementById("cardSearch").addEventListener("keyup", searchCards);
 
-  //cardlist sidebar
+  // Cardlist sidebar to hold user's cards and submit them upon a sumbit request
   function clickListener() {
     const cardlist = $(".list-ul").find("li");
     let clickedCard = $(".card");
@@ -310,13 +295,11 @@
       event.preventDefault();
       if (a11yClick(event) === true) {
         clickedCardName = $(event.target.parentElement).attr("id");
-        console.log(cardlist);
         for (let i = 0; i < cardlist.length; i++) {
           const cardListElement = $(cardlist).eq(i);
           if (!cardListElement.hasClass("filled")) {
             cardListElement.html(clickedCardName);
             cardListElement.addClass("filled");
-            console.log(clickedCardName);
             removeCardListener();
             break;
           }
@@ -325,7 +308,7 @@
     });
   }
 
-  // Remove card from list
+  // Remove card from list on sidebar
   function removeCardListener() {
     let removeableCards = $(".filled");
     removeableCards.on("click keypress", function(event) {
@@ -348,7 +331,6 @@
       result.addEventListener("dragend", dragEnd);
     }
   }
-  // Drag functions
 
   //Loop through empties and call drag events
   const empties = document.querySelectorAll(".empty");
@@ -363,9 +345,7 @@
   function dragStart() {
     cardname = this.id;
     selectedCard = this;
-
     this.className += " hold";
-    console.log(cardname);
   }
 
   function dragEnd() {
@@ -386,7 +366,6 @@
   }
 
   function dragDrop() {
-    console.log(cardname);
     $(this)
       .children("li")
       .html(cardname);
@@ -396,6 +375,5 @@
       .addClass("filled");
   }
 
-  //Display Cards
   displayCards(carddata);
 })();

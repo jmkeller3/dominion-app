@@ -1,5 +1,7 @@
 "use strict";
 
+// Listener for Login
+
 $("#Login").click(e => {
   e.preventDefault();
   let email = $('[name="logemail"]').val();
@@ -29,6 +31,8 @@ $("#Login").click(e => {
   })();
 });
 
+// Listener of Signup
+
 $("#Signup").click(e => {
   e.preventDefault();
   let email = $('[name="email"]').val();
@@ -51,9 +55,6 @@ $("#Signup").click(e => {
   (async () => {
     await $.ajax({
       url: "/api/users",
-      // headers: {
-      //   Authorization: localStorage.getItem("token")
-      // },
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify({
@@ -64,7 +65,6 @@ $("#Signup").click(e => {
         console.log(`Error!`, err);
       }
     });
-    console.log(`User created!`);
     let token = await $.ajax({
       url: "/api/auth/login",
       method: "POST",
@@ -74,8 +74,6 @@ $("#Signup").click(e => {
         password
       })
     });
-    console.log(`Success!`);
-    console.log(token.authToken);
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
     window.location.replace("/index.html");

@@ -1,5 +1,6 @@
 "use strict";
 
+// Dynamic Nav for pages
 function loadNav() {
   let url = window.location.href.split("/").pop();
 

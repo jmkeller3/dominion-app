@@ -1,6 +1,8 @@
 (async function() {
+  // Access user's id
   let user_id = localStorage.getItem("user_id");
 
+  // Access User's cardlist based on their id
   let user = await $.ajax({
     url: `/api/users/${user_id}`,
     headers: {
@@ -21,7 +23,6 @@
 
   //displays the user's lists
   function displayLists(lists) {
-    console.log(`made a list`);
     const htmllist = lists.map(
       list => `
             <div id="${list.id}" class="community-list">
@@ -192,22 +193,21 @@
     </div>`
     );
     $("#my-lists").html(htmllist);
-    //Edit List
+
+    //Edit List Button
     $(".edit-list").click(e => {
       e.preventDefault();
       let list = e.currentTarget;
       let list_id = $(list).data("id");
-      console.log($(list).data("id"));
       localStorage.setItem("cardlist-id", list_id);
       window.location.replace("/index.html");
     });
 
-    //Delete List
+    //Delete List Button
     $(".delete-list").click(e => {
       e.preventDefault();
       let list = e.currentTarget;
       let list_id = $(list).data("id");
-      console.log(list_id);
       $.ajax({
         url: `/api/cardlist/${list_id}`,
         headers: {
@@ -222,12 +222,14 @@
     });
   }
 
+  // Creates list filter
   function listFilterCreator(listcards) {
     return function listfilter(card) {
       return listcards.some(cardName => cardName === card.name);
     };
   }
 
+  // Populates Card list with card data through function binding
   function propEq(prop, val) {
     return function(obj) {
       return obj[prop] === val;
