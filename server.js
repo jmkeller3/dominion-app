@@ -13,7 +13,7 @@ const { router: usersRouter } = require("./users");
 const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
 const { router: cardlistRouter } = require("./cardlist");
 
-const { PORT, DATABASE_URL } = require("./config");
+const { PORT, DATABASE_URL, TEST_DATABASE_URL } = require("./config");
 
 const app = express();
 
