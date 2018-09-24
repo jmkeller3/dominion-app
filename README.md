@@ -9,12 +9,29 @@ cards are much more powerful than others.
 
 ## Screenshots
 Signup/Login Page:
+![Signup page](screenshots/Signup.png)
+
+![Login page](screenshots/Login.png)
 
 Card Page:
 
+![Cards page 1](screenshots/Cards.png)
+
+![Cards page 2](screenshots/Cards_2.png)
+
+![Cards page 3](screenshots/Cards_3.png)
+
 Community Lists Page:
 
+![Community List page 1](screenshots/Community-list_1.png)
+
+![Community List page 2](screenshots/Community-table.png)
+
+![Community List page 3](screenshots/Community-list_3.png)
+
 User's Lists Page:
+
+![User List page](screenshots/My-list_buttons.png)
 
 ## Built With
 
