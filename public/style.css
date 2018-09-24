@@ -48,26 +48,27 @@ body {
   display: block;
   text-decoration: none;
   padding: 15px;
-  background: #e5e6e7;
-  color: #888;
+  background: #16377c;
+  color: #fff;
   font-size: 20px;
   float: left;
-  width: 43.99%;
+  width: 42.8%;
   text-align: center;
-  border-top: 3px solid transparent;
+  border: 3px solid transparent;
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
-.forms .tab-group li a:hover {
-  background: #dedfdf;
-  color: #666;
+.forms .tab-group li a:hover,
+.forms .tab-group li a:focus {
+  background: #3867c9;
+  color: #fff;
 }
 .forms .tab-group .active a {
   background: #fff;
   color: #444;
-  border-top: 3px solid #3867c9;
+  border: 3px solid transparent;
   font-weight: bold;
 }
 
@@ -124,7 +125,7 @@ button:focus {
 }
 
 legend {
-  color: #3867c9;
+  color: #16377c;
   text-align: right;
   border: 1px solid #3867c9;
   padding: 0.2em 0.5em;

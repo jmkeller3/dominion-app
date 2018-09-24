@@ -95,7 +95,7 @@
       }">
     </div>
     </div>
-      <table class="text-list">
+      <table aria-label="Table of cards from ${list.name}" class="text-list">
         <thead>
         <tr>
           <th>Name</th>

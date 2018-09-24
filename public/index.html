@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
@@ -21,7 +21,7 @@
 
         </nav>
         <div class="filter" aria-label="Filters to Sort Cards">
-            <input type="text" id="cardSearch" placeholder="Search for names..">
+            <input type="text" id="cardSearch" placeholder="Search for names.." aria-label="Card Search by Name">
             <button class="all-btn" data-balloon="All Cards" data-balloon-pos="up" type="submit">All</button>
             <button class="attack-btn" data-balloon="Filter by Attack" data-balloon-pos="up" type="submit">Attack</button>
             <button class="rank-btn" data-balloon="Filter by Rank" data-balloon-pos="up" type="submit">Rank</button>
@@ -30,7 +30,7 @@
             <button class="treasure-btn" data-balloon="Filter for Treasure Cards" data-balloon-length="fit"
                 data-balloon-pos="up" type="submit">Treasure</button>
             <div data-balloon="Filter by Sets" data-balloon-pos="up" class="styled-select blue semi-square">
-                <select id="setOptions">
+                <select id="setOptions" aria-label="Filter by Set">
                     <option value=''>Sort by Set</option>
                     <option value='Base'>Base</option>
                     <option value='Intrigue'>Intrigue</option>
