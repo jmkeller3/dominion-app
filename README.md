@@ -7,16 +7,25 @@ I wanted a service that would allow me to search through the hundreds of cards o
 filters and save them for future games. I also wanted to incorporate a ranking system for each card since certain 
 cards are much more powerful than others. 
 
+## Screenshots
+Signup/Login Page:
+
+Card Page:
+
+Community Lists Page:
+
+User's Lists Page:
+
 ## Built With
 
-*HTML
-*CSS
-*Javascript
-*jQuery
-*node.js
-*Express
-*Mongoose
-*MongoDB
+* HTML
+* CSS
+* Javascript
+* jQuery
+* node.js
+* Express
+* Mongoose
+* MongoDB
 
 
 #Demo 
@@ -25,4 +34,8 @@ cards are much more powerful than others.
 
 ## Author
 
+* **John Keller** - ** Full-Stack development/Testing, Styling
+
 ## Acknowledgements
+
+* **Nathaniel Webb** - ** - Advisor and Mentor
