@@ -27,7 +27,7 @@ $("#Login").click(e => {
     console.log(token.authToken);
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
-    window.location.replace("/index.html");
+    window.location.replace("/cards.html");
   })();
 });
 
@@ -76,6 +76,6 @@ $("#Signup").click(e => {
     });
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
-    window.location.replace("/index.html");
+    window.location.replace("/cards.html");
   })();
 });

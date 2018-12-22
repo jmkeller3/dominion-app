@@ -200,7 +200,7 @@
       let list = e.currentTarget;
       let list_id = $(list).data("id");
       localStorage.setItem("cardlist-id", list_id);
-      window.location.replace("/index.html");
+      window.location.replace("/cards.html");
     });
 
     //Delete List Button

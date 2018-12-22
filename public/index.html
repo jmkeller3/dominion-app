@@ -1,125 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
-    <link rel="stylesheet" href="grid.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign-Up Page</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
+  </head>
 
-<body>
-    <div class="wrapper">
-        <nav role="navigation" class="nav-bar cf">
+  <body>
+    <nav role="navigation" class="nav-bar cf"></nav>
+    <main class="landing" role="main">
+      <header><h1>Dominion Kingdom Builder</h1></header>
+      <section class="information">
+        <h2>What is it?</h2>
+        <p>
+          The Dominion Kingdom Builder Web App is designed to allow uses to
+          search and filter through all the dominion card game expansions and
+          saved them to personal lists. Each list is shared with the community
+          so other users cam be inspired for new and creative games.
+        </p>
+        <p>
+          Dominion was designed by Donald X. Vaccarino in 2008 as an innovative
+          card game where players build up their simple starting deck of cards
+          through ten interchangable kingdom cards. Ten years later, there are
+          now over a dozen expensions, totaling over 400 cards which are all
+          compatible with one another. Thus, it can become difficult choosing
+          which cards to use.
+        </p>
+      </section>
+      <section class="information">
+        <h2>How does it work?</h2>
+        <p>
+          A user only needs to sign-up if they want to save their own lists.
+          Otherwise, they can click the cards page and search through the
+          hundreds of cards Dominion offers. Upon registering an account, a user
+          simply double-clicks or drags their prefered cards to the card list.
+          They can click the card on the list to remove it. Once ten cards are
+          selected, they can save their list as a future kingdom to play
+          through.
+        </p>
+        <p>
+          What makes the Dominion Kingdom Builder App unique is its use of
+          Qvist's card rankings which uses feedback from online Dominion
+          players. You can read more about this ranking system
+          <a
+            href="http://wiki.dominionstrategy.com/index.php/List_of_Cards_by_Qvist_Rankings"
+            >here</a
+          >
+        </p>
+      </section>
+      <section class="information">
+        <h2>Who made it?</h2>
+        <p>
+          John Keller is an aspiring Web Developer who enjoys playing Dominion
+          with his wife and their friends. He currently resides in Utah county
+          and enjoys hiking up and around the beautiful mountains. You can see
+          his other projects <a href="#">here</a>
+        </p>
+      </section>
+      <div class="forms">
+        <ul class="tab-group">
+          <li class="tab active"><a href="#login">Log In</a></li>
+          <li class="tab"><a href="#signup">Sign Up</a></li>
+        </ul>
 
-
-        </nav>
-        <div class="filter" aria-label="Filters to Sort Cards">
-            <input type="text" id="cardSearch" placeholder="Search for names.." aria-label="Card Search by Name">
-            <button class="all-btn" data-balloon="All Cards" data-balloon-pos="up" type="submit">All</button>
-            <button class="attack-btn" data-balloon="Filter by Attack" data-balloon-pos="up" type="submit">Attack</button>
-            <button class="rank-btn" data-balloon="Filter by Rank" data-balloon-pos="up" type="submit">Rank</button>
-            <button class="reaction-btn" data-balloon="Filter for Reaction Cards" data-balloon-pos="up"
-                data-balloon-length="fit" type="submit">Reaction</button>
-            <button class="treasure-btn" data-balloon="Filter for Treasure Cards" data-balloon-length="fit"
-                data-balloon-pos="up" type="submit">Treasure</button>
-            <div data-balloon="Filter by Sets" data-balloon-pos="up" class="styled-select blue semi-square">
-                <select id="setOptions" aria-label="Filter by Set">
-                    <option value=''>Sort by Set</option>
-                    <option value='Base'>Base</option>
-                    <option value='Intrigue'>Intrigue</option>
-                    <option value='Seaside'>Seaside</option>
-                    <option value='Alchemy'>Alchemy</option>
-                    <option value='Prosperity'>Prosperity</option>
-                    <option value='Cornucopia'>Cornucopia</option>
-                    <option value='Hinterlands'>Hinterlands</option>
-                    <option value='Dark Ages'>Dark Ages</option>
-                    <option value='Guilds'>Guilds</option>
-                    <option value='Adventures'>Adventures</option>
-                    <option value='Empires'>Empires</option>
-                    <option value='2nd'>Base (Second Edition)</option>
-                </select>
+        <form id="signup" action="" method="post">
+          <fieldset>
+            <legend>Sign-Up</legend>
+            <h1 class="title">Create your account</h1>
+            <h2 class="subtitle">This allows you to save lists!</h2>
+            <br />
+            <div class="input-field">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                aria-label="Email"
+              />
+              <input
+                type="password"
+                name="pass"
+                placeholder="Password"
+                aria-label="Password"
+              />
+              <input
+                type="password"
+                name="cpass"
+                placeholder="Confirm Password"
+                aria-label="Confirm Password"
+              />
+              <button id="Signup" type="submit">Submit</button>
             </div>
-            <div class="filter-tooltip mobile">
-                <button class="mobile-btn">&#x1F6C8;</button>
-                <div id="listinfo" class="modal">
-                    <div class="listinfo-content" aria-live="assertive">
-                        <div class="modal-header"><span class="close">&times;</span>
-                            <h1>How to Save Your List</h1>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li>In order to save or edit your list, you must be logged in.</li>
-                                <li>Add Cards to your list by clicking or tapping them. You can also drag and drop
-                                    cards
-                                    into slots.</li>
-                                <li>You can remove cards by clicking on them in your list or by dragging its
-                                    replacement
-                                    over it.</li>
-                                <li>Use the filters to help select the best cards.</li>
-                                <li>The rank filter is based Qvist's 2017 rankings. He is a world class dominion player
-                                    who
-                                    competes at the top level.</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
+          </fieldset>
+        </form>
+        <form id="login" action="" method="post">
+          <fieldset>
+            <legend>Login</legend>
+            <h1 class="title">Welcome Back</h1>
+            <h2 class="subtitle">Your lists are safe and waiting</h2>
+            <br />
+            <div class="input-field">
+              <input
+                type="email"
+                name="logemail"
+                placeholder="Email"
+                aria-label="Email"
+              />
+              <input
+                type="password"
+                name="logpass"
+                placeholder="Password"
+                aria-label="Password"
+              />
+              <button id="Login" type="submit">Submit</button>
             </div>
-        </div>
-        <div class="sidebar tooltip" data-window="Click or Drag Cards to Fill List">
-            <ul class="list-ul">
-                <button class="list-btn btn" id="list-submit" type="submit">Save List</button>
+          </fieldset>
+        </form>
+      </div>
+    </main>
 
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-            </ul>
-        </div>
-        <div class="content">
-
-        </div>
-    </div>
-    <script>
-        function filterSets() {
-            document.getElementById("setDropdown").classList.toggle("show");
-        }
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".tab a").on("click", function(e) {
+          e.preventDefault();
+          $(this)
+            .parent()
+            .addClass("active");
+          $(this)
+            .parent()
+            .siblings()
+            .removeClass("active");
+          var href = $(this).attr("href");
+          $(".forms > form").hide();
+          $(href).fadeIn(500);
+        });
+      });
     </script>
     <script src="nav.js"></script>
-    <script src="app.js"></script>
-</body>
-
+    <script src="signup.js"></script>
+  </body>
 </html>

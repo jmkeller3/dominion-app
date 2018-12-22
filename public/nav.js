@@ -10,21 +10,21 @@ function loadNav() {
           user_id != null
             ? `
           <li>
-            <a class="login out" href="./signup.html">
+            <a class="login out" href="./index.html">
               Log Out
             </a>
           </li>`
             : ` <li>
-          <a class="login" href="./signup.html">
+          <a class="login" href="./index.html">
             Log In
           </a>
         </li>`
         }
         ${
-          url != "index.html"
+          url != "cards.html"
             ? `
         <li>
-            <a href='./index.html'>Cards</a>
+            <a href='./cards.html'>Cards</a>
         </li>`
             : ""
         }
