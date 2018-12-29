@@ -47,7 +47,7 @@ User's Lists Page:
 
 ## Demo 
 
-- [Live Demo](https://dashboard.heroku.com/apps/shrouded-dawn-21846)
+- [Live Demo](https://shrouded-dawn-21846.herokuapp.com/)
 
 ## Author
 
