@@ -38,7 +38,7 @@ function loadNav() {
             : ""
         }
         ${
-          url != "account.html"
+          url != "index.html"
             ? `
             <li>
                 <a href='./account.html'>My Lists</a>

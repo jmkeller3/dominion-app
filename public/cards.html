@@ -1,125 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
-    <link rel="stylesheet" href="grid.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.0/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="grid.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
-        <nav role="navigation" class="nav-bar cf">
-
-
-        </nav>
-        <div class="filter" aria-label="Filters to Sort Cards">
-            <input type="text" id="cardSearch" placeholder="Search for names.." aria-label="Card Search by Name">
-            <button class="all-btn" data-balloon="All Cards" data-balloon-pos="up" type="submit">All</button>
-            <button class="attack-btn" data-balloon="Filter by Attack" data-balloon-pos="up" type="submit">Attack</button>
-            <button class="rank-btn" data-balloon="Filter by Rank" data-balloon-pos="up" type="submit">Rank</button>
-            <button class="reaction-btn" data-balloon="Filter for Reaction Cards" data-balloon-pos="up"
-                data-balloon-length="fit" type="submit">Reaction</button>
-            <button class="treasure-btn" data-balloon="Filter for Treasure Cards" data-balloon-length="fit"
-                data-balloon-pos="up" type="submit">Treasure</button>
-            <div data-balloon="Filter by Sets" data-balloon-pos="up" class="styled-select blue semi-square">
-                <select id="setOptions" aria-label="Filter by Set">
-                    <option value=''>Sort by Set</option>
-                    <option value='Base'>Base</option>
-                    <option value='Intrigue'>Intrigue</option>
-                    <option value='Seaside'>Seaside</option>
-                    <option value='Alchemy'>Alchemy</option>
-                    <option value='Prosperity'>Prosperity</option>
-                    <option value='Cornucopia'>Cornucopia</option>
-                    <option value='Hinterlands'>Hinterlands</option>
-                    <option value='Dark Ages'>Dark Ages</option>
-                    <option value='Guilds'>Guilds</option>
-                    <option value='Adventures'>Adventures</option>
-                    <option value='Empires'>Empires</option>
-                    <option value='2nd'>Base (Second Edition)</option>
-                </select>
+      <nav role="navigation" class="nav-bar cf"></nav>
+      <div class="filter" aria-label="Filters to Sort Cards">
+        <input
+          type="text"
+          id="cardSearch"
+          placeholder="Search for names.."
+          aria-label="Card Search by Name"
+        />
+        <button
+          class="all-btn"
+          data-balloon="All Cards"
+          data-balloon-pos="up"
+          type="submit"
+        >
+          All
+        </button>
+        <button
+          class="attack-btn"
+          data-balloon="Filter by Attack"
+          data-balloon-pos="up"
+          type="submit"
+        >
+          Attack
+        </button>
+        <button
+          class="rank-btn"
+          data-balloon="Filter by Rank"
+          data-balloon-pos="up"
+          type="submit"
+        >
+          Rank
+        </button>
+        <button
+          class="reaction-btn"
+          data-balloon="Filter for Reaction Cards"
+          data-balloon-pos="up"
+          data-balloon-length="fit"
+          type="submit"
+        >
+          Reaction
+        </button>
+        <button
+          class="treasure-btn"
+          data-balloon="Filter for Treasure Cards"
+          data-balloon-length="fit"
+          data-balloon-pos="up"
+          type="submit"
+        >
+          Treasure
+        </button>
+        <div
+          data-balloon="Filter by Sets"
+          data-balloon-pos="up"
+          class="styled-select blue semi-square"
+        >
+          <select id="setOptions" aria-label="Filter by Set">
+            <option value="">Sort by Set</option>
+            <option value="Base">Base</option>
+            <option value="Intrigue">Intrigue</option>
+            <option value="Seaside">Seaside</option>
+            <option value="Alchemy">Alchemy</option>
+            <option value="Prosperity">Prosperity</option>
+            <option value="Cornucopia">Cornucopia</option>
+            <option value="Hinterlands">Hinterlands</option>
+            <option value="Dark Ages">Dark Ages</option>
+            <option value="Guilds">Guilds</option>
+            <option value="Adventures">Adventures</option>
+            <option value="Empires">Empires</option>
+            <option value="2nd">Base (Second Edition)</option>
+          </select>
+        </div>
+        <div class="filter-tooltip mobile">
+          <button class="mobile-btn">&#x1F6C8;</button>
+          <div id="listinfo" class="modal">
+            <div class="listinfo-content" aria-live="assertive">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h1>How to Save Your List</h1>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <li>
+                    In order to save or edit your list, you must be logged in.
+                  </li>
+                  <li>
+                    Add Cards to your list by clicking or tapping them. You can
+                    also drag and drop cards into slots.
+                  </li>
+                  <li>
+                    You can remove cards by clicking on them in your list or by
+                    dragging its replacement over it.
+                  </li>
+                  <li>Use the filters to help select the best cards.</li>
+                  <li>
+                    The rank filter is based Qvist's 2017 rankings. He is a
+                    world class dominion player who competes at the top level.
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="filter-tooltip mobile">
-                <button class="mobile-btn">&#x1F6C8;</button>
-                <div id="listinfo" class="modal">
-                    <div class="listinfo-content" aria-live="assertive">
-                        <div class="modal-header"><span class="close">&times;</span>
-                            <h1>How to Save Your List</h1>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li>In order to save or edit your list, you must be logged in.</li>
-                                <li>Add Cards to your list by clicking or tapping them. You can also drag and drop
-                                    cards
-                                    into slots.</li>
-                                <li>You can remove cards by clicking on them in your list or by dragging its
-                                    replacement
-                                    over it.</li>
-                                <li>Use the filters to help select the best cards.</li>
-                                <li>The rank filter is based Qvist's 2017 rankings. He is a world class dominion player
-                                    who
-                                    competes at the top level.</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="sidebar tooltip" data-window="Click or Drag Cards to Fill List">
-            <ul class="list-ul">
-                <button class="list-btn btn" id="list-submit" type="submit">Save List</button>
+      </div>
+      <div
+        class="sidebar tooltip"
+        data-window="Click or Drag Cards to Fill List"
+      >
+        <ul class="list-ul">
+          <button class="list-btn btn" id="list-submit" type="submit">
+            Save List
+          </button>
 
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-                <div class="empty">
-                    <li class="list">Placeholder</li>
-                </div>
-            </ul>
-        </div>
-        <div class="content">
-
-        </div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+          <div class="empty"><li class="list">Placeholder</li></div>
+        </ul>
+      </div>
+      <div class="content"></div>
     </div>
     <script>
-        function filterSets() {
-            document.getElementById("setDropdown").classList.toggle("show");
-        }
+      function filterSets() {
+        document.getElementById("setDropdown").classList.toggle("show");
+      }
     </script>
     <script src="nav.js"></script>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>

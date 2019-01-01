@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Sign-Up Page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="grid.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   </head>
@@ -13,58 +18,13 @@
     <nav role="navigation" class="nav-bar cf"></nav>
     <main class="landing" role="main">
       <header><h1>Dominion Kingdom Builder</h1></header>
-      <section class="information">
-        <h2>What is it?</h2>
-        <p>
-          The Dominion Kingdom Builder Web App is designed to allow users to
-          search and filter through all the dominion card game expansions and
-          saved them to personal lists. Each list is shared with the community
-          so other users can be inspired for new and creative games.
-        </p>
-        <p>
-          Dominion was designed by Donald X. Vaccarino in 2008 as an innovative
-          card game where players build up their simple starting deck of cards
-          through ten interchangeable kingdom cards. Ten years later, there are
-          now over a dozen expansions, totaling over 400 cards which are all
-          compatible with one another. Thus, it can become difficult choosing
-          which cards to use.
-        </p>
-      </section>
-      <section class="information">
-        <h2>How does it work?</h2>
-        <p>
-          A user only needs to sign-up if they want to save their own lists.
-          Otherwise, they can click the cards page and search through the
-          hundreds of cards Dominion offers. Upon registering an account, a user
-          simply double-clicks or drags their preferred cards to the card list.
-          They can click the card on the list to remove it. Once ten cards are
-          selected, they can save their list as a future kingdom to play
-          through.
-        </p>
-        <p>
-          What makes the Dominion Kingdom Builder App unique is its use of
-          Qvist's card rankings which uses feedback from online Dominion
-          players. You can read more about this ranking system
-          <a
-            href="http://wiki.dominionstrategy.com/index.php/List_of_Cards_by_Qvist_Rankings"
-            >here</a
-          >
-        </p>
-      </section>
-      <section class="information">
-        <h2>Who made it?</h2>
-        <p>
-          John Keller is an aspiring Web Developer who enjoys playing Dominion
-          with his wife and their friends. He currently resides in Utah county
-          and enjoys hiking up and around the beautiful mountains. You can see
-          his other projects <a href="#">here</a>
-        </p>
-      </section>
       <div class="forms">
-        <ul class="tab-group">
-          <li class="tab active"><a href="#login">Log In</a></li>
-          <li class="tab"><a href="#signup">Sign Up</a></li>
-        </ul>
+        <div class="tabs">
+          <ul class="tab-group">
+            <li class="tab active"><a href="#login">Log In</a></li>
+            <li class="tab"><a href="#signup">Sign Up</a></li>
+          </ul>
+        </div>
 
         <form id="signup" action="" method="post">
           <fieldset>
@@ -119,6 +79,56 @@
           </fieldset>
         </form>
       </div>
+      <div class="info-container">
+        <section id="what" class="information hide">
+          <h2>What is it?</h2>
+          <p>
+            The Dominion Kingdom Builder Web App is designed to allow users to
+            search and filter through all the dominion card game expansions and
+            saved them to personal lists. Each list is shared with the community
+            so other users can be inspired for new and creative games.
+          </p>
+          <p>
+            Dominion was designed by Donald X. Vaccarino in 2008 as an
+            innovative card game where players build up their simple starting
+            deck of cards through ten interchangeable kingdom cards. Ten years
+            later, there are now over a dozen expansions, totaling over 400
+            cards which are all compatible with one another. Thus, it can become
+            difficult choosing which cards to use.
+          </p>
+        </section>
+        <section id="how" class="information hide">
+          <h2>How does it work?</h2>
+          <p>
+            A user only needs to sign-up if they want to save their own lists.
+            Otherwise, they can click the cards page and search through the
+            hundreds of cards Dominion offers. Upon registering an account, a
+            user simply double-clicks or drags their preferred cards to the card
+            list. They can click the card on the list to remove it. Once ten
+            cards are selected, they can save their list as a future kingdom to
+            play through.
+          </p>
+          <p>
+            What makes the Dominion Kingdom Builder App unique is its use of
+            Qvist's card rankings which uses feedback from online Dominion
+            players. You can read more about this ranking system
+            <a
+              href="http://wiki.dominionstrategy.com/index.php/List_of_Cards_by_Qvist_Rankings"
+              >here</a
+            >
+          </p>
+        </section>
+        <section id="who" class="information hide">
+          <h2>Who made it?</h2>
+          <p>
+            John Keller is an aspiring Web Developer who enjoys playing Dominion
+            with his wife and their friends. He currently resides in Utah county
+            and enjoys hiking up and around the beautiful mountains. You can see
+            his other projects <a href="johnkeller.us">here</a>
+          </p>
+        </section>
+      </div>
+      <div class="foot"></div>
     </main>
 
     <script type="text/javascript">
@@ -138,6 +148,7 @@
         });
       });
     </script>
+    <script src="events.js"></script>
     <script src="nav.js"></script>
     <script src="signup.js"></script>
   </body>
