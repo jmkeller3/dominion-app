@@ -26,13 +26,15 @@
     const htmllist = lists.map(
       list => `
             <div id="${list.id}" class="community-list">
+            <header class="list-header">
             <h1>${list.name}</h1>
-            
+            <div class="list-btns">
             <button data-id="${list.id}" class="edit-list">Edit List</button>
             <button data-id="${
               list.id
             }" class="delete-list">Delete List</button>
-            
+            </div>
+            </header>
             
             <div class="community-cards">
               <!-- card 1 -->

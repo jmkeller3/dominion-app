@@ -78,13 +78,13 @@ nav a#openup {
   background-color: #fff;
   color: white;
   position: fixed;
-  padding: 10px 0 20px 0;
-  margin: 35px 40px 40px 120px;
+  padding: 10px 0 20px 3px;
+  margin: 35px 40px 40px 123px;
   display: inline;
   width: 62vw;
   overflow: scroll;
   z-index: 1;
-  box-shadow: -3px 8px 8px #ccc;
+  box-shadow: 5px 8px 8px #ccc;
 }
 
 .list-ul {
@@ -434,6 +434,7 @@ button:focus {
 
 .community-list {
   border: 1px solid #193441;
+  border-radius: 3px;
   margin: 20px;
 }
 
@@ -457,6 +458,25 @@ tr:nth-child(even) {
 td:hover {
   background-color: #193441;
   color: #fff;
+}
+
+.list-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-header .list-btns {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.list-btns button {
+  background-color: #193441;
+  color: #fcfff5;
+}
+
+.list-btns button:hover {
+  background-color: #3e606f;
 }
 
 /* Media Queries */

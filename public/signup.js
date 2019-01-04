@@ -1,5 +1,26 @@
 "use strict";
 
+// Listener for Sample
+$("#sample-btn").click(e => {
+  e.preventDefault();
+  const email = "sample@test.com";
+  const password = "password123456";
+  (async () => {
+    let token = await $.ajax({
+      url: "/api/auth/login",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        email,
+        password
+      })
+    });
+    localStorage.setItem("token", token.authToken);
+    localStorage.setItem("user_id", token.user);
+    window.location.replace("/cards.html");
+  })();
+});
+
 // Listener for Login
 
 $("#Login").click(e => {
@@ -24,7 +45,6 @@ $("#Login").click(e => {
         password
       })
     });
-    console.log(token.authToken);
     localStorage.setItem("token", token.authToken);
     localStorage.setItem("user_id", token.user);
     window.location.replace("/cards.html");

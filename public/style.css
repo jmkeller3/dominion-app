@@ -203,6 +203,18 @@ p {
   padding: 10px;
 }
 
+#sample-container {
+  background-color: #3e606f;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+/* 
+#sample-btn {
+} */
+
 /* Tablet (766px) */
 @media only screen and (min-width: 766px) {
   #signup fieldset,
